@@ -17,14 +17,26 @@ The project is inspired by the [CoinMarketCap Portfolio Tracker](https://coinmar
 # User Experience (UX)
  
 * ## Vision      
- 
+    My vision for Cryptics is to be an application crypto enthusiasts go to if they want to manage their portfolios and track the performance of them. The website is meant to be simple yet effective and provide a real use case to people interested in cryptocurrency. The website will be easy to navigate and I will take a mobile first approach when developing the user interface for the application. I want Cryptics to be responsive and to provide all the necessary features expected in a portfolio tracking application.
+
 * ## Aims
+    To provide users an easy to use application they can go to when they want to track and manage their cryptocurrency holdings.  
  
 * ## Target Audience
+    Cryptocurrency is for everyone! However, the program does require users to have a basic understanding about crypto and portfolio management. Additionally, in the UK you must be at least 18 to own crypto assets as a result, my target audience is for cryptocurrency enthusiasts 18+.
  
 * ## User Stories
- 
+
+1. As a **Site User** I can **create an account** so that **I can interact with the site**
+2. As a **Site User** I can **view a paginated list of coins** so that **view all tokens in portfolio**
+3. As a **Site User** I can **create an Portfolio** so that **I can track my crypto holdings**
+4. As a **Site User** I can **view my Portfolio** so that **I can view the tokens within**
+5. As a **Site User** I can **chose a token to add** so that **I can expand my portfolio**
+6. As a **Site User** I can **add a token to my portfolio** so that **I can add to my holdings**
+7. As a **Site User** I can **read about the website** so that **I can understand the application**
+
 * ## Development Method
+    When developing Cryptics I will take an Agile Approach. Meaning I will take an iterative approach to project management and software development helping me to deliver value faster and speed up development time. I will focus on working software over comprehensive documentation and responding to change over following a plan when creating the project.  
  
 * ## Scope
  
