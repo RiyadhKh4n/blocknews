@@ -51,6 +51,10 @@ The project is inspired by the [CoinMarketCap Portfolio Tracker](https://coinmar
 
 * ### Wireframes
 
+    ![Desktop](docs/images/desktop12tiny.png)
+    ![Desktop](docs/images/desktop34tiny.png)
+    ![Mobile](docs/images/mobile12345tiny.png)
+
 * ## Flowchars
 
 * ### ERD Diagram
