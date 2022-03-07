@@ -55,7 +55,7 @@ The project is inspired by the [CoinMarketCap Portfolio Tracker](https://coinmar
     ![Desktop](docs/images/desktop34tiny.png)
     ![Mobile](docs/images/mobile12345tiny.png)
 
-* ## Flowchars
+* ### Flowchars
 
 * ### ERD Diagram
 
@@ -87,7 +87,11 @@ Here describes the main features of the website and what the user can expect whe
  
 ## Frameworks
 
-1. [Django](https://www.djangoproject.com/) - Django is a Python-based free and open-source web framework that follows the model–template–views architectural pattern.
+1. [Django](https://www.djangoproject.com/)
+    * Django is a Python-based free and open-source web framework that follows the model–template–views architectural pattern.
+
+2. [Bootstrap](https://getbootstrap.com/)
+    * Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end web development.
 
 ## Libraries 
 
