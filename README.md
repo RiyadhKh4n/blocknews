@@ -37,14 +37,21 @@ The project is inspired by the [CoinMarketCap Portfolio Tracker](https://coinmar
 
 * ## Development Method
     When developing Cryptics I will take an Agile Approach. Meaning I will take an iterative approach to project management and software development helping me to deliver value faster and speed up development time. I will focus on working software over comprehensive documentation and responding to change over following a plan when creating the project.  
- 
-* ## Scope
- 
+
 * ## Structure
+    Cryptics will be developed using Django, as a result I will split the program functionality into separate apps. A Django application is a Python package that is specifically inteded for use in a Django project. For my project I will create three apps; Home, Portfolio and Coin
+
+    Home: This app will contain the code the user will see when they launch the application. It will contain all of the necessary urls and views in order to render the Homepage of Cryptics. This app will also be home to the index.html page which contains the code for the landing page of the project.
+
+    Portfolio: This app will contain all the code needed in order to get the Portfolio functionality working. It will contain the urls and views in order to get the CRUD function of each portfolio which users are then able to add coins into. It will contain the templates needed to display the Portfolio section of the website.
+
+    Coin: This app will contain all the code needed in order to get the coin functionality working. It will contain the urls and views in order to get the CRUD functions of each token working which users can add to their portfolios. It will also contain all the Python files needed in order to access the CoinMarketCap API which will needed when validating and displaying portfolio performance. This app will have the templates needed in order to render the view when a portfolio is chosen.  
  
 ## Design
 
 * ### Wireframes
+
+* ## Flowchars
 
 * ### ERD Diagram
 
@@ -100,22 +107,29 @@ Here describes the main features of the website and what the user can expect whe
 4. [Google Developer Tools](https://developer.chrome.com/docs/devtools/):
     * Used to test the program throughout development
  
-5. [Heroku](https://dashboard.heroku.com/login)
+5. [Heroku](https://dashboard.heroku.com/login):
     * Used to Deploy the Project
  
-6. [AMiResponsive](http://ami.responsivedesign.is/)
+6. [AMiResponsive](http://ami.responsivedesign.is/):
     * To generate the image at the beginning of the README
  
-7. [TinyPNG](https://tinypng.com/)
+7. [TinyPNG](https://tinypng.com/):
     * This was used to compress all images used in the README.md
  
-8. [PEP8](http://pep8online.com/)
+8. [PEP8](http://pep8online.com/):
     * Used to validate my Python code
  
-9. [favicon.cc](https://www.favicon.cc/)
+9. [favicon.cc](https://www.favicon.cc/):
     * Used to generate the favicon address from the hosted site
 
-10. [HerokuSQL](https://www.heroku.com/postgres) - Database used for deployed project
+10. [HerokuSQL](https://www.heroku.com/postgres):
+    * Database used for deployed project
+
+11. [Balsamiq](https://balsamiq.com/wireframes/):
+    * Used to create Wireframes
+
+12. [SmartDraw](https://www.smartdraw.com/): 
+    * Used to create ERD diagrams
  
 # Testing
  
