@@ -43,7 +43,16 @@ The project is inspired by the [CoinMarketCap Portfolio Tracker](https://coinmar
 * ## Structure
  
 ## Design
- 
+
+* ### Wireframes
+
+* ### ERD Diagram
+
+* ### Colour Scheme
+
+* ### Typography
+
+* ### Icons
  
 # Features
  
@@ -56,13 +65,28 @@ Here describes the main features of the website and what the user can expect whe
  
  
 # Technologies
-## Languages Used
+## Programming Languages:
+
+- [HTML](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics) - The HyperText Markup Language or HTML is the standard markup language for documents designed to be displayed in a web browser
+- [CSS](https://en.wikipedia.org/wiki/CSS) - Cascading Style Sheets is a style sheet language used for describing the presentation of a document
+- [Python](https://www.python.org/) - Python is an interpreted high-level general-purpose programming language. It is used when creating the backend functionality with Django
+- [JavaScript](https://en.wikipedia.org/wiki/JavaScript) - JavaScript is used to develop interactive web applications
  
-- [Python](https://www.python.org/) - Python is an interpreted high-level general-purpose programming language
+- I used GitHub [Project Board](https://github.com/RiyadhKh4n/cryptics/projects) to keep track of all the User Stories and Tasks necessary in order to build Cryptics
  
-- I used GitHub [Project Board]() to keep track of all the tasks necessary in order to build this application
+## Frameworks
+
+1. [Django](https://www.djangoproject.com/) - Django is a Python-based free and open-source web framework that follows the model–template–views architectural pattern.
+
+## Libraries 
+
+1. [Os Library](https://docs.python.org/3/library/os.html)
+    * Used to clear the console.
+
+2. [Requests](https://pypi.org/project/requests/)
+    * Allowed me to sent HTTP requests without having to manually add query to strings to the URLs
  
-## Frameworks, Libraries & Programs Used:
+## Programs Used:
  
 1. [GitPod](https://www.gitpod.io/):
     * GitPod was the IDE used to create the site
@@ -76,27 +100,22 @@ Here describes the main features of the website and what the user can expect whe
 4. [Google Developer Tools](https://developer.chrome.com/docs/devtools/):
     * Used to test the program throughout development
  
-5. [Os Library](https://docs.python.org/3/library/os.html)
-    * Used to clear the console.
- 
-6. [Heroku](https://dashboard.heroku.com/login)
+5. [Heroku](https://dashboard.heroku.com/login)
     * Used to Deploy the Project
  
-8. [AMiResponsive](http://ami.responsivedesign.is/)
+6. [AMiResponsive](http://ami.responsivedesign.is/)
     * To generate the image at the beginning of the README
  
- 
-10. [TinyPNG](https://tinypng.com/)
+7. [TinyPNG](https://tinypng.com/)
     * This was used to compress all images used in the README.md
  
-11. [PEP8](http://pep8online.com/)
+8. [PEP8](http://pep8online.com/)
     * Used to validate my Python code
  
-12. [favicon.cc](https://www.favicon.cc/)
+9. [favicon.cc](https://www.favicon.cc/)
     * Used to generate the favicon address from the hosted site
- 
-15. [Requests](https://pypi.org/project/requests/)
-    * Allowed me to sent HTTP requests without having to manually add query to strings to the URLs
+
+10. [HerokuSQL](https://www.heroku.com/postgres) - Database used for deployed project
  
 # Testing
  
