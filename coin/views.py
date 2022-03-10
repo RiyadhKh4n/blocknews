@@ -78,6 +78,3 @@ def display_coin_data(ticker, data):
     else:
         print("Ticker not in List")
 
-
-validate = validate_amount(5)
-print(validate)
