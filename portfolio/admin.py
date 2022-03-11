@@ -12,4 +12,9 @@ class PortfolioAdmin(admin.ModelAdmin):
 
 @admin.register(Asset)
 class AssetAdmin(admin.ModelAdmin):
-    list_display = ('coinID', 'portfolioID', 'PnL', 'quantity', 'added_to_portfolio')
+    list_display = ('portfolio_user', 'coinID', 'portfolioID', 'PnL', 'quantity', 'added_to_portfolio')
+    search_fields = ['coinID', 'portfolioID']
+    list_filter = ('coinID', 'portfolioID', 'PnL', 'added_to_portfolio')
+
+    def portfolio_user(self, instance):
+        return instance.portfolioID.user
