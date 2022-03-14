@@ -1,0 +1,25 @@
+{% extends "home/base.html" %}
+
+{% block content %}
+
+<h1>List of Portfolios</h1>  
+
+<table>
+    {% for portfolio in portfolios%}
+        <tr>
+            <td>{{ portfolio.name }}</td>   
+            <td>{{ portfolio.USDvalue }}</td>   
+            <td>
+                <a href="edit/{{ portfolio.id }}"> 
+                   
+                    <button>Edit</button>
+                </a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td>You have no portfolios created<td><tr>
+    {% endfor %}
+</table>
+<a href="create">Create A Portfolio</a>
+
+{% endblock %}

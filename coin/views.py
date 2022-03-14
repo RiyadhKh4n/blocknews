@@ -3,6 +3,8 @@ import os
 import json
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
+from django.shortcuts import render
+from .models import Coin
 
 if os.path.exists("env.py"):
     import env  # noqa
@@ -73,8 +75,18 @@ def display_coin_data(ticker, data):
     if ticker in tickerList:
         for x in coins:
             if x['symbol'] == ticker:
-                print(x['symbol'], x['quote']['USD'][data])
-
+                coin_data = (x['symbol'], x['quote']['USD'][data])
+    
+        return coin_data
+    
     else:
         print("Ticker not in List")
 
+
+def getCoinList(request):
+    """Retrieve coins in list"""
+    coins = Coin.objects.all()
+    context = {
+        'coins': coins
+    }
+    

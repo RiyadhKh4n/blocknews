@@ -1,6 +1,40 @@
-from django.shortcuts import render
-from django.views import generic 
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Portfolio, Asset
+from django.contrib.auth.models import User
+from .forms import PortfolioForm
 
 
+def get_portfolio_list(request):
+    portfolios = Portfolio.objects.all()
+    context = {
+        'portfolios': portfolios
+    }
+    return render(request, 'portfolio/portfolio.html', context)
 
+
+def create_portfolio(request):
+    if request.method == 'POST':
+        form = PortfolioForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('get_portfolio_list')
+    
+    form = PortfolioForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'portfolio/create_portfolio.html', context)
+
+
+def edit_portfolio(request, portfolio_id):
+    portfolio = get_object_or_404(Portfolio, id=portfolio_id)
+    if request.method == 'POST':
+        form = PortfolioForm(request.POST, instance=portfolio)
+        if form.is_valid():
+            form.save()
+            return redirect('get_portfolio_list')
+    form = PortfolioForm(instance=portfolio)
+    context = {
+        'form': form
+    }
+    return render(request, 'portfolio/edit_portfolio.html', context)
