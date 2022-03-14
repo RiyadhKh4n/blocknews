@@ -38,3 +38,9 @@ def edit_portfolio(request, portfolio_id):
         'form': form
     }
     return render(request, 'portfolio/edit_portfolio.html', context)
+
+
+def delete_portfolio(request, portfolio_id):
+    portfolio = get_object_or_404(Portfolio, id=portfolio_id)
+    portfolio.delete()
+    return redirect('get_portfolio_list')
