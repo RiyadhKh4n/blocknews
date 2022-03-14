@@ -1,0 +1,39 @@
+{% extends "home/base.html" %}
+
+{% block content %}
+
+<h1>List of Assets</h1>  
+
+<table>
+    {% for asset in assets %}
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>PnL</th>
+            <th>Average Price</th>
+            <th>USD Spent</th>
+        </tr>
+        <tr>
+            <td>{{ asset.coinID }}</td>   
+            <td>{{ asset.quantity }}</td>   
+            <td>{{ asset.PnL }}</td>   
+            <td>{{ asset.AveragePrice }}</td>   
+            <td>{{ asset.USDSpent }}</td>   
+            <td>
+                <a href="buy/{{ coin.id }}"> 
+                    <button>Buy</button>
+                </a>
+            </td>
+            <td>
+                <a href="sell/{{ coin.id }}"> 
+                    <button>Sell</button>
+                </a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td>You have no Assets in your Portfolio<td><tr>
+    {% endfor %}
+</table>
+<a href="add">Add Coin</a>
+
+{% endblock %}

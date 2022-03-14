@@ -44,3 +44,25 @@ def delete_portfolio(request, portfolio_id):
     portfolio = get_object_or_404(Portfolio, id=portfolio_id)
     portfolio.delete()
     return redirect('get_portfolio_list')
+
+
+def get_asset_list(request, portfolio_id):
+    assets = Asset.objects.filter(portfolioID=portfolio_id)
+    context = {
+        'assets': assets
+    }
+    return render(request, 'portfolio/assets.html', context)
+
+
+def add_asset(request):
+    if request.method == 'POST':
+        form = AddAsset(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('get_asset_list')
+    
+    form = AddAsset()
+    context = {
+        'form': form
+    }
+    return render(request, 'portfolio/add_asset.html', context)

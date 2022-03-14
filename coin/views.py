@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 import os
 import json
 from requests import Request, Session
@@ -81,12 +81,3 @@ def display_coin_data(ticker, data):
     
     else:
         print("Ticker not in List")
-
-
-def getCoinList(request):
-    """Retrieve coins in list"""
-    coins = Coin.objects.all()
-    context = {
-        'coins': coins
-    }
-    
