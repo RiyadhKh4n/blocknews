@@ -5,18 +5,11 @@ from .forms import PortfolioForm
 
 
 def get_portfolio_list(request):
-    portfolios = Portfolio.objects.all()
+    portfolios = Portfolio.objects.filter(user=request.user)
     context = {
         'portfolios': portfolios
     }
     return render(request, 'portfolio/portfolio.html', context)
-
-# def get_portfolio_list_1(request, user_id):
-#     portfolios = Portfolio.objects.filter(portfolioID=request.user.username)
-#     context = {
-#         'portfolios': portfolios
-#     }
-#     return render(request, 'portfolio/portfolio.html', context)
 
 
 def create_portfolio(request):
