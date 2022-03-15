@@ -2,9 +2,13 @@
 
 {% block content %}
 
-    <h1>HOME PAGE </h1>  
+    <h1>HOME PAGE </h1> 
+    {% if user.is_authenticated %} 
     <a href="portfolio"> 
         <button>View Portfolios</button>
     </a>
+    {% else %}
+        <span>Please create an account or login</span>
+    {%endif%}
 
 {%endblock%}
