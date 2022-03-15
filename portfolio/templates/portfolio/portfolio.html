@@ -7,8 +7,15 @@
 <table>
     {% for portfolio in portfolios%}
         <tr>
+            <th>Name</th>
+            <th>USD Value</th>
+            <th>User</th>
+            
+        </tr>
+        <tr>
             <td>{{ portfolio.name }}</td>   
             <td>{{ portfolio.USDvalue }}</td>   
+            <td>{{ portfolio.user }}</td>   
             <td>
                 <a href="edit/{{ portfolio.id }}"> 
                     <button>Edit</button>
