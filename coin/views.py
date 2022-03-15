@@ -81,3 +81,7 @@ def display_coin_data(ticker, data):
     
     else:
         print("Ticker not in List")
+
+
+def add_coins_to_db(request):
+    

@@ -11,18 +11,26 @@ def get_portfolio_list(request):
     }
     return render(request, 'portfolio/portfolio.html', context)
 
+# def get_portfolio_list_1(request, user_id):
+#     portfolios = Portfolio.objects.filter(portfolioID=request.user.username)
+#     context = {
+#         'portfolios': portfolios
+#     }
+#     return render(request, 'portfolio/portfolio.html', context)
+
 
 def create_portfolio(request):
-    if request.method == 'POST':
-        form = PortfolioForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('get_portfolio_list')
-    
-    form = PortfolioForm()
-    context = {
-        'form': form
-    }
+    form = PortfolioForm(request.POST or None)
+
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.user = request.user
+        obj.slug = form['name'].value()
+        obj.USDvalue = 0.00
+        obj.save()
+        return redirect('get_portfolio_list')
+
+    context = {'form': form}
     return render(request, 'portfolio/create_portfolio.html', context)
 
 
