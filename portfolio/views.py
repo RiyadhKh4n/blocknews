@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Portfolio, Asset
 from django.contrib.auth.models import User
-from .forms import PortfolioForm
+from .forms import PortfolioForm, AddAsset
 
 
 def get_portfolio_list(request):
@@ -56,14 +56,13 @@ def get_asset_list(request, portfolio_id):
 
 
 def add_asset(request):
-    if request.method == 'POST':
-        form = AddAsset(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('get_asset_list')
-    
-    form = AddAsset()
-    context = {
-        'form': form
-    }
+    form = AddAsset(request.POST or None)
+
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.portfolioID = request.portfolio.name
+        obj.save()
+        return redirect('get_asset_list')
+
+    context = {'form': form}
     return render(request, 'portfolio/add_asset.html', context)
