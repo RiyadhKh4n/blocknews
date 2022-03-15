@@ -36,6 +36,6 @@
         <tr><td>You have no portfolios created<td><tr>
     {% endfor %}
 </table>
-<a href="create">Create A Portfolio</a>
+<a href="{% url 'create_portfolio_url' %}">Create A Portfolio</a>
 
 {% endblock %}
