@@ -28,15 +28,14 @@ The project is inspired by the [CoinMarketCap Portfolio Tracker](https://coinmar
 * ## User Stories
 
 1. As a **Site User** I will be **directed to the Home Page** so that **I can understand the website**
-2. As a **Site User** I can **create an account** so that **I can interact with the site**
-3. As a **Site User** I can **log in to my account** so that **view my portfolio**
-4. As a **Site User** I can **view a paginated list of assets** so that **view all tokens in portfolio**
-5. As a **Site User** I can **create an Portfolio** so that **I can track my crypto holdings**
-6. As a **Site User** I can **view my Portfolio** so that **I can view the tokens within**
-7. As a **Site User** I can **delete my Portfolio** so that **remove my portfolio**
-8. As a **Site User** I can **search for a token from CoinMarketCap** so that **I can add it to my portfolio**
-9. As a **Site User** I can **sell a token** so that **remove it from my token holding**
-11. As a **Site User** I can **Buy a token** so that **I can add to my holdings**
+2. As a **Site User** I can **create an account** so that **I can create a portfolio**
+3. As a **Site User** I can **log in to my account** so that **I can view my portfolios**
+4. As a **Site User** I can **create an Portfolio** so that **I can track my crypto holdings**
+5. As a **Site User** I can **view my Portfolio** so that **I can view the tokens within**
+6. As a **Site User** I can **delete my Portfolio** so that **I can remove my portfolio**
+7. As a **Site User** I can **search for a token from CoinMarketCap** so that **I can add it to my portfolio**
+8. As a **Site User** I can **Sell a token** so that **I can remove it from portfolio**
+9. As a **Site User** I can **Buy a token** so that **I can add to my portfolio**
 
 
 * ## Development Method
