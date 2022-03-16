@@ -18,7 +18,7 @@ class Portfolio(models.Model):
 
 
 class Asset(models.Model):
-    portfolioID = models.ForeignKey(Portfolio, on_delete=models.CASCADE)
+    portfolio_name = models.ForeignKey(Portfolio, on_delete=models.CASCADE)
     coinID = models.ForeignKey(Coin, on_delete=models.CASCADE)
     quantity = models.DecimalField(max_digits=10, decimal_places=3)
     AveragePrice = models.DecimalField(max_digits=10, decimal_places=3)
