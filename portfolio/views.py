@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from .models import Portfolio, Asset
 from django.contrib.auth.models import User
 from .forms import PortfolioForm, AddAsset
@@ -48,21 +48,24 @@ def delete_portfolio(request, portfolio_id):
 
 
 def get_asset_list(request, portfolio_id):
-    assets = Asset.objects.filter(portfolioID=portfolio_id)
+    assets = Asset.objects.filter(portfolio_name=portfolio_id)
     context = {
-        'assets': assets
+        'assets': assets,
+        'portfolio_id': portfolio_id
     }
     return render(request, 'portfolio/assets.html', context)
 
 
-def add_asset(request):
-    form = AddAsset(request.POST or None)
-
-    if form.is_valid():
-        obj = form.save(commit=False)
-        obj.portfolioID = request.portfolio.name
-        obj.save()
-        return redirect('get_asset_list')
+def add_asset(request, portfolio_id):
+    portfolio = Portfolio.objects.get(pk=portfolio_id)
+    form = AddAsset()
+    if request.method == "POST":
+        form = AddAsset(request.POST)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.portfolio_name = portfolio
+            obj.save()
+            return redirect(reverse('get_asset_list', args=[portfolio_id]))
 
     context = {'form': form}
     return render(request, 'portfolio/add_asset.html', context)
