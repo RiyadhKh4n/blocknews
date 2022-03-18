@@ -7,5 +7,5 @@ urlpatterns = [
     path('delete/<portfolio_id>', views.delete_portfolio, name='delete_portfolio'),
     path('create', views.create_portfolio, name='create_portfolio_url'),
     path('view-assets/<portfolio_id>', views.get_asset_list, name='get_asset_list'),
-    path('add', views.add_asset, name='add_asset'),
+    path('add/<portfolio_id>', views.add_asset, name='add_asset'),
 ]
