@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from .models import Coin
 import os
 import json
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 from django.shortcuts import render
-from .models import Coin
 
 if os.path.exists("env.py"):
     import env  # noqa
@@ -20,6 +20,7 @@ params = {
 
 headers = {
     'X-CMC_PRO_API_KEY': os.environ.get("CMC"),
+    # 'X-CMC_PRO_API_KEY': "49cdebfd-9e21-4471-8e57-edfa8c83c553",
     'Accepts': 'application/json'
 }
 
@@ -83,5 +84,15 @@ def display_coin_data(ticker, data):
         print("Ticker not in List")
 
 
-def add_coins_to_db(request):
-    
+def get_coin_price(ticker):
+    if ticker in tickerList:
+        for x in coins:
+            if x['symbol'] == ticker:
+                price = float((x['quote']['USD']['price']))
+
+        return price
+
+
+ticker = 'BTC'
+priceBTC = get_coin_price(ticker)
+print(priceBTC)
