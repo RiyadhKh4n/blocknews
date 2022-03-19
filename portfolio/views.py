@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404, reverse
 from .models import Portfolio, Asset
 from django.contrib.auth.models import User
 from .forms import PortfolioForm, AddAsset
+from coin.views import *
 
 
 def get_portfolio_list(request):
@@ -63,7 +64,17 @@ def add_asset(request, portfolio_id):
         form = AddAsset(request.POST)
         if form.is_valid():
             obj = form.save(commit=False)
+            obj.PnL = 0.00
+            obj.USDEarned = 0.00
             obj.portfolio_name = portfolio
+            quantity = form['quantity'].value()
+            AP = form['AveragePrice'].value()
+            obj.AveragePrice = AP
+            # coinID = form['coinID'].value()
+            # price = get_coin_price(coinID)
+            USDspent = (int(quantity) * float(AP))
+            obj.USDSpent = USDspent
+            obj.CurrentInvestment = USDspent
             obj.save()
             return redirect(reverse('get_asset_list', args=[portfolio_id]))
 
