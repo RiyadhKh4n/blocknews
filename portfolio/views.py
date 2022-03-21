@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from .models import Portfolio, Asset
 from django.contrib.auth.models import User
-from .forms import PortfolioForm, AddAsset
+from .forms import PortfolioForm, AddAsset, BuyAsset
 from coin.views import *
 
 
@@ -52,7 +52,7 @@ def get_asset_list(request, portfolio_id):
     assets = Asset.objects.filter(portfolio_name=portfolio_id)
     context = {
         'assets': assets,
-        'portfolio_id': portfolio_id
+        'portfolio_id': portfolio_id,
     }
     return render(request, 'portfolio/assets.html', context)
 
@@ -80,3 +80,35 @@ def add_asset(request, portfolio_id):
 
     context = {'form': form}
     return render(request, 'portfolio/add_asset.html', context)
+
+
+def get_single_asset(request, asset_id, portfolio_id):
+    asset = Asset.objects.filter(pk=asset_id)
+    portfolio = Portfolio.objects.get(pk=portfolio_id)
+    # coin = Asset.objects.get(coinID=coin_id)
+
+    form = BuyAsset()
+    if request.method == "POST":
+        form = BuyAsset(request.POST)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.PnL = 0.00
+            obj.USDEarned = 0.00
+            obj.portfolio_name = portfolio
+            quantity = form['quantity'].value()
+            AP = form['AveragePrice'].value()
+            USDspent = (int(quantity) * float(AP))
+            obj.USDSpent = USDspent
+            # obj.coinID = coin
+            # investment = form.cleaned_data.get("CurrentInvestment")
+            obj.CurrentInvestment = USDspent
+            obj.save()
+            return redirect(reverse('get_asset_list', args=[portfolio_id]))
+
+    context = {
+        'assets': asset,
+        'asset_id': asset_id,
+        'form': form
+    }
+
+    return render(request, 'portfolio/buy_sell_asset.html', context)
