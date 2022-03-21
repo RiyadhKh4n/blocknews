@@ -10,7 +10,7 @@
 }
 
 .nav-link{
-    font-size: 1.2rem;   
+    font-size: 1.2rem;  
 }
 
 .navbar-toggler{
@@ -79,7 +79,8 @@ body {
 
 .webiste-info-box{
     margin: 15px 0px;
-    height: 250px;
+    padding-top: 20px;
+    padding-bottom: 25px;
     border-radius: 20px;
     background-color: #f1f3fa;
 }
@@ -108,8 +109,7 @@ body {
 .info-box-p{
     margin-top: 10px;
     margin-left: 20px;
-    font-size: 0.825;
-
+    font-size: 1rem;
 }
 
 /* Footer */
