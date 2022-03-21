@@ -7,6 +7,8 @@
 
 [CSS Validator](https://jigsaw.w3.org/css-validator/)
 
+## Lighthouse Score
+
 ## Django Testing (Unit Tests)
 
 ## JavaScript Testing
