@@ -1,0 +1,37 @@
+{% extends "home/base.html" %}
+
+{% block content %}
+
+<h1>Update Coin</h1>  
+
+<table>
+    {% for asset in assets %}
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>PnL</th>
+            <th>Average Price</th>
+            <th>USD Spent</th>
+        </tr>
+        <tr>
+            <td>{{ asset.coinID }}</td>   
+            <td>{{ asset.quantity }}</td>   
+            <td>{{ asset.PnL }}</td>   
+            <td>{{ asset.AveragePrice }}</td>   
+            <td>{{ asset.USDSpent }}</td>   
+            <td>
+        </tr>
+    {% endfor %}
+</table>
+
+<form method='POST' action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div>
+        <p> 
+            <button type="submit">Update Coin</button>
+        </p>
+    </div>
+</form>
+
+{% endblock %}
