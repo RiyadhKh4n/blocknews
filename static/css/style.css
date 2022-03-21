@@ -1,142 +1,55 @@
-body {
-    background-color: #F9FAFC;
-}
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Libre+Baskerville&display=swap');
+
+/* Nav Bar */ 
 
 .brand {
-    font-family: Lato, sans-serif;
-    font-size: 1.4rem;
+    font-family: 'Fjanlla One', sans-serif;
+    font-size: 2rem;
     font-weight: 700;
-    color: #4A4A4F;
+    color: #661aff;
 }
 
-.red-o {
-    color: #E84610;
+.nav-link{
+    font-size: 1.2rem;   
 }
 
-.thin {
-    font-weight: 300;
+.navbar-toggler{
+    background-color: #00B58B;
 }
 
-.light-bg {
-    background-color: #fff;
-}
-
-.dark-bg {
-    background-color: #445261;
+/* Body */
+body {
+    background-color: #F9FAFC;
 }
 
 .main-bg {
     background-color: #F9FAFC;
 }
 
-.card {
-    border: none;
-    background-color: transparent;
+/* Footer */
+.purple-bg {
+    background-color: #661aff;
 }
 
-.image-container {
-    position: relative;
-}
-
-.image-flash {
-    position: absolute;
-    bottom: 5%;
-    min-width: 30%;
-    left: -2px;
-    background-color: #23BBBB;
-}
-
-.author {
-    color: white;
-    margin: 4px;
-    text-transform: uppercase;
-}
-
-.masthead {
-    margin-top: 10px;
-    overflow: hidden;
-    position: relative;
-    display: inline-block;
-    height: 33vh;
+.icon-p{
     width: 100%;
 }
 
-.masthead-text {
-    background-color: #445261;
+.icon-p li{
+    display: inline-block
+}
+
+.icon-p li a{
+    font-size: 16px;
     color: white;
-    position: relative;
+    padding-right: 5px;
 }
 
-.masthead-image {
-    position: relative;
-    overflow: hidden;
-}
-
-.masthead-image:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 90%;
-    height: 100%;
-    width: 150%;
-    background: #445261;
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
-    transform: skew(15deg);
-    z-index: 100;
-}
-
-.post-link {
-    text-decoration: none;
-    color: #445261;
-}
-
-.post-link:hover,
-.page-link {
-    color: #E84610;
-}
-
-.post-title {
-    margin-top: 20%;
-    margin-left: 5%;
-}
-
-.post-subtitle {
-    margin-left: 5%;
-    color: lightgray;
-}
-
-.btn-signup {
-    background-color: #23BBBB;
-    color: #fff;
-}
-
-.btn-signup:hover,
-.btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
-}
-
-.link {
-    color: #23BBBB;
-    text-decoration: none;
-}
-
-.link:hover,
-.link:active {
-    color: #445261;
-    text-decoration: underline;
-}
-
-.btn-like {
-    color: #E84610;
-    border: none;
-    background: transparent;
-}
-
-.btn-like:hover,
-.btn-like:active {
-    color: #E84610;
-    background: transparent;
-    border: none;
+/* Media Queries */
+@media only screen and (min-width: 992px){
+    .logout-btn{
+        border-radius: 20px;
+        background-color: #00B58B;
+        height: 45px;
+    }
 }
