@@ -4,7 +4,7 @@
 
 .brand {
     font-family: 'Fjanlla One', sans-serif;
-    font-size: 2rem;
+    font-size: 2.4rem;
     font-weight: 700;
     color: #661aff;
 }
@@ -24,6 +24,92 @@ body {
 
 .main-bg {
     background-color: #F9FAFC;
+
+}
+
+.homepage-h1, .homepage-h2, .homepage-p{
+    margin-left: 25px;
+}
+
+.homepage-h1{
+    font-weight: 600;
+    font-size: 1.4rem;
+    padding-top: 25px;
+    color:#661aff;
+}
+
+.homepage-h2{
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+.homepage-p-div{
+    width: 90vw;
+}
+
+.homepage-p{
+    font-weight: 600;
+    text-align: justify;
+    color: #5d5d5d
+}
+
+.btn-purple{
+    background-color: #661aff;
+    margin-left: 25px;
+}
+
+.btn-green{
+    background-color: #00B58B;
+    margin-left: 10px;
+}
+
+.btn-styling-home{
+    margin-top: 20px;
+    padding-top: 12px;
+    color: white;
+    border-radius: 10px;
+    height: 50px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.page-container-row{
+    margin: 0px 15px;
+}
+
+.webiste-info-box{
+    margin: 15px 0px;
+    height: 250px;
+    border-radius: 20px;
+    background-color: #f1f3fa;
+}
+
+.fa-bitcoin, .fa-circle-info, .fa-chart-area, .fa-shield-halved{
+    margin-top: 25px;
+    margin-left: 15px;
+    font-size: 3.5rem;
+}
+
+.fa-bitcoin, .fa-shield-halved{
+    color: #661aff;
+}
+
+.fa-circle-info, .fa-chart-area{
+    color:#00B58B;
+}
+
+.info-box-h4{
+    margin-top: 20px;
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.info-box-p{
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 0.825;
+
 }
 
 /* Footer */
@@ -46,10 +132,17 @@ body {
 }
 
 /* Media Queries */
-@media only screen and (min-width: 992px){
+@media only screen and (min-width: 1024px){
     .logout-btn{
         border-radius: 20px;
         background-color: #00B58B;
         height: 45px;
+    }
+
+    .login-btn{
+        border-radius: 20px;
+        background-color: #00B58B;
+        height: 45px;
+        width: 75px;
     }
 }
