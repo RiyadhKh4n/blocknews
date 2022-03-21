@@ -202,9 +202,7 @@ You will need to also install all required packages in order to run this applica
  
 # Credits
  
- 
 ## Code
- 
  
 ### Acknowledgements
 * Tim - My Mentor
