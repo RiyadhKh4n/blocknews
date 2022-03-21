@@ -5,6 +5,6 @@ from django.contrib.auth.models import User
 class Coin(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     ticker = models.CharField(max_length=6)
-    
+
     def __str__(self):
         return self.ticker
