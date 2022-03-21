@@ -132,6 +132,16 @@ body {
 }
 
 /* Media Queries */
+@media only screen and (min-width: 768px){
+    .brand{
+        margin-left: 2.5rem;
+    }
+
+    .jumbotron{
+        margin-left: 2rem;
+    }
+}
+
 @media only screen and (min-width: 1024px){
     .logout-btn{
         border-radius: 20px;
@@ -144,5 +154,15 @@ body {
         background-color: #00B58B;
         height: 45px;
         width: 75px;
+    }
+}
+
+@media only screen and (min-width: 1024px){
+    .brand{
+        margin-left: 5rem;
+    }
+
+    .jumbotron{
+        margin-left: 4rem;
     }
 }
