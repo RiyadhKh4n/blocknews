@@ -52,6 +52,16 @@ The project is inspired by the [CoinMarketCap Portfolio Tracker](https://coinmar
  
 ## Design
 
+### Colour Scheme:
+
+![ColorSpace](docs/readme/colourscheme.png)
+
+### Typography:
+
+[Fjalla One](https://fonts.google.com/specimen/Fjalla+One?preview.text=Cryptics&preview.text_type=custom&query=Fja)
+
+### Images
+
 * ### Wireframes
 
     ![Desktop](docs/images/desktop12tiny.png)
