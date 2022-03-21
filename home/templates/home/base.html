@@ -7,8 +7,6 @@
     <title>Cryptics</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -26,8 +24,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><span class="brand">c<span class="red-o">o</span>de<span
-                        class="thin">|star</span></span></span></a>
+            <a class="navbar-brand" href="#"><span class="brand">Cryptics</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -39,7 +36,10 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                        <a class="nav-link active" aria-current="page" href="#">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link logout-btn" role="button" href="{% url 'account_logout' %}">Logout</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
@@ -61,12 +61,20 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer mt-auto py-3 dark-bg">
-        <p class="m-0 text-center text-white">Made by Riyadh Khan</p>
-        <p class="m-0 text-center text-white">Follow us: <i class="fab fa-facebook-square ms-3"></i>
-            <i class="fab fa-twitter-square ms-3"></i>
-            <i class="fab fa-instagram-square ms-3"></i>
-            <i class="fab fa-youtube-square ms-3"></i></p>
+    <footer class="footer mt-auto py-3 purple-bg">
+        <p class="m-0 text-center text-white"> © Cryptics by Riyadh Khan</p>
+        
+        <ul class="icon-p text-center">
+            <li><a href="https://github.com/RiyadhKh4n" aria-label="Go to GitHub"
+                target="_blank"><i class="fab fa-github"></i></a></li>
+
+            <li><a href="https://www.linkedin.com/in/riyadh-khan-49213519a/" aria-label="Visit my LinkedIn"
+                target="_blank"> <i class="fab fa-linkedin"></i></a></li>
+          
+            <li><a href="https://twitter.com/CoinMarketCap" aria-label="Visit CoinMarketCap Twitter"
+                target="_blank"> <i class="fab fa-twitter"></i></a></li>
+        </ul>
+            
     </footer>
 </body>
 
