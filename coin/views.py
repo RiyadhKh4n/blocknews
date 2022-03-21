@@ -1,98 +1,94 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from .models import Coin
-import os
-import json
-from requests import Request, Session
-from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
-from django.shortcuts import render
+# from django.shortcuts import render, redirect, get_object_or_404
+# from .models import Coin
+# import os
+# import json
+# from requests import Request, Session
+# from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
+# from django.shortcuts import render
 
-if os.path.exists("env.py"):
-    import env  # noqa
+# if os.path.exists("env.py"):
+#     import env  # noqa
 
-tickerList = []
-URL = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
+# tickerList = []
+# URL = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
 
-params = {
-    'start': '1',
-    'limit': '2000',
-    'convert': 'USD'
-}
+# params = {
+#     'start': '1',
+#     'limit': '2000',
+#     'convert': 'USD'
+# }
 
-headers = {
-    'X-CMC_PRO_API_KEY': os.environ.get("CMC"),
-    # 'X-CMC_PRO_API_KEY': "49cdebfd-9e21-4471-8e57-edfa8c83c553",
-    'Accepts': 'application/json'
-}
+# headers = {
+#     'X-CMC_PRO_API_KEY': os.environ.get("CMC"),
+#     # 'X-CMC_PRO_API_KEY': "49cdebfd-9e21-4471-8e57-edfa8c83c553",
+#     'Accepts': 'application/json'
+# }
 
-session = Session()
-session.headers.update(headers)
+# session = Session()
+# session.headers.update(headers)
 
-try:
-    response = session.get(URL, params=params)
-    data = json.loads(response.text)
-    coins = data['data']
-
-
-except (ConnectionError, Timeout, TooManyRedirects) as e:
-    print(e)
+# try:
+#     response = session.get(URL, params=params)
+#     data = json.loads(response.text)
+#     coins = data['data']
 
 
-def get_ticker_list():
-    for d in data['data']:
-        ticker_from_api = d['symbol']
-        tickerList.append(ticker_from_api)
+# except (ConnectionError, Timeout, TooManyRedirects) as e:
+#     print(e)
 
 
-def validate_ticker(ticker):
-    """
-    Will validate if the users ticker exits in tickerList
-    """
-    for x in tickerList:
+# def get_ticker_list():
+#     for d in data['data']:
+#         ticker_from_api = d['symbol']
+#         tickerList.append(ticker_from_api)
 
-        if ticker in tickerList:
-            return True
 
-        else:
-            return False
+# def validate_ticker(ticker):
+#     """
+#     Will validate if the users ticker exits in tickerList
+#     """
+#     for x in tickerList:
+
+#         if ticker in tickerList:
+#             return True
+
+#         else:
+#             return False
 
         
-def validate_amount(amount):
-    """
-    Will validate is the users coin amount to ensure only contains numbers
-    """
-    try:
-        amount = float(amount)
-        return True
+# def validate_amount(amount):
+#     """
+#     Will validate is the users coin amount to ensure only contains numbers
+#     """
+#     try:
+#         amount = float(amount)
+#         return True
 
-    except ValueError:
-        return False
+#     except ValueError:
+#         return False
 
 
-def display_coin_data(ticker, data):
-    """
-    Will display relevant data that user asks for
-    """
+# def display_coin_data(ticker, data):
+#     """
+#     Will display relevant data that user asks for
+#     """
 
-    if ticker in tickerList:
-        for x in coins:
-            if x['symbol'] == ticker:
-                coin_data = (x['symbol'], x['quote']['USD'][data])
+#     if ticker in tickerList:
+#         for x in coins:
+#             if x['symbol'] == ticker:
+#                 coin_data = (x['symbol'], x['quote']['USD'][data])
     
-        return coin_data
+#         return coin_data
     
-    else:
-        print("Ticker not in List")
+#     else:
+#         print("Ticker not in List")
 
 
-def get_coin_price(ticker):
-    if ticker in tickerList:
-        for x in coins:
-            if x['symbol'] == ticker:
-                price = float((x['quote']['USD']['price']))
+# def get_coin_price(ticker):
+#     if ticker in tickerList:
+#         for x in coins:
+#             if x['symbol'] == ticker:
+#                 price = float((x['quote']['USD']['price']))
 
-        return price
+#         return price
 
-
-ticker = 'BTC'
-priceBTC = get_coin_price(ticker)
-print(priceBTC)
