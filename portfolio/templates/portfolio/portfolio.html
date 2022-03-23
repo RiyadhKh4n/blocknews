@@ -17,17 +17,17 @@
             <td>{{ portfolio.USDvalue }}</td>   
             <td>{{ portfolio.user }}</td>   
             <td>
-                <a href="edit/{{ portfolio.id }}"> 
+                <a href="{% url 'edit_portfolio' portfolio.id %}">
                     <button>Edit</button>
                 </a>
             </td>
             <td>
-                <a href="delete/{{ portfolio.id }}"> 
+                <a href="{% url 'delete_portfolio' portfolio.id %}"> 
                     <button>Delete</button>
                 </a>
             </td>
             <td>
-                <a href="view-assets/{{ portfolio.id }}"> 
+                <a href="{% url 'get_asset_list' portfolio.id %}"> 
                     <button>View Assets</button>
                 </a>
             </td>
