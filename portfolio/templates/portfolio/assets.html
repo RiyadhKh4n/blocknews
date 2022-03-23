@@ -20,12 +20,12 @@
             <td>{{ asset.AveragePrice }}</td>   
             <td>{{ asset.USDSpent }}</td>   
             <td>
-                <a href="buy/{{ asset.id }}"> 
+                <a href="{% url 'buy_asset' asset.id %}"> 
                     <button>Buy</button>
                 </a>
             </td>
             <td>
-                <a href="sell/{{ coin.id }}"> 
+                <a href="{% url 'buy_asset' asset.id %}"> 
                     <button>Sell</button>
                 </a>
             </td>
