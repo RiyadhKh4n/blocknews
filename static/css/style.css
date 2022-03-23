@@ -41,6 +41,8 @@ body {
 .homepage-h2{
     font-weight: 800;
     font-size: 1.8rem;
+    font-family: 'Fjanlla One', sans-serif;
+
 }
 
 .homepage-p-div{
@@ -50,7 +52,8 @@ body {
 .homepage-p{
     font-weight: 600;
     text-align: justify;
-    color: #5d5d5d
+    color: #5d5d5d;
+    font-family: 'Lato', sans-serif;
 }
 
 .btn-purple{
@@ -104,17 +107,23 @@ body {
     margin-left: 20px;
     font-weight: bold;
     font-size: 1.25rem;
+    font-family: 'Fjanlla One', sans-serif;
 }
 
 .info-box-p{
     margin-top: 10px;
     margin-left: 20px;
     font-size: 1rem;
+    font-family: 'Lato', sans-serif;
 }
 
 /* Footer */
 .purple-bg {
     background-color: #661aff;
+}
+
+.footer-name{
+    font-family: 'Fjanlla One', sans-serif;
 }
 
 .icon-p{
@@ -137,8 +146,16 @@ body {
         margin-left: 2.5rem;
     }
 
+    .nav-link{
+        margin-left: 45px;
+    }
+
     .jumbotron{
         margin-left: 2rem;
+    }
+
+    .webiste-info-box{
+        width: 300px;
     }
 }
 
