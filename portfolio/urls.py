@@ -6,7 +6,7 @@ urlpatterns = [
     path('edit/<portfolio_id>', views.edit_portfolio, name='edit_portfolio'),
     path('delete/<portfolio_id>', views.delete_portfolio, name='delete_portfolio'),
     path('create', views.create_portfolio, name='create_portfolio_url'),
-    path('view-assets/<portfolio_id>', views.get_asset_list, name='get_asset_list'),
+    path('view/<portfolio_id>', views.get_asset_list, name='get_asset_list'),
     path('add/<portfolio_id>', views.add_asset, name='add_asset'),
-    path('buy/<asset_id>', views.get_single_asset, name='get_single_asset'),
+    path('buy/<asset_id>', views.get_asset_to_buy, name='buy_asset'),
 ]
