@@ -83,6 +83,8 @@ The project is inspired by the [CoinMarketCap Portfolio Tracker](https://coinmar
 * ### Images
 
 * ### Icons
+
+    All icons used in the website were taken from [fontawesome](https://fontawesome.com/start)
  
 # Features
  
