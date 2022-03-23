@@ -82,7 +82,7 @@ def add_asset(request, portfolio_id):
     return render(request, 'portfolio/add_asset.html', context)
 
 
-def get_single_asset(request, asset_id, portfolio_id):
+def get_asset_to_buy(request, asset_id, portfolio_id):
     asset = Asset.objects.filter(pk=asset_id)
     portfolio = Portfolio.objects.get(pk=portfolio_id)
     # coin = Asset.objects.get(coinID=coin_id)
