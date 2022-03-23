@@ -62,9 +62,9 @@ The project is inspired by the [CoinMarketCap Portfolio Tracker](https://coinmar
 
 * ### Colour Scheme
 
-* When designing Cryptics I wanted to ensure the colour scheme of my site was visually appealing, I did this by first chosing the main colour which I wanted the majoirty of the site to have. I then used [ColorSpace](https://mycolor.space/) to find colours which compliment it. I decided to go with #661aff as my primary colour as purple is my favourite colour and I liked the shade. By using ColorSpace I was able to get the colour palette which I found most visually appealing which let to my secondary colour being #00B58B. 
+* When designing Cryptics I wanted to ensure the colour scheme of my site was visually appealing, I did this by first chosing the main colour which I wanted the majoirty of the site to have. I then used [ColorSpace](https://mycolor.space/) to find colours which compliment it. I decided to go with #661AFF as my primary colour as purple is my favourite colour and I liked the shade of it. By using ColorSpace I chose the Matching Palette which I found most visually appealing which led to my secondary colour being #00B58B, and #B0A8B9 being the tertiary colour. When implementing colours into the site, I went with the 60/30/10 rule which meant #661AFF would make up 60% of the site being the more dominant colour, #00B58B would make up 30% and #B0A8B9 making up 10% being used for accents. Regarding text, black and white were used as these lead to the most readability as well as using white for the background of the pages as I wanted to my site to look professional and not tacky. The colour pallete of the site can be seen below:
 
-![ColorSpace](docs/readme/colourscheme.png)
+    ![ColorSpace](docs/readme/colourscheme.png)
 
 * ### Typography
 
