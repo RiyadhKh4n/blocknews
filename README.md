@@ -163,7 +163,7 @@ Here describes the main features of the website and what the user can expect whe
  
 # Testing
  
-Due to the size of the testing section for CoinFrog I have created [TESTING.md](TESTING.md). It ashows any errors/bugs I encountered, and how I fixed them when creating this project. This is also contains my testing for user stories and any bugs.
+Due to the size of the testing section for CoinFrog I have created [TESTING.md](TESTING.md). It contains all my unit testing and test for user stories and any bugs found.
  
 [Link To Testing.md](TESTING.md)
    
