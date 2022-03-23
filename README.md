@@ -52,29 +52,25 @@ The project is inspired by the [CoinMarketCap Portfolio Tracker](https://coinmar
  
 ## Design
 
-### Colour Scheme:
-
-![ColorSpace](docs/readme/colourscheme.png)
-
-### Typography:
-
-[Fjalla One](https://fonts.google.com/specimen/Fjalla+One?preview.text=Cryptics&preview.text_type=custom&query=Fja)
-
-### Images
-
 * ### Wireframes
 
     ![Desktop](docs/images/desktop12tiny.png)
     ![Desktop](docs/images/desktop34tiny.png)
     ![Mobile](docs/images/mobile12345tiny.png)
 
-* ### Flowchars
-
 * ### ERD Diagram
 
 * ### Colour Scheme
 
+* When designing Cryptics I wanted to ensure the colour scheme of my site was visually appealing, I did this by first chosing the main colour which I wanted the majoirty of the site to have. I then used [ColorSpace](https://mycolor.space/) to find colours which compliment it. I decided to go with #661aff as my primary colour as purple is my favourite colour and I liked the shade. By using ColorSpace I was able to get the colour palette which I found most visually appealing which let to my secondary colour being #00B58B. 
+
+![ColorSpace](docs/readme/colourscheme.png)
+
 * ### Typography
+
+    [Fjalla One](https://fonts.google.com/specimen/Fjalla+One?preview.text=Cryptics&preview.text_type=custom&query=Fja)
+
+* ### Images
 
 * ### Icons
  
@@ -151,6 +147,9 @@ Here describes the main features of the website and what the user can expect whe
 
 12. [SmartDraw](https://www.smartdraw.com/): 
     * Used to create ERD diagrams
+
+13. [ColorSpace](https://mycolor.space/):
+    * Used to find the colour scheme of the site
  
 # Testing
  
