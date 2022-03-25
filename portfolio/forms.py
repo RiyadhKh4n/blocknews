@@ -15,6 +15,7 @@ class AddAsset(forms.ModelForm):
         exclude = ['portfolio_name', 'PnL', 'USDEarned', 'USDSpent', 'CurrentInvestment']
         fields = ['coinID', 'quantity', 'AveragePrice']
 
+
 class UpdateAsset(forms.ModelForm):
     class Meta:
         model = Asset
