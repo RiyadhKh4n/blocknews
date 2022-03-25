@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import Portfolio, Asset
-from .forms import PortfolioForm, AddAsset, BuyAsset, UpdateAsset
+from .forms import PortfolioForm, AddAsset, UpdateAsset
 from coin.views import *
 
 
