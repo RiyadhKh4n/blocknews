@@ -2,10 +2,10 @@
 
 {% block content %}
 
-<h1>Update Coin</h1>  
+<h1>{{ b_or_s|title }} {{ asset.coinID }}</h1>  
 
 <table>
-    {% for asset in assets %}
+    {% comment %} {% for asset in assets %} {% endcomment %}
         <tr>
             <th>Name</th>
             <th>Quantity</th>
@@ -21,7 +21,7 @@
             <td>{{ asset.USDSpent }}</td>   
             <td>
         </tr>
-    {% endfor %}
+    {% comment %} {% endfor %} {% endcomment %}
 </table>
 
 <form method='POST' action="">
