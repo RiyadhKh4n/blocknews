@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
-from .models import Portfolio, Asset
 from django.contrib.auth.models import User
-from .forms import PortfolioForm, AddAsset, BuyAsset
+from django.contrib import messages
+from .models import Portfolio, Asset
+from .forms import PortfolioForm, AddAsset, BuyAsset, UpdateAsset
 from coin.views import *
 
 
@@ -57,7 +58,7 @@ def get_asset_list(request, portfolio_id):
     return render(request, 'portfolio/assets.html', context)
 
 
-def add_asset(request, portfolio_id):
+def add_asset(request, portfolio_id, coin_id=None):
     portfolio = Portfolio.objects.get(pk=portfolio_id)
     form = AddAsset()
     if request.method == "POST":
@@ -82,33 +83,41 @@ def add_asset(request, portfolio_id):
     return render(request, 'portfolio/add_asset.html', context)
 
 
-def get_asset_to_buy(request, asset_id, portfolio_id):
-    asset = Asset.objects.filter(pk=asset_id)
-    portfolio = Portfolio.objects.get(pk=portfolio_id)
-    # coin = Asset.objects.get(coinID=coin_id)
+def update_asset(request, pk, b_or_s):
+    asset = get_object_or_404(Asset, pk=pk)
+    if request.method == 'POST':
+        form = UpdateAsset(request.POST, instance=asset)
+        asset_qty = float(asset.quantity)
+        if b_or_s == 'buy':
+            # do the calculations for BUYING
+            new_qty = float(form['quantity'].value())
+            asset.quantity = asset_qty + new_qty
+            asset.save()
+            messages.success(request, f"{new_qty} {asset} successfully purchased!")
+        elif b_or_s == 'sell':
+            # do the calculations for SELLING
+            if float(form['quantity'].value()) > asset_qty:
+                messages.error(request, "Not enough available to sell.")
+                return redirect(update_asset, pk, 'sell')
+            else:
+                new_qty = float(form['quantity'].value())
+                asset.quantity = asset_qty - new_qty
+                if asset.quantity <= 0:
+                    asset.delete()
+                else:
+                    asset.save()
+                messages.success(request, f"{new_qty} {asset} successfully sold!")
+        return redirect(get_asset_list, asset.portfolio_name.pk)
 
-    form = BuyAsset()
-    if request.method == "POST":
-        form = BuyAsset(request.POST)
-        if form.is_valid():
-            obj = form.save(commit=False)
-            obj.PnL = 0.00
-            obj.USDEarned = 0.00
-            obj.portfolio_name = portfolio
-            quantity = form['quantity'].value()
-            AP = form['AveragePrice'].value()
-            USDspent = (int(quantity) * float(AP))
-            obj.USDSpent = USDspent
-            # obj.coinID = coin
-            # investment = form.cleaned_data.get("CurrentInvestment")
-            obj.CurrentInvestment = USDspent
-            obj.save()
-            return redirect(reverse('get_asset_list', args=[portfolio_id]))
-
+    if b_or_s == 'sell':
+        # grab the current quantity available to sell
+        form = UpdateAsset(instance=asset)
+    else:
+        form = UpdateAsset()
     context = {
-        'assets': asset,
-        'asset_id': asset_id,
-        'form': form
+        'asset': asset,
+        'b_or_s': b_or_s,
+        'form': form,
     }
-
     return render(request, 'portfolio/buy_sell_asset.html', context)
+
