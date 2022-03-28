@@ -73,6 +73,8 @@ def add_asset(request, portfolio_id, coin_id=None):
                 b_or_s = 'buy'
                 update_asset(request, pk, b_or_s)
 
+                return redirect(reverse('get_asset_list', args=[portfolio_id]))
+
             except Asset.DoesNotExist:
                 print("Coin with that ID doesn't exist")
                 obj = form.save(commit=False)
@@ -88,6 +90,7 @@ def add_asset(request, portfolio_id, coin_id=None):
                 obj.USDSpent = USDspent
                 obj.CurrentInvestment = USDspent
                 obj.save()
+                
                 return redirect(reverse('get_asset_list', args=[portfolio_id]))
 
     context = {'form': form}
