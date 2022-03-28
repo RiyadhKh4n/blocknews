@@ -19,4 +19,4 @@ class AddAsset(forms.ModelForm):
 class UpdateAsset(forms.ModelForm):
     class Meta:
         model = Asset
-        fields = ['quantity']
+        fields = ['quantity', 'AveragePrice']
