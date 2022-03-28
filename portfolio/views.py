@@ -83,14 +83,13 @@ def add_asset(request, portfolio_id, coin_id=None):
                 obj.portfolio_name = portfolio
                 obj.AveragePrice = form['AveragePrice'].value()
                 quantity = float(form['quantity'].value())
-                AP = form['AveragePrice'].value()
+                AP = float(form['AveragePrice'].value())
                 # coinID = form['coinID'].value()
                 # price = get_coin_price(coinID)
-                USDspent = (quantity) * float(AP)
+                USDspent = quantity * AP
                 obj.USDSpent = USDspent
                 obj.CurrentInvestment = USDspent
                 obj.save()
-                
                 return redirect(reverse('get_asset_list', args=[portfolio_id]))
 
     context = {'form': form}
@@ -104,6 +103,7 @@ def update_asset(request, pk, b_or_s):
         asset_qty = float(asset.quantity)
         curr_inv = float(asset.CurrentInvestment)
         curr_usd_earned = float(asset.USDEarned)
+        curr_PnL = float(asset.PnL)
         if b_or_s == 'buy':
             # do the calculations for BUYING
             new_qty = float(form['quantity'].value())
@@ -125,6 +125,7 @@ def update_asset(request, pk, b_or_s):
                 usd_earned = price * new_qty
                 asset.quantity = asset_qty - new_qty
                 asset.USDEarned = curr_usd_earned + usd_earned
+                # asset.PnL = curr_PnL + (asset.USDEarned - asset.CurrentInvestment)
                 if asset.quantity <= 0:
                     asset.delete()
                 else:
@@ -143,4 +144,3 @@ def update_asset(request, pk, b_or_s):
         'form': form,
     }
     return render(request, 'portfolio/buy_sell_asset.html', context)
-
