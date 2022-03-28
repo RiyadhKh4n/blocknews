@@ -80,8 +80,6 @@ The project is inspired by the [CoinMarketCap Portfolio Tracker](https://coinmar
 
     When considering the typography of the site, I wanted to use fonts that were readable, professional and easy on the eye. As a result, for the main headings I went with [Fjalla One](https://fonts.google.com/specimen/Fjalla+One?preview.text=Cryptics&preview.text_type=custom&query=Fja), with Sans-Serif as the fall-back font in case it was not supported by a web browser. For all other text on the website I went with [Lato](https://fonts.google.com/specimen/Lato?query=Lato) as I feel that is compliments Fjalla One nicely and conforms to the three points I set out when chosing the typography for Cryptics.
 
-* ### Images
-
 * ### Icons
 
     All icons used in the website were taken from [fontawesome](https://fontawesome.com/start)
@@ -172,25 +170,7 @@ Due to the size of the testing section for CoinFrog I have created [TESTING.md](
 # Deployment
  
 Deploying the project using Heroku:
-* Visit the [Heroku](https://dashboard.heroku.com/login) site and create an account
-* Click the "New" Button
-* Click the "Create new app" button
-* Provide a name for the app in the App name input field
-* Select your region from the choose region dropdown menu
-* Click the "Create App" button
-* Once redirected, proceed to the settings tab
-* Click on the "config vars" button
-* Supply a KEY of `PORT` and it's value of `8000`. The click the "add" button
-* Next step is to add Buildpacks, click the "Add Buildpack" button
-* The `python` buildpack needs to be added first then the `nodejs` buildpack
-* Once the buildpacks have completed, go to the deploy screen, once in the deploy screen, select GitHub as the deployment method and connect your GitHub profile
-* Search for the repository that you wish to deploy to Heroku and click "connect"
-* Once your repository is connected to Heroku you can choose to either manually or automatically deploy your app.
-* By selecting automatic deploys, Heroku will build a new version of the app each time a change has been pushed to the repository
-* Manual deploys allow you to build a new version of your app whenever you click manual deploy
-* If your build is successful you will then be able to visit the live site by clicking the link that is provided to you by Heroku
- 
-Command to add packages to requirements.txt, `pip3 freeze --local > requirements.txt`
+
  
 ## Making a Local Clone
  
@@ -224,6 +204,9 @@ You will need to also install all required packages in order to run this applica
 # Credits
  
 ## Code
+
+The code which calls the CoinMarketCap API was taken from my previous project [CoinFrog](https://github.com/RiyadhKh4n/CoinFrog)
+
  
 ### Acknowledgements
 * Tim - My Mentor
