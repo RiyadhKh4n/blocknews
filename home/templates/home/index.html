@@ -2,62 +2,68 @@
 
 {% block content %}
 
-    <div class="jumbotron">
-        {% if user.is_authenticated %} 
-            <h1 class="homepage-h1">Welcome {{ user.username }}</h1>
-            <h2 class="homepage-h2">Crypto Portfolio Tracker</h2>
-            <div class="homepage-p-div">
-                <p class="homepage-p">Keep track of your profits, losses and protfolio valulcation with our easy to use platform.</p>
-            </div>
-            <p class="lead">
-                <a class="btn btn-purple btn-styling-home btn-md" href="{% url 'get_portfolio_list' %}" role="button">View Portfolio</a>
-                <a class="btn btn-green btn-styling-home btn-md" href="{% url 'create_portfolio_url' %}" role="button">Create Portfolio</a>
-            </p>
 
-        {% else %}
-            <h1 class="homepage-h1">Sign up Today</h1>
-            <h2 class="homepage-h2">Crypto Portfolio Tracker</h2>
-            <div class="homepage-p-div">
-                <p class="homepage-p">Keep track of your profits, losses and protfolio valulcation with our easy to use platform.</p>
-            </div>
-            <p class="lead">
-                <a class="btn btn-purple btn-styling-home btn-md" href="{% url 'account_login' %}" role="button">Create your Portfolio</a>
-                <a class="btn btn-green btn-styling-home btn-md" href="{% url 'account_login' %}" role="button">Log In</a>
-            </p>
-        {% endif %}
-    </div>
+    <section class="page-section">
 
-    <section class="container">
-        <div class="page-container-row row"> 
-
-            <div class="col-12 col-md-6 webiste-info-box">
-                <i class="fa-solid fa-circle-info"></i>
-
-                <h4 class="info-box-h4">Real-time price data </h4>
-                <p class="info-box-p">Updating 24/7 using price data from the biggest exchnages.</p>
-            </div>
-
-            <div class="col-12 col-md-6 webiste-info-box">
-                <i class="fa-brands fa-bitcoin"></i>
-
-                <h4 class="info-box-h4">Free to use</h4>
-                <p class="info-box-p">Top notch crypto portfolio tracking at no cost.</p>
-            </div>
-            
-            <div class="col-12 col-md-6 webiste-info-box"> 
-                <i class="fa-solid fa-chart-area"></i>
-
-                <h4 class="info-box-h4">Track your portfolio balance and profit / loss</h4>
-                <p class="info-box-p">Thousands of coins and tokens available.</p>
-            </div>
-            
-            <div class="col-12 col-md-6 webiste-info-box"> 
-                <i class="fa-solid fa-shield-halved"></i>
-
-                <h4 class="info-box-h4">Your data is safe and secure</h4>
-                <p class="info-box-p">We take data secruity and privacy very seriously.</p>
-            </div>
+        <div class="jumbotron">
+            {% if user.is_authenticated %} 
+                <h1 class="homepage-h1">Welcome {{ user.username }}</h1>
+                <h2 class="homepage-h2">Crypto Portfolio Tracker</h2>
+                <div class="homepage-p-div">
+                    <p class="homepage-p">Keep track of your profits, losses and protfolio valulcation with our easy to use platform.</p>
+                </div>
+                <p class="lead">
+                    <a class="btn btn-purple btn-styling-home btn-md" href="{% url 'get_portfolio_list' %}" role="button">View Portfolio</a>
+                    <a class="btn btn-green btn-styling-home btn-md" href="{% url 'create_portfolio_url' %}" role="button">Create Portfolio</a>
+                </p>
+    
+            {% else %}
+                <h1 class="homepage-h1">Sign up Today</h1>
+                <h2 class="homepage-h2">Crypto Portfolio Tracker</h2>
+                <div class="homepage-p-div">
+                    <p class="homepage-p">Keep track of your profits, losses and protfolio valulcation with our easy to use platform.</p>
+                </div>
+                <p class="lead">
+                    <a class="btn btn-purple btn-styling-home btn-md" href="{% url 'account_login' %}" role="button">Create your Portfolio</a>
+                    <a class="btn btn-green btn-styling-home btn-md" href="{% url 'account_login' %}" role="button">Log In</a>
+                </p>
+            {% endif %}
         </div>
+    
+        <section class="container">
+            <div class="page-container-row row"> 
+    
+                <div class="webiste-info-box">
+                    <i class="fa-solid fa-circle-info"></i>
+    
+                    <h4 class="info-box-h4">Real-time price data </h4>
+                    <p class="info-box-p">Updating 24/7 using price data from the biggest exchnages.</p>
+                </div>
+    
+                <div class="webiste-info-box">
+                    <i class="fa-brands fa-bitcoin"></i>
+    
+                    <h4 class="info-box-h4">Free to use</h4>
+                    <p class="info-box-p">Top notch crypto portfolio tracking at no cost.</p>
+                </div>
+                
+                <div class="webiste-info-box"> 
+                    <i class="fa-solid fa-chart-area"></i>
+    
+                    <h4 class="info-box-h4">Track your portfolio balance and profit / loss</h4>
+                    <p class="info-box-p">Thousands of coins and tokens available.</p>
+                </div>
+                
+                <div class="webiste-info-box"> 
+                    <i class="fa-solid fa-shield-halved"></i>
+    
+                    <h4 class="info-box-h4">Your data is safe and secure</h4>
+                    <p class="info-box-p">We take data secruity and privacy very seriously.</p>
+                </div>
+            </div>
+        </section>
+        
     </section>
+
 
 {%endblock%}
