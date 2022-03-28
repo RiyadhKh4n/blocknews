@@ -4,8 +4,8 @@
 
 .brand {
     font-family: 'Fjanlla One', sans-serif;
-    font-size: 2.4rem;
-    font-weight: 700;
+    font-size: 2.6rem;
+    font-weight: 800;
     color: #661aff;
 }
 
@@ -76,11 +76,17 @@ body {
     font-size: 0.9rem;
 }
 
+.container{
+    max-width: 100vw;
+}
+
 .page-container-row{
     margin: 0px 15px;
+    display: flex;
 }
 
 .webiste-info-box{
+    flex-direction: column;
     margin: 15px 0px;
     padding-top: 20px;
     padding-bottom: 25px;
@@ -155,7 +161,7 @@ body {
     }
 
     .webiste-info-box{
-        width: 300px;
+        flex-direction: column;
     }
 }
 
@@ -171,6 +177,16 @@ body {
         background-color: #00B58B;
         height: 45px;
         width: 75px;
+    }
+
+    .page-container-row{
+        margin: 0px;
+    }
+
+    .webiste-info-box{
+        flex-direction: row;
+        flex-basis: 50%;
+        
     }
 }
 
