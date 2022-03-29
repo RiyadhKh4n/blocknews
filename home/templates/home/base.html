@@ -54,15 +54,28 @@
         </div>
     </nav>
 
-    {% if messages %}
+    <!-- {% if messages %}
         <section>
             {% for msg in messages %}
-                <aside class="alert {% if msg.tags == 'error' %}alert-danger{% else %}alert-{{ msg.tags }}{% endif %} text-center" role="alert">
+                <aside id="msg" class="alert {% if msg.tags == 'error' %}alert-danger{% else %}alert-{{ msg.tags }}{% endif %} text-center" role="alert">
                     <h3>{{ msg }}</h3>
                 </aside>
             {% endfor %}
         </section>
-    {% endif %}
+    {% endif %} -->
+
+    <div class="container">
+        <div class="row">
+            <div >
+                {% for message in messages %}
+                <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+                {{ message | safe }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close alert"></button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
     <main class="flex-shrink-0 main-bg">
         {% block content %}
@@ -71,21 +84,51 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer mt-auto py-3 purple-bg">
-        <p class="m-0 text-center text-white footer-name"> © Cryptics by Riyadh Khan</p>
-        
-        <ul class="icon-p text-center">
-            <li><a href="https://github.com/RiyadhKh4n" aria-label="Go to GitHub"
-                target="_blank"><i class="fab fa-github"></i></a></li>
 
-            <li><a href="https://www.linkedin.com/in/riyadh-khan-49213519a/" aria-label="Visit my LinkedIn"
-                target="_blank"> <i class="fab fa-linkedin"></i></a></li>
-          
-            <li><a href="https://twitter.com/CoinMarketCap" aria-label="Visit CoinMarketCap Twitter"
-                target="_blank"> <i class="fab fa-twitter"></i></a></li>
-        </ul>
-            
+    <footer class="footer-class">
+        <div class="row footer-row">
+            <div class="col ">
+                <h3>Cryptics</h3>
+                <p class="footer-p">The all in one Crypto Portfolio Tracker. Keep track of your profits, losses and protfolio valuation with our easy to use platform.
+                   Users are able to create, edit and delete portfolios as well as Buy and Sell over 2,000 crypto assets. With our easy to use platform, managing your Crypto has never been easier!  
+                </p>
+            </div>
+            <div class="col links-col">
+                <h3>Links <div class="underline"><span></span></div></h3>
+                <ul class="footer-ul">
+                    <li><a href="{% url 'home-page' %}"></a>Home</li>
+                    <li><a href="{% url 'get_portfolio_list' %}"></a>View Portfolios</li>
+                    <li><a href="{% url 'create_portfolio_url' %}"></a>Create Portfolio</li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'account_logout' %}"></a>Log Out</li>
+                    {% else %}
+                    <li><a href="{% url 'account_login' %}"></a>Log In</li>
+                    <li><a href=""></a>Create an Account</li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="col">
+                <h3>Socials <div class="underline"><span></span></div></h3>
+                <div class="social-icons">
+                    <i class="fab fa-github"></i>
+                    <i class="fab fa-linkedin"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-bitcoin"></i>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <p class="copyright">Cryptics © 2022 - All Rights Reserved </p>
+        <p class="copyright">Riyadh Khan</p>
     </footer>
+
+    <script>
+        setTimeout(function() {
+            let messages = document.getElementById("msg");
+            let alert = new bootstrap.Alert(messages);
+            alert.close()
+        }, 3000);
+    </script>
 </body>
 
 </html>
