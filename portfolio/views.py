@@ -21,7 +21,7 @@ def create_portfolio(request):
         obj = form.save(commit=False)
         obj.user = request.user
         obj.slug = form['name'].value()
-        obj.USDvalue = 0.00
+        obj.usd_value = 0.00
         obj.save()
         return redirect('get_portfolio_list')
 
@@ -78,17 +78,17 @@ def add_asset(request, portfolio_id, coin_id=None):
             except Asset.DoesNotExist:
                 print("Coin with that ID doesn't exist")
                 obj = form.save(commit=False)
-                obj.PnL = 0.00
-                obj.USDEarned = 0.00
+                obj.pnl = 0.00
+                obj.usd_earned = 0.00
                 obj.portfolio_name = portfolio
-                obj.AveragePrice = form['AveragePrice'].value()
+                obj.average_price = form['average_price'].value()
                 quantity = float(form['quantity'].value())
-                AP = float(form['AveragePrice'].value())
+                AP = float(form['average_price'].value())
                 # coinID = form['coinID'].value()
                 # price = get_coin_price(coinID)
                 USDspent = quantity * AP
-                obj.USDSpent = USDspent
-                obj.CurrentInvestment = USDspent
+                obj.usd_spent = USDspent
+                obj.current_investment = USDspent
                 obj.save()
                 return redirect(reverse('get_asset_list', args=[portfolio_id]))
 
@@ -101,16 +101,16 @@ def update_asset(request, pk, b_or_s):
     if request.method == 'POST':
         form = UpdateAsset(request.POST, instance=asset)
         asset_qty = float(asset.quantity)
-        curr_inv = float(asset.CurrentInvestment)
-        curr_usd_earned = float(asset.USDEarned)
-        curr_PnL = float(asset.PnL)
+        curr_inv = float(asset.current_investment)
+        curr_usd_earned = float(asset.usd_earned)
+        curr_PnL = float(asset.pnl)
         if b_or_s == 'buy':
             # do the calculations for BUYING
             new_qty = float(form['quantity'].value())
-            new_inv = float(form['AveragePrice'].value()) * new_qty
+            new_inv = float(form['average_price'].value()) * new_qty
             asset.quantity = asset_qty + new_qty
-            asset.CurrentInvestment = curr_inv + new_inv
-            asset.USDSpent = asset.CurrentInvestment
+            asset.current_investment = curr_inv + new_inv
+            asset.usd_spent = asset.current_investment
             asset.save()
             messages.success(request, f"{new_qty} {asset} successfully purchased!")
 
@@ -121,10 +121,10 @@ def update_asset(request, pk, b_or_s):
                 return redirect(update_asset, pk, 'sell')
             else:
                 new_qty = float(form['quantity'].value())
-                price = float(form['AveragePrice'].value())
+                price = float(form['average_price'].value())
                 usd_earned = price * new_qty
                 asset.quantity = asset_qty - new_qty
-                asset.USDEarned = curr_usd_earned + usd_earned
+                asset.usd_earned = curr_usd_earned + usd_earned
                 # asset.PnL = curr_PnL + (asset.USDEarned - asset.CurrentInvestment)
                 if asset.quantity <= 0:
                     asset.delete()
