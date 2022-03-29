@@ -1,0 +1,17 @@
+{% extends "home/base.html" %}
+
+{% block content %}
+
+<h1>Edit Portfolio Name</h1>  
+
+<form method='POST' >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div>
+        <p> 
+            <button type="submit">Update Portfolio</button>
+        </p>
+    </div>
+</form>
+
+{% endblock %}
