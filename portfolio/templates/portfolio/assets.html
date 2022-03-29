@@ -15,8 +15,8 @@
         <tr>
             <td>{{ asset.coinID }}</td>   
             <td>{{ asset.quantity }}</td>   
-            <td>{{ asset.AveragePrice }}</td>   
-            <td>{{ asset.USDSpent }}</td>   
+            <td>{{ asset.average_price }}</td>   
+            <td>{{ asset.usd_spent }}</td>   
             <td>
                 <a href="{% url 'update_asset' asset.id 'buy' %}"> 
                     <button>Buy</button>
