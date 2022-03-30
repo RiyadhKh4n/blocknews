@@ -13,7 +13,7 @@ class AddAsset(forms.ModelForm):
     class Meta:
         model = Asset
         exclude = ['portfolio_name', 'pnl', 'usd_earned', 'usd_spent', 'current_investment']
-        fields = ['coinID', 'quantity', 'average_price']
+        fields = ['quantity', 'average_price']
 
 
 class UpdateAsset(forms.ModelForm):
