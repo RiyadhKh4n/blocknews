@@ -93,6 +93,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'main.wsgi.application'
 
+APIKEY = os.environ.get('CMC')
+
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
