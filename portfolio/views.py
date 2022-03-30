@@ -1,9 +1,61 @@
+import json
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.models import User
+from django.conf import settings
 from django.contrib import messages
+from requests import Request, Session
+from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 from .models import Portfolio, Asset
 from .forms import PortfolioForm, AddAsset, UpdateAsset
-from coin.views import *
+
+tickerList = []
+global coins
+URL = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
+
+params = {
+    'start': '1',
+    'limit': '100',
+    'convert': 'USD'
+}
+
+headers = {
+    'X-CMC_PRO_API_KEY': settings.APIKEY,
+    'Accepts': 'application/json'
+}
+
+session = Session()
+session.headers.update(headers)
+
+
+def call_api():
+    try:
+        response = session.get(URL, params=params)
+        data = json.loads(response.text)
+        coins = data['data']
+        get_ticker_list(data)
+        print("The call_api() has been called")
+
+    except (ConnectionError, Timeout, TooManyRedirects) as e:
+        print(e)
+
+
+def get_ticker_list(data):
+    for d in data['data']:
+        ticker_from_api = d['symbol']
+        tickerList.append(ticker_from_api)
+    
+    print(tickerList)
+
+
+def get_coin_price(ticker):
+    if ticker in tickerList:
+        print("The print before for x in coins")
+        for x in coins:
+            if x['symbol'] == ticker:
+                price = float((x['quote']['USD']['price']))
+                
+        print("PRICE HAS BEEN RECIEVED")
+        return price
 
 
 def get_portfolio_list(request):
@@ -60,6 +112,8 @@ def get_asset_list(request, portfolio_id):
 
 def add_asset(request, portfolio_id, coin_id=None):
     portfolio = Portfolio.objects.get(pk=portfolio_id)
+    call_api()
+    print(get_coin_price('BTC'))
     form = AddAsset()
     if request.method == "POST":
         form = AddAsset(request.POST)
@@ -86,7 +140,7 @@ def add_asset(request, portfolio_id, coin_id=None):
                 AP = float(form['average_price'].value())
                 # coinID = form['coinID'].value()
                 # price = get_coin_price(coinID)
-                USDspent = quantity * AP
+                USDspent = quantity * price
                 obj.usd_spent = USDspent
                 obj.current_investment = USDspent
                 obj.save()
