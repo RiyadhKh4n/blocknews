@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from coin.models import Coin
 
 
 class Portfolio(models.Model):
@@ -19,7 +18,8 @@ class Portfolio(models.Model):
 
 class Asset(models.Model):
     portfolio_name = models.ForeignKey(Portfolio, on_delete=models.CASCADE)
-    coinID = models.ForeignKey(Coin, on_delete=models.CASCADE)
+    # coinID = models.ForeignKey(Coin, on_delete=models.CASCADE)
+    ticker = models.CharField(max_length=6, null=True)
     quantity = models.DecimalField(max_digits=10, decimal_places=3)
     average_price = models.DecimalField(max_digits=10, decimal_places=3)
     usd_spent = models.DecimalField(max_digits=10, decimal_places=3)
@@ -31,5 +31,6 @@ class Asset(models.Model):
     class Meta:
         ordering = ['added_to_portfolio']
 
-    def __str__(self):
-        return self.coinID.ticker
+    def __repr__(self):
+        return self.ticker
+        # return self.coinID.ticker
