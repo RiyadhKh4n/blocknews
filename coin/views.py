@@ -1,46 +1,49 @@
-# from django.shortcuts import render, redirect, get_object_or_404
-# from .models import Coin
 # import os
 # import json
+# from django.conf import settings
+# from django.shortcuts import render, redirect, get_object_or_404
 # from requests import Request, Session
 # from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 # from django.shortcuts import render
+# from .models import Coin
 
-# if os.path.exists("env.py"):
-#     import env  # noqa
 
 # tickerList = []
 # URL = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
 
 # params = {
 #     'start': '1',
-#     'limit': '2000',
+#     'limit': '10',
 #     'convert': 'USD'
 # }
 
 # headers = {
-#     'X-CMC_PRO_API_KEY': os.environ.get("CMC"),
-#     # 'X-CMC_PRO_API_KEY': "49cdebfd-9e21-4471-8e57-edfa8c83c553",
+#     'X-CMC_PRO_API_KEY': settings.APIKEY,
 #     'Accepts': 'application/json'
 # }
 
 # session = Session()
 # session.headers.update(headers)
 
-# try:
-#     response = session.get(URL, params=params)
-#     data = json.loads(response.text)
-#     coins = data['data']
+
+# def call_api():
+#     try:
+#         response = session.get(URL, params=params)
+#         data = json.loads(response.text)
+#         coins = data['data']
+#         get_ticker_list(data)
+#         print("You work?")
+
+#     except (ConnectionError, Timeout, TooManyRedirects) as e:
+#         print(e)
 
 
-# except (ConnectionError, Timeout, TooManyRedirects) as e:
-#     print(e)
-
-
-# def get_ticker_list():
+# def get_ticker_list(data):
 #     for d in data['data']:
 #         ticker_from_api = d['symbol']
 #         tickerList.append(ticker_from_api)
+    
+#     print(tickerList)
 
 
 # def validate_ticker(ticker):
@@ -86,9 +89,9 @@
 
 # def get_coin_price(ticker):
 #     if ticker in tickerList:
+#         print("Success")
 #         for x in coins:
 #             if x['symbol'] == ticker:
 #                 price = float((x['quote']['USD']['price']))
 
 #         return price
-
