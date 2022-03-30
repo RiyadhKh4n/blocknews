@@ -2,10 +2,10 @@
 
 {% block content %}
 
-<h1>{{ b_or_s|title }} {{ asset.coinID }}</h1>  
+<h1>{{ b_or_s|title }} {{ asset.ticker }}</h1>  
 
 <table>
-    {% comment %} {% for asset in assets %} {% endcomment %}
+    {% for asset in assets %} 
         <tr>
             <th>Name</th>
             <th>Quantity</th>
@@ -14,18 +14,19 @@
             <th>USD Spent</th>
         </tr>
         <tr>
-            <td>{{ asset.coinID }}</td>   
+            <td>{{ asset.ticker }}</td>   
             <td>{{ asset.quantity }}</td>   
             <td>{{ asset.PnL }}</td>   
             <td>{{ asset.AveragePrice }}</td>   
             <td>{{ asset.USDSpent }}</td>   
             <td>
         </tr>
-    {% comment %} {% endfor %} {% endcomment %}
+    {% endfor %}
 </table>
 
 <form method='POST' action="">
     {% csrf_token %}
+    <input type="hidden" name="ticker" id="ticker" value="{{ asset.ticker }}">
     {{ form.as_p }}
     <div>
         <p> 
