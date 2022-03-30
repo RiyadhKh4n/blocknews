@@ -5,6 +5,14 @@
 <h1>List of Assets</h1>  
 
 <table>
+    {% for portfolio in portfolios %}
+        <tr>
+            <td>{{ portfolio }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<table>
     {% for asset in assets %}
         <tr>
             <th>Name</th>
@@ -13,7 +21,7 @@
             <th>USD Spent</th>
         </tr>
         <tr>
-            <td>{{ asset.coinID }}</td>   
+            <td>{{ asset.ticker }}</td>   
             <td>{{ asset.quantity }}</td>   
             <td>{{ asset.average_price }}</td>   
             <td>{{ asset.usd_spent }}</td>   
