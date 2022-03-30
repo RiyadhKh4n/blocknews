@@ -33,7 +33,8 @@ def call_api():
         data = json.loads(response.text)
         coins = data['data']
         get_ticker_list(data)
-        print("The call_api() has been called")
+
+        return coins
 
     except (ConnectionError, Timeout, TooManyRedirects) as e:
         print(e)
@@ -44,17 +45,13 @@ def get_ticker_list(data):
         ticker_from_api = d['symbol']
         tickerList.append(ticker_from_api)
     
-    print(tickerList)
 
-
-def get_coin_price(ticker):
+def get_coin_price(ticker, coins):
     if ticker in tickerList:
-        print("The print before for x in coins")
         for x in coins:
             if x['symbol'] == ticker:
                 price = float((x['quote']['USD']['price']))
                 
-        print("PRICE HAS BEEN RECIEVED")
         return price
 
 
@@ -103,24 +100,27 @@ def delete_portfolio(request, portfolio_id):
 
 def get_asset_list(request, portfolio_id):
     assets = Asset.objects.filter(portfolio_name=portfolio_id)
+    portfolios = Portfolio.objects.filter(user=request.user)
     context = {
         'assets': assets,
         'portfolio_id': portfolio_id,
+        'portfolios': portfolios
     }
     return render(request, 'portfolio/assets.html', context)
 
 
 def add_asset(request, portfolio_id, coin_id=None):
     portfolio = Portfolio.objects.get(pk=portfolio_id)
-    call_api()
-    print(get_coin_price('BTC'))
+    returnedCoin = call_api()
+    print(get_coin_price('LUNA', returnedCoin))
     form = AddAsset()
     if request.method == "POST":
+        coin = request.POST.get("ticker")
         form = AddAsset(request.POST)
         if form.is_valid():
-            coin = form['coinID'].value()
             try:
-                asset = Asset.objects.get(portfolio_name=portfolio_id, coinID=coin)
+                asset = Asset.objects.get(portfolio_name=portfolio_id, ticker=coin)
+                # asset = Asset.objects.get(portfolio_name=portfolio_id, coinID=coin)
                 print(asset)
                 print("A Coin with the ID " + coin + " exists!")
                 pk = asset.id
@@ -132,6 +132,7 @@ def add_asset(request, portfolio_id, coin_id=None):
             except Asset.DoesNotExist:
                 print("Coin with that ID doesn't exist")
                 obj = form.save(commit=False)
+                obj.ticker = coin
                 obj.pnl = 0.00
                 obj.usd_earned = 0.00
                 obj.portfolio_name = portfolio
@@ -139,20 +140,25 @@ def add_asset(request, portfolio_id, coin_id=None):
                 quantity = float(form['quantity'].value())
                 AP = float(form['average_price'].value())
                 # coinID = form['coinID'].value()
-                # price = get_coin_price(coinID)
-                USDspent = quantity * price
+                # price = get_coin_price(str(coinID), returnedCoin)
+                # print(price)
+                USDspent = quantity * AP
                 obj.usd_spent = USDspent
                 obj.current_investment = USDspent
                 obj.save()
                 return redirect(reverse('get_asset_list', args=[portfolio_id]))
 
-    context = {'form': form}
+    context = {
+        'form': form,
+        'tickerList': tickerList
+    }
     return render(request, 'portfolio/add_asset.html', context)
 
 
 def update_asset(request, pk, b_or_s):
     asset = get_object_or_404(Asset, pk=pk)
     if request.method == 'POST':
+        coin = request.POST.get("ticker")
         form = UpdateAsset(request.POST, instance=asset)
         asset_qty = float(asset.quantity)
         curr_inv = float(asset.current_investment)
@@ -165,8 +171,9 @@ def update_asset(request, pk, b_or_s):
             asset.quantity = asset_qty + new_qty
             asset.current_investment = curr_inv + new_inv
             asset.usd_spent = asset.current_investment
+            asset.ticker = coin
             asset.save()
-            messages.success(request, f"{new_qty} {asset} successfully purchased!")
+            messages.success(request, f"{new_qty} {coin} successfully purchased!")
 
         elif b_or_s == 'sell':
             # do the calculations for SELLING
@@ -177,6 +184,7 @@ def update_asset(request, pk, b_or_s):
                 new_qty = float(form['quantity'].value())
                 price = float(form['average_price'].value())
                 usd_earned = price * new_qty
+                asset.ticker = coin
                 asset.quantity = asset_qty - new_qty
                 asset.usd_earned = curr_usd_earned + usd_earned
                 # asset.PnL = curr_PnL + (asset.USDEarned - asset.CurrentInvestment)
@@ -184,7 +192,7 @@ def update_asset(request, pk, b_or_s):
                     asset.delete()
                 else:
                     asset.save()
-                messages.success(request, f"{new_qty} {asset} successfully sold!")
+                messages.success(request, f"{new_qty} {coin} successfully sold!")
         return redirect(get_asset_list, asset.portfolio_name.pk)
 
     if b_or_s == 'sell':
