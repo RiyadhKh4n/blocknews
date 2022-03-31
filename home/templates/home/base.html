@@ -54,16 +54,6 @@
         </div>
     </nav>
 
-    <!-- {% if messages %}
-        <section>
-            {% for msg in messages %}
-                <aside id="msg" class="alert {% if msg.tags == 'error' %}alert-danger{% else %}alert-{{ msg.tags }}{% endif %} text-center" role="alert">
-                    <h3>{{ msg }}</h3>
-                </aside>
-            {% endfor %}
-        </section>
-    {% endif %} -->
-
     <div class="container">
         <div class="row">
             <div >
@@ -94,7 +84,7 @@
                 </p>
             </div>
             <div class="col links-col">
-                <h3>Links <div class="underline"><span></span></div></h3>
+                <h3>Links <section class="underline"><span></span></section></h3>
                 <ul class="footer-ul">
                     <li><a href="{% url 'home-page' %}"></a>Home</li>
                     <li><a href="{% url 'get_portfolio_list' %}"></a>View Portfolios</li>
@@ -108,7 +98,7 @@
                 </ul>
             </div>
             <div class="col">
-                <h3>Socials <div class="underline"><span></span></div></h3>
+                <h3>Socials <section class="underline"><span></span></section></h3>
                 <div class="social-icons">
                     <i class="fab fa-github"></i>
                     <i class="fab fa-linkedin"></i>
@@ -129,6 +119,7 @@
             alert.close()
         }, 3000);
     </script>
+    <script src="{% static 'static/js/script.js' %}"></script>
 </body>
 
 </html>
