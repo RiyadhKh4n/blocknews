@@ -100,11 +100,9 @@ def delete_portfolio(request, portfolio_id):
 
 def get_asset_list(request, portfolio_id):
     assets = Asset.objects.filter(portfolio_name=portfolio_id)
-    portfolios = Portfolio.objects.filter(user=request.user)
     context = {
         'assets': assets,
         'portfolio_id': portfolio_id,
-        'portfolios': portfolios
     }
     return render(request, 'portfolio/assets.html', context)
 
@@ -112,7 +110,6 @@ def get_asset_list(request, portfolio_id):
 def add_asset(request, portfolio_id, coin_id=None):
     portfolio = Portfolio.objects.get(pk=portfolio_id)
     returnedCoin = call_api()
-    print(get_coin_price('LUNA', returnedCoin))
     form = AddAsset()
     if request.method == "POST":
         coin = request.POST.get("ticker")
@@ -120,7 +117,6 @@ def add_asset(request, portfolio_id, coin_id=None):
         if form.is_valid():
             try:
                 asset = Asset.objects.get(portfolio_name=portfolio_id, ticker=coin)
-                # asset = Asset.objects.get(portfolio_name=portfolio_id, coinID=coin)
                 print(asset)
                 print("A Coin with the ID " + coin + " exists!")
                 pk = asset.id
@@ -139,9 +135,6 @@ def add_asset(request, portfolio_id, coin_id=None):
                 obj.average_price = form['average_price'].value()
                 quantity = float(form['quantity'].value())
                 AP = float(form['average_price'].value())
-                # coinID = form['coinID'].value()
-                # price = get_coin_price(str(coinID), returnedCoin)
-                # print(price)
                 USDspent = quantity * AP
                 obj.usd_spent = USDspent
                 obj.current_investment = USDspent
