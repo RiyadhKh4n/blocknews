@@ -42,15 +42,16 @@
 
             </tr>
             {% empty %}
-            <tr><td>You have no portfolios created<td><tr>
+            <tr><td>Create A Portfolio<td><tr>
         {% endfor %}
     </table>
 
     
-    
-    <a class="create-portfolio-link" href="{% url 'create_portfolio_url' %}">
-        <i class="fa-solid fa-circle-plus"></i> Create A Portfolio
-    </a>
+    <section class="create-portfolio-section">
+        <a class="create-portfolio-a" href="{% url 'create_portfolio_url' %}">
+            <i class="fa-solid fa-circle-plus"></i> Create A Portfolio
+        </a>
+    </section>
 </section>
 
     <!-- <div id="myModal" class="modal">
