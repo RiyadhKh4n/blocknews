@@ -2,40 +2,62 @@
 
 {% block content %}
 
-<h1>List of Portfolios</h1>  
+<section class="portfolio-section">
+    <section class="portfolio-title-section">
+        <h1 class="portfolio-details">Your Portfolios</h1> 
+        <h3 class="portfolio-details portfolio-details-2">Total Value:</h3> 
+        <h4 class="total-portfolio-bal"> = £ {API call needed}</h4> 
+    </section>
+    
+    <table class="portfolio-table">
+        {% for portfolio in portfolios %}
+            <tr>
+                <th>Name</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>{{ portfolio.name }}</td>   
+                <td>{{ portfolio.usd_value }}</td>   
+                <td>
+                    <a href="{% url 'edit_portfolio' portfolio.id %}">
+                        <button>E</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'delete_portfolio' portfolio.id %}"> 
+                        <button>D</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'get_asset_list' portfolio.id %}"> 
+                        <button>A</button>
+                    </a>
+                </td>
 
-<table>
-    {% for portfolio in portfolios %}
-        <tr>
-            <th>Name</th>
-            <th>USD Value</th>
-            <th>User</th>
-            
-        </tr>
-        <tr>
-            <td>{{ portfolio.name }}</td>   
-            <td>{{ portfolio.usd_value }}</td>   
-            <td>{{ portfolio.user }}</td>   
-            <td>
-                <a href="{% url 'edit_portfolio' portfolio.id %}">
-                    <button>Edit</button>
-                </a>
-            </td>
-            <td>
-                <a href="{% url 'delete_portfolio' portfolio.id %}"> 
-                    <button>Delete</button>
-                </a>
-            </td>
-            <td>
-                <a href="{% url 'get_asset_list' portfolio.id %}"> 
-                    <button>View Assets</button>
-                </a>
-            </td>
-        </tr>
-        {% empty %}
-        <tr><td>You have no portfolios created<td><tr>
-    {% endfor %}
-</table>
-<a href="{% url 'create_portfolio_url' %}">Create A Portfolio</a>
+                <!-- <td>
+                    <a id="myBtn"> 
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </a>
+                </td> -->
 
+            </tr>
+            {% empty %}
+            <tr><td>You have no portfolios created<td><tr>
+        {% endfor %}
+    </table>
+
+    
+    
+    <a class="create-portfolio-link" href="{% url 'create_portfolio_url' %}">
+        <i class="fa-solid fa-circle-plus"></i> Create A Portfolio
+    </a>
+</section>
+
+    <!-- <div id="myModal" class="modal">
+
+        <div class="model-content">
+            <span class="close">&times;</span>
+            <p>Smoe text in the modal</p>
+        </div>
+    </div>  -->
 {% endblock %}
