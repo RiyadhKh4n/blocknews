@@ -194,13 +194,36 @@ body {
     font-family: 'Lato', sans-serif;
 }
 
+.create-close{
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.create-close:hover,
+.create-close:focus{
+    color:black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.create-portfolio-btn{
+    width: 150px;
+}
+
+.edit-portfolio-btn{
+    width: 175px;
+}
+
 /* Portfolio Page */
 
 .portfolio-section{
     width: 80vw;
     margin: 60px auto 60px;
     border-radius: 20px;
-    background-color: #f1f3fa;;
+    background-color: #f1f3fa;
+    border: 3px solid #00B58B;
 }
 
 .portfolio-title-section{
@@ -248,8 +271,21 @@ td{
     font-family: 'Lato', sans-serif;
 }
 
-.create-portfolio-link{
-    border: 1px solid red;
+.create-portfolio-section{
+    margin: 25px 0 25px;
+    /* margin-left: 25px; */
+    padding: 10px;
+    width: fit-content;
+    background-color: #661aff;
+    border-radius: 25px;
+}
+
+.create-portfolio-a{
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    font-weight: bold;
 }
 
 .modal{
@@ -293,10 +329,11 @@ td{
 /* Footer */
 
 .footer-class{
+    margin-top: 50px;
+    padding: 50px 0 30px;
     width:100%;
     bottom: 0;
     color: #fff;
-    padding: 50px 0 30px;
     border-top-left-radius: 125px;
     font-size: 13px;
     line-height: 13px;
