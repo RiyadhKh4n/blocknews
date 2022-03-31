@@ -18,9 +18,10 @@ class Portfolio(models.Model):
 
 class Asset(models.Model):
     portfolio_name = models.ForeignKey(Portfolio, on_delete=models.CASCADE)
-    ticker = models.CharField(max_length=6, null=True)
+    ticker = models.CharField(max_length=6)
     quantity = models.DecimalField(max_digits=10, decimal_places=3)
-    average_price = models.DecimalField(max_digits=10, decimal_places=3)
+    price = models.DecimalField(max_digits=10, decimal_places=3)
+    average_price = models.DecimalField(max_digits=10, decimal_places=3, null=True)
     usd_spent = models.DecimalField(max_digits=10, decimal_places=3)
     usd_earned = models.DecimalField(max_digits=10, decimal_places=3)
     current_investment = models.DecimalField(max_digits=10, decimal_places=3)
