@@ -23,7 +23,7 @@
             <tr class="portfolio-rows">
                 <td>{{ portfolio.name }}</td>   
                 <td>{{ portfolio.usd_value }}</td>   
-                <td>
+                <!-- <td>
                     <a href="{% url 'edit_portfolio' portfolio.id %}">
                         <button>E</button>
                     </a>
@@ -32,18 +32,18 @@
                     <a href="{% url 'delete_portfolio' portfolio.id %}"> 
                         <button>D</button>
                     </a>
-                </td>
+                </td> -->
                 <td>
                     <a href="{% url 'get_asset_list' portfolio.id %}"> 
                         <button>A</button>
                     </a>
                 </td>
 
-                <!-- <td>
+                <td>
                     <a id="myBtn"> 
                         <i class="fa-solid fa-ellipsis-vertical"></i>
                     </a>
-                </td> -->
+                </td>
 
             </tr>
             {% empty %}
