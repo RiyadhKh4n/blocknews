@@ -207,7 +207,9 @@ You will need to also install all required packages in order to run this applica
 
 The code which calls the CoinMarketCap API was taken from my previous project [CoinFrog](https://github.com/RiyadhKh4n/CoinFrog)
 
-The code for the footer was taken from [this](https://www.youtube.com/watch?v=FRRlFLfdvBE) YouTube video
+The code for the footer was inspired from [this](https://www.youtube.com/watch?v=FRRlFLfdvBE) YouTube video
+
+The code for the table styling was inspired from [this](https://www.youtube.com/watch?v=2yoXvzonxpA) YouTube video
 
  
 ### Acknowledgements
