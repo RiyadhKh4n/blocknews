@@ -15,7 +15,6 @@
             <th>Value</th>
             <th></th>
             <th></th>
-            <th></th>
         </tr>
 
         {% for portfolio in portfolios %}
@@ -38,10 +37,13 @@
                         <button>A</button>
                     </a>
                 </td>
-
+                
+                <!-- modal trigger -->
                 <td>
-                    <a id="myBtn"> 
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    <a id="myBtn">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#icon-modal">
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </button> 
                     </a>
                 </td>
 
@@ -59,11 +61,45 @@
     </section>
 </section>
 
-    <!-- <div id="myModal" class="modal">
+    <!-- Modal -->
+    <div class="modal fade" id="icon-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal-title">Portfolios</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="portfolio-table">
+                    <tr id="header">
+                        <th>Name</th>
+                        <th>Value</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+            
+                    {% for portfolio in portfolios %}
+                    
+                        <tr class="portfolio-rows">
+                            <td>{{ portfolio.name }}</td>   
+                            <td>{{ portfolio.usd_value }}</td>   
+                            <td>
+                                <a href="{% url 'edit_portfolio' portfolio.id %}">
+                                    <button>Edit</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'delete_portfolio' portfolio.id %}"> 
+                                    <button>Delete</button>
+                                </a>
+                            </td>
+                        </tr>
 
-        <div class="model-content">
-            <span class="close">&times;</span>
-            <p>Smoe text in the modal</p>
+                    {% endfor %}
+                </table>       
+            </div>
+          </div>
         </div>
-    </div>  -->
+      </div>
+
 {% endblock %}
