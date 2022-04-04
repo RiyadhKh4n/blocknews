@@ -251,7 +251,7 @@ body {
     text-align: center;
 }
 
-.portfolio-table{
+/* .portfolio-table{
     margin-top: 30px;
     border: 1px solid red;
     width: 100%;
@@ -266,8 +266,41 @@ th, td{
     text-align: center;
 }
 
+.portfolio-rows{
+    border: 1px solid green;
+}
+
 td{
     font-family: 'Lato', sans-serif;
+} */
+
+
+.portfolio-table{
+    /* position: absolute; */
+    margin-top: 30px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+tr{
+    transition: all .2s ease-in;
+    cursor: pointer;
+}
+
+#header{
+    background-color: #00B58B;
+    color:#fff;
+}
+
+th, td{
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd ;
+}
+
+.portfolio-rows:hover{
+    background-color: #f5f5f5;
+    box-shadow: 1px 1px rgba(0,0,0,0.2), -1px -1px 8px rgba(0,0,0,0.2);
 }
 
 .create-portfolio-section{
