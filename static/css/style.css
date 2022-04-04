@@ -103,7 +103,6 @@ body {
     font-weight: 800;
     font-size: 1.8rem;
     font-family: 'Fjanlla One', sans-serif;
-
 }
 
 .homepage-p-div{
@@ -283,12 +282,47 @@ td{
 }
 
 .create-portfolio-section{
-    margin: 25px 0 25px;
-    /* margin-left: 25px; */
+    margin: 25px auto 25px;
     padding: 10px;
     width: fit-content;
     background-color: #661aff;
     border-radius: 25px;
+    text-align: center;
+}
+
+.manage-portfolio-section{
+    margin: 25px auto 25px;
+    padding: 10px;
+    border-radius: 25px;
+    text-align: center;
+}
+
+.manage-btn{
+    background-color: #00B58B;
+    border-radius: 25px;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.manage-btn > i {
+    margin-right: 5px;
+    padding: 5px;
+    color: #fff;
+}
+
+.modal-title{
+    font-family: 'Fjanlla One', sans-serif;
+    font-weight: bold;
+}
+
+.modal-btn{
+    color: #fff;
+    font-weight: 500;
+    font-family: 'Lato', sans-serif;
 }
 
 .create-portfolio-a{
@@ -297,6 +331,12 @@ td{
     font-family: 'Lato', sans-serif;
     font-size: 0.9rem;
     font-weight: bold;
+}
+
+.create-portfolio-a > i{
+    margin-right: 5px;
+    padding: 5px;
+    color: #fff;
 }
 
 .close{
@@ -311,6 +351,10 @@ td{
     color:black;
     text-decoration: none;
     cursor: pointer;
+}
+
+.modal-body{
+    width: 100%;
 }
 
 /* Footer */
