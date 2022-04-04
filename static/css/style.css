@@ -251,30 +251,6 @@ body {
     text-align: center;
 }
 
-/* .portfolio-table{
-    margin-top: 30px;
-    border: 1px solid red;
-    width: 100%;
-}
-
-th{
-    font-weight: 700;
-    font-family: 'Fjanlla One', sans-serif;
-}
-
-th, td{
-    text-align: center;
-}
-
-.portfolio-rows{
-    border: 1px solid green;
-}
-
-td{
-    font-family: 'Lato', sans-serif;
-} */
-
-
 .portfolio-table{
     /* position: absolute; */
     margin-top: 30px;
@@ -298,8 +274,12 @@ th, td{
     border-bottom: 1px solid #ddd ;
 }
 
+td{
+    font-weight: 500;
+}
+
 .portfolio-rows:hover{
-    background-color: #f5f5f5;
+    background-color: #C8C8C8;
     box-shadow: 1px 1px rgba(0,0,0,0.2), -1px -1px 8px rgba(0,0,0,0.2);
 }
 
