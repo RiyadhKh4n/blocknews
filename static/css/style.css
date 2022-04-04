@@ -157,7 +157,7 @@ body {
 }
 
 .webiste-info-box{
-    flex-direction: column;
+    /* flex-direction: column; */
     margin: 15px 0px;
     padding-top: 20px;
     padding-bottom: 25px;
@@ -223,7 +223,6 @@ body {
     margin: 60px auto 60px;
     border-radius: 20px;
     background-color: #f1f3fa;
-    border: 3px solid #00B58B;
 }
 
 .portfolio-title-section{
@@ -323,13 +322,10 @@ td{
     cursor: pointer;
 }
 
-
-
-
 /* Footer */
 
 .footer-class{
-    margin-top: 50px;
+    margin-top: 40px;
     padding: 50px 0 30px;
     width:100%;
     bottom: 0;
@@ -451,6 +447,19 @@ hr{
     }
 }
 
+@media (max-width: 700px){
+    .footer-class{
+        bottom: unset;
+    }
+    .col{
+        flex-basis: 100%;
+    }
+    
+    .col:nth-child(2), .col:nth-child(3){
+        flex-basis: 100%
+    }
+}
+
 @media only screen and (min-width: 768px){
     .brand{
         margin-left: 2.5rem;
@@ -489,13 +498,19 @@ hr{
     }
 
     .page-container-row{
-        margin: 0px;
+        width: 83vw;
+        margin: 20px auto 0;
     }
-
+    
     .webiste-info-box{
         flex-direction: row;
-        flex-basis: 50%; 
+        flex-basis: 45%; 
     }
+
+    .webiste-info-box:nth-child(2),
+    .webiste-info-box:nth-child(4){
+        margin-left: 60px;
+    }  
 
     .login-div-container{
         margin-top: 90px;
@@ -512,17 +527,22 @@ hr{
     .links-col{
         padding-left: 150px;
     }
-}
 
-@media (max-width: 700px){
-    .footer-class{
-        bottom: unset;
-    }
-    .col{
-        flex-basis: 100%;
+    .page-container-row{
+        width: 88vw;
+        margin: 20px auto 0;
     }
     
-    .col:nth-child(2), .col:nth-child(3){
-        flex-basis: 100%
+    .webiste-info-box{
+        flex-direction: row;
+        flex-basis: 45%; 
     }
+
+    .webiste-info-box:nth-child(2),
+    .webiste-info-box:nth-child(4){
+        margin-left: 70px;
+    }  
+
+    
 }
+
