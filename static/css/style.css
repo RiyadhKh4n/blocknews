@@ -269,7 +269,7 @@ tr{
 
 th, td{
     padding: 12px;
-    text-align: left;
+    text-align: center;
     border-bottom: 1px solid #ddd ;
 }
 
@@ -297,27 +297,6 @@ td{
     font-family: 'Lato', sans-serif;
     font-size: 0.9rem;
     font-weight: bold;
-}
-
-.modal{
-    display:none;
-    position: fixed;
-    z-index:1;
-    left:0;
-    top:0;
-    width: 80vw;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-}
-
-.modal-content{
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
 }
 
 .close{
