@@ -14,7 +14,6 @@
             <th>Name</th>
             <th>Value</th>
             <th></th>
-            <th></th>
         </tr>
 
         {% for portfolio in portfolios %}
@@ -22,42 +21,31 @@
             <tr class="portfolio-rows">
                 <td>{{ portfolio.name }}</td>   
                 <td>{{ portfolio.usd_value }}</td>   
-                <!-- <td>
-                    <a href="{% url 'edit_portfolio' portfolio.id %}">
-                        <button>E</button>
-                    </a>
-                </td>
-                <td>
-                    <a href="{% url 'delete_portfolio' portfolio.id %}"> 
-                        <button>D</button>
-                    </a>
-                </td> -->
+    
                 <td>
                     <a href="{% url 'get_asset_list' portfolio.id %}"> 
-                        <button>A</button>
+                        <button>View Assets</button>
                     </a>
                 </td>
-                
-                <!-- modal trigger -->
-                <td>
-                    <a id="myBtn">
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#icon-modal">
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </button> 
-                    </a>
-                </td>
-
             </tr>
             {% empty %}
             <tr><td>Create A Portfolio<td><tr>
         {% endfor %}
     </table>
 
-    
-    <section class="create-portfolio-section">
-        <a class="create-portfolio-a" href="{% url 'create_portfolio_url' %}">
-            <i class="fa-solid fa-circle-plus"></i> Create A Portfolio
-        </a>
+    <section class="portfolio-btn-container">
+        <section class="create-portfolio-section">
+            <a class="create-portfolio-a" href="{% url 'create_portfolio_url' %}">
+                <i class="fa-solid fa-circle-plus"></i> Create A Portfolio
+            </a>
+        </section>
+
+        <!-- modal trigger -->
+        <section class="manage-portfolio-section">
+            <button class="btn manage-btn" data-bs-toggle="modal" data-bs-target="#icon-modal">
+                <i class="fa-solid fa-ellipsis-vertical"></i>Manage Portfolios
+            </button> 
+        </section>
     </section>
 </section>
 
@@ -70,7 +58,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <table class="portfolio-table">
+                <table class="portfolio-table modal-table">
                     <tr id="header">
                         <th>Name</th>
                         <th>Value</th>
@@ -85,14 +73,18 @@
                             <td>{{ portfolio.usd_value }}</td>   
                             <td>
                                 <a href="{% url 'edit_portfolio' portfolio.id %}">
-                                    <button>Edit</button>
+                                    <button class="btn btn-purple modal-btn">Edit</button>
                                 </a>
+
+                                <!-- <a href="{% url 'delete_portfolio' portfolio.id %}"> 
+                                    <button class="btn btn-green modal-btn">Delete</button>
+                                </a> -->
                             </td>
                             <td>
                                 <a href="{% url 'delete_portfolio' portfolio.id %}"> 
-                                    <button>Delete</button>
+                                    <button class="btn btn-green modal-btn">Delete</button>
                                 </a>
-                            </td>
+                            </td> 
                         </tr>
 
                     {% endfor %}
