@@ -85,9 +85,9 @@
                 <h3>Links <span class="underline"><span></span></span></h3>
                 <ul class="footer-ul">
                     <li><a href="{% url 'home-page' %}"></a>Home</li>
-                    <li><a href="{% url 'get_portfolio_list' %}"></a>View Portfolios</li>
-                    <li><a href="{% url 'create_portfolio_url' %}"></a>Create Portfolio</li>
                     {% if user.is_authenticated %}
+                    <li><a href="{% url 'create_portfolio_url' %}"></a>Create Portfolio</li>
+                    <li><a href="{% url 'get_portfolio_list' %}"></a>View Portfolios</li>
                     <li><a href="{% url 'account_logout' %}"></a>Log Out</li>
                     {% else %}
                     <li><a href="{% url 'account_login' %}"></a>Log In</li>
