@@ -2,36 +2,93 @@
 
 {% block content %}
 
-<h1>List of Assets</h1>  
-
-<table>
-    {% for asset in assets %}
-        <tr>
+<section class="portfolio-section">
+    <section class="heading-section">
+        <h1 class="assets-h1">Your Assets</h1>
+    </section>
+    
+    <table class="portfolio-table">
+        <tr class="table-header assets-header">
             <th>Name</th>
-            <th>Quantity</th>
-            <th>Average Price</th>
-            <th>USD Spent</th>
+            <th>Price</th>
+            <th>Holdings</th>
+            <!-- <th>Profit/Loss</th> -->
+            <th>Actions</th> 
         </tr>
-        <tr>
-            <td>{{ asset.ticker }}</td>   
-            <td>{{ asset.quantity }}</td>   
-            <td>{{ asset.average_price }}</td>   
-            <td>{{ asset.usd_spent }}</td>   
-            <td>
-                <a href="{% url 'update_asset' asset.id 'buy' %}"> 
-                    <button>Buy</button>
-                </a>
-            </td>
-            <td>
-                <a href="{% url 'update_asset' asset.id 'sell' %}"> 
-                     <button>Sell</button>
-                </a>
-            </td>
-        </tr>
-        {% empty %}
-        <tr><td>You have no Assets in your Portfolio<td><tr>
-    {% endfor %}
-</table>
-<a href="{% url 'add_asset' portfolio_id %}">Add Coin</a>
+        {% for asset in assets %}
+            <tr class="asset-table-row">
+                <td>{{ asset.ticker }}</td>   
+                <td>{{ asset.price }}</td>   
+                <td>{{ asset.quantity }}</td>   
+                <!-- <td>{{ asset.pnl }}</td>-->
+
+                <!-- Modal Trigger -->
+                <td>
+                    <button class="btn" data-bs-toggle="modal" data-bs-target="#asset-modal">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </button> 
+                </td>
+            </tr>
+            {% empty %}
+
+            <tr class="asset-table-row">
+                <td>Add Coin</td>
+                <td>0.00</td>
+                <td>0.00</td>
+                <td>
+                    <button class="btn" data-bs-toggle="modal" data-bs-target="#asset-modal">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </button> 
+                </td>
+            <tr>
+        {% endfor %}
+    </table>
+
+    <section class="add-new-section">
+        <a class="add-new-a" href="{% url 'add_asset' portfolio_id %}">
+            <i class="fa-solid fa-circle-plus"></i> Add New
+        </a>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="asset-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal-title">Manage Assets</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="portfolio-table modal-table">
+                    <tr class="table-header">
+                        <th>Name</th>
+                        <th>Holdings</th>
+                        <th>Actions</th>
+                    </tr>
+            
+                    {% for asset in assets %}
+                    
+                        <tr class="portfolio-rows">
+                            <td>{{ asset.ticker }}</td>      
+                            <td>{{ asset.quantity }}</td>   
+                            <td>
+                                <a href="{% url 'update_asset' asset.id 'buy' %}"> 
+                                    <button class="btn btn-purple modal-btn">Buy</button>
+                                </a>
+                        
+                                <a href="{% url 'update_asset' asset.id 'sell' %}"> 
+                                    <button class="btn btn-green modal-btn sell-btn">Sell</button>
+                               </a>
+                            </td> 
+                        </tr>
+
+                    {% endfor %}
+                </table>       
+            </div>
+          </div>
+        </div>
+      </div>
+    
+</section>
 
 {% endblock %}
