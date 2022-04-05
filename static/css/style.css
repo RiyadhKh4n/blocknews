@@ -291,7 +291,7 @@ td {
 }
 
 .view-btn {
-    background-color: #B0A8B9;
+    border: 2px solid #00B58B;
     color: black;
     font-weight: 600;
     font-size: 0.8rem;
