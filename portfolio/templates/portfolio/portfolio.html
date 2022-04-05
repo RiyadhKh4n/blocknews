@@ -24,16 +24,19 @@
     
                 <td>
                     <a href="{% url 'get_asset_list' portfolio.id %}"> 
-                        <button>View Assets</button>
+                        <button class="btn view-btn">View Assets</button>
                     </a>
                 </td>
             </tr>
             {% empty %}
-            <tr><td>Create A Portfolio<td><tr>
+            <tr>
+                <td>Create A Portfolio</td>
+                <td>0.00</td>
+            </tr>
         {% endfor %}
     </table>
 
-    <section class="portfolio-btn-container">
+    <section>
         <section class="create-portfolio-section">
             <a class="create-portfolio-a" href="{% url 'create_portfolio_url' %}">
                 <i class="fa-solid fa-circle-plus"></i> Create A Portfolio
@@ -54,7 +57,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="modal-title">Portfolios</h5>
+              <h5 class="modal-title" id="modal-title">Manage Portfolios</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -62,8 +65,7 @@
                     <tr id="header">
                         <th>Name</th>
                         <th>Value</th>
-                        <th></th>
-                        <th></th>
+                        <th>Actions</th>
                     </tr>
             
                     {% for portfolio in portfolios %}
@@ -76,15 +78,10 @@
                                     <button class="btn btn-purple modal-btn">Edit</button>
                                 </a>
 
-                                <!-- <a href="{% url 'delete_portfolio' portfolio.id %}"> 
-                                    <button class="btn btn-green modal-btn">Delete</button>
-                                </a> -->
-                            </td>
-                            <td>
                                 <a href="{% url 'delete_portfolio' portfolio.id %}"> 
-                                    <button class="btn btn-green modal-btn">Delete</button>
+                                    <button class="btn btn-green modal-btn del-btn">Delete</button>
                                 </a>
-                            </td> 
+                            </td>
                         </tr>
 
                     {% endfor %}
