@@ -281,31 +281,60 @@ td{
     box-shadow: 1px 1px rgba(0,0,0,0.2), -1px -1px 8px rgba(0,0,0,0.2);
 }
 
+.view-btn{
+    background-color: #B0A8B9;
+    color: black;
+    font-weight: 600;
+    font-size: 0.8rem;
+    border-radius: 15px;
+}
+
 .create-portfolio-section{
-    margin: 25px auto 25px;
+    margin: 15px auto 15px;
     padding: 10px;
     width: fit-content;
     background-color: #661aff;
-    border-radius: 25px;
+    border-radius: 20px;
     text-align: center;
 }
 
-.manage-portfolio-section{
-    margin: 25px auto 25px;
-    padding: 10px;
-    border-radius: 25px;
-    text-align: center;
-}
-
-.manage-btn{
-    background-color: #00B58B;
-    border-radius: 25px;
-    padding: 10px;
+.create-portfolio-a{
     color: #fff;
     text-decoration: none;
     font-family: 'Lato', sans-serif;
     font-size: 0.9rem;
     font-weight: bold;
+}
+
+.create-portfolio-a:hover{
+    color: white;
+}
+
+.create-portfolio-a > i{
+    margin-right: 5px;
+    padding: 5px;
+    color: #fff;
+}
+
+.manage-portfolio-section{
+    margin: 15px auto 15px;
+    padding: 10px;
+    text-align: center;
+}
+
+.manage-btn{
+    background-color: #00B58B;
+    border-radius: 20px;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.95rem;
+    font-weight: bold;
+}
+
+.manage-btn:hover{
+    color: #fff;
 }
 
 .manage-btn > i {
@@ -319,24 +348,20 @@ td{
     font-weight: bold;
 }
 
+.modal-table{
+    margin-top:0px;
+}
+
 .modal-btn{
     color: #fff;
     font-weight: 500;
     font-family: 'Lato', sans-serif;
+    margin:0px;
+    width: 70px;
 }
 
-.create-portfolio-a{
-    color: #fff;
-    text-decoration: none;
-    font-family: 'Lato', sans-serif;
-    font-size: 0.9rem;
-    font-weight: bold;
-}
-
-.create-portfolio-a > i{
-    margin-right: 5px;
-    padding: 5px;
-    color: #fff;
+.del-btn{
+    margin-top: 5px;
 }
 
 .close{
@@ -387,6 +412,7 @@ td{
 
 .col h3{
     width: fit-content;
+    margin-top: 15px;
     margin-bottom: 40px;
     position: relative;
     font-family: 'Fjanlla One', sans-serif;
@@ -476,6 +502,12 @@ hr{
 }
 
 /* Media Queries */
+@media only screen and (min-width: 375px){
+    .del-btn{
+        margin:0px
+    }
+}
+
 @media only screen and (min-width: 425px){
     .login-div-container{
         margin-top: 70px;
