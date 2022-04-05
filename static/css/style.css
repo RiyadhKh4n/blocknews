@@ -269,7 +269,7 @@ tr {
     cursor: pointer;
 }
 
-#header {
+.table-header {
     background-color: #00B58B;
     color: #fff;
 }
@@ -387,8 +387,49 @@ td {
     cursor: pointer;
 }
 
-.modal-body {
+.heading-section{
     width: 100%;
+}
+
+.assets-h1{
+    font-size: 1.4rem;
+    font-family: 'Fjanlla One', sans-serif;
+    font-weight: 800;
+    text-align: center;
+    padding-top: 20px;
+    color: #661aff;
+}
+
+.assets-header th{
+    font-size: 12px;
+}
+
+.asset-table-row td{
+    font-size: 12px;
+}
+
+.add-new-section{
+    margin-top: 20px;
+    padding: 5px;
+    background-color: #661aff;
+    width: fit-content;
+    border-radius: 15px;
+}
+
+.add-new-section a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.8rem;
+}
+
+.add-new-section a i{
+    padding: 5px;
+}
+
+.sell-btn{
+    margin-top: 5px;
 }
 
 /* Footer */
@@ -521,6 +562,9 @@ hr {
 @media only screen and (min-width: 375px) {
     .del-btn {
         margin: 0px
+    }
+    .sell-btn{
+        margin:0px;
     }
 }
 
