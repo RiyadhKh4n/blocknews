@@ -12,15 +12,17 @@
             <th>Name</th>
             <th>Price</th>
             <th>Holdings</th>
-            <!-- <th>Profit/Loss</th> -->
+            <th class="d-none d-sm-none d-md-none d-lg-block">Avg. Buy Price</th>
+            <th class="d-none d-sm-none d-md-block">Profit/Loss</th>
             <th>Actions</th> 
         </tr>
         {% for asset in assets %}
-            <tr class="asset-table-row">
+            <tr class="asset-table-row portfolio-rows">
                 <td>{{ asset.ticker }}</td>   
                 <td>{{ asset.price }}</td>   
                 <td>{{ asset.quantity }}</td>   
-                <!-- <td>{{ asset.pnl }}</td>-->
+                <td class="d-none d-sm-none d-md-none d-lg-block">{{ asset.average_price }}</td>   
+                <td class="d-none d-sm-none d-md-block d-lg-block">{{ asset.pnl }}</td>
 
                 <!-- Modal Trigger -->
                 <td>
