@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Portfolio(models.Model):
-    name = models.CharField(max_length=50, unique=True)
+    name = models.CharField(max_length=10, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -20,8 +20,8 @@ class Asset(models.Model):
     portfolio_name = models.ForeignKey(Portfolio, on_delete=models.CASCADE)
     ticker = models.CharField(max_length=6)
     quantity = models.DecimalField(max_digits=10, decimal_places=3)
-    price = models.DecimalField(max_digits=10, decimal_places=3)
-    average_price = models.DecimalField(max_digits=10, decimal_places=3, null=True)
+    price = models.DecimalField(max_digits=10, decimal_places=3, default=0.00)
+    average_price = models.DecimalField(max_digits=10, decimal_places=3)
     usd_spent = models.DecimalField(max_digits=10, decimal_places=3)
     usd_earned = models.DecimalField(max_digits=10, decimal_places=3)
     current_investment = models.DecimalField(max_digits=10, decimal_places=3)
