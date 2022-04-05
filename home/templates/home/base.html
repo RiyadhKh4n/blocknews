@@ -82,7 +82,7 @@
                 </p>
             </div>
             <div class="col links-col">
-                <h3>Links <section class="underline"><span></span></section></h3>
+                <h3>Links <span class="underline"><span></span></span></h3>
                 <ul class="footer-ul">
                     <li><a href="{% url 'home-page' %}"></a>Home</li>
                     <li><a href="{% url 'get_portfolio_list' %}"></a>View Portfolios</li>
@@ -91,17 +91,28 @@
                     <li><a href="{% url 'account_logout' %}"></a>Log Out</li>
                     {% else %}
                     <li><a href="{% url 'account_login' %}"></a>Log In</li>
-                    <li><a href=""></a>Create an Account</li>
+                    <li><a href="{% url 'account_signup' %}"></a>Create an Account</li>
                     {% endif %}
                 </ul>
             </div>
             <div class="col">
-                <h3>Socials <section class="underline"><span></span></section></h3>
+                <h3>Socials <span class="underline"><span></span></span></h3>
                 <div class="social-icons">
-                    <i class="fab fa-github"></i>
-                    <i class="fab fa-linkedin"></i>
-                    <i class="fab fa-twitter"></i>
-                    <i class="fab fa-bitcoin"></i>
+                    <a href="https://github.com/RiyadhKh4n/" aria-label="Take a look at my GitHub" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/riyadh-khan-49213519a/" aria-label="Take a look at my LinkedIn" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    
+                    <a href="https://twitter.com/CoinMarketCap" aria-label="Take a look at CoinMarketCap's Twitter" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+
+                    <a href="https://coinmarketcap.com/portfolio-tracker/" aria-label="Take a look at CoinMarketCap's Portfolio Tracker" target="_blank">
+                        <i class="fab fa-bitcoin"></i>
+                    </a>
                 </div>
             </div>
         </div>
