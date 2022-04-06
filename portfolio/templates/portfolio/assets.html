@@ -12,8 +12,8 @@
             <th>Name</th>
             <th>Price</th>
             <th>Holdings</th>
-            <th class="d-none d-sm-none d-md-none d-lg-block">Avg. Buy Price</th>
-            <th class="d-none d-sm-none d-md-block">Profit/Loss</th>
+            <th class="d-none d-sm-none d-md-none d-lg-table-cell">Avg. Buy Price</th>
+            <th class="d-none d-sm-none d-md-table-cell">Profit/Loss</th>
             <th>Actions</th> 
         </tr>
         {% for asset in assets %}
@@ -21,13 +21,13 @@
                 <td>{{ asset.ticker }}</td>   
                 <td>{{ asset.price }}</td>   
                 <td>{{ asset.quantity }}</td>   
-                <td class="d-none d-sm-none d-md-none d-lg-block">{{ asset.average_price }}</td>   
-                <td class="d-none d-sm-none d-md-block d-lg-block">{{ asset.pnl }}</td>
+                <td class="d-none d-sm-none d-md-none d-lg-table-cell">{{ asset.average_price }}</td>   
+                <td class="d-none d-sm-none d-md-table-cell">{{ asset.pnl }}</td>
 
                 <!-- Modal Trigger -->
                 <td>
                     <button class="btn" data-bs-toggle="modal" data-bs-target="#asset-modal">
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                        <i class="action-icon fa-solid fa-ellipsis-vertical"></i>
                     </button> 
                 </td>
             </tr>
@@ -37,19 +37,23 @@
                 <td>Add Coin</td>
                 <td>0.00</td>
                 <td>0.00</td>
+                <td class="d-none d-sm-none d-md-none d-lg-table-cell">0.00</td>
+                <td class="d-none d-sm-none d-md-table-cell">0.00</td>
                 <td>
                     <button class="btn" data-bs-toggle="modal" data-bs-target="#asset-modal">
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                        <i class="action-icon fa-solid fa-ellipsis-vertical"></i>
                     </button> 
                 </td>
             <tr>
         {% endfor %}
     </table>
 
-    <section class="add-new-section">
-        <a class="add-new-a" href="{% url 'add_asset' portfolio_id %}">
-            <i class="fa-solid fa-circle-plus"></i> Add New
-        </a>
+    <section class="add-new-container">
+        <section class="add-new-section">
+            <a class="add-new-a" href="{% url 'add_asset' portfolio_id %}">
+                <i class="fa-solid fa-circle-plus"></i> Add New
+            </a>
+        </section>
     </section>
 
     <!-- Modal -->
