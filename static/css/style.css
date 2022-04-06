@@ -159,7 +159,6 @@ body {
 }
 
 .webiste-info-box {
-    /* flex-direction: column; */
     margin: 15px 0px;
     padding-top: 20px;
     padding-bottom: 25px;
@@ -400,6 +399,8 @@ td {
     width: 100%;
 }
 
+/* Assets Page */ 
+
 .assets-h1{
     font-size: 1.4rem;
     font-family: 'Fjanlla One', sans-serif;
@@ -448,6 +449,16 @@ td {
 
 .sell-btn{
     margin-top: 5px;
+}
+
+/* Forms */
+
+.add-coin-btn{
+    width: fit-content;
+}
+
+.b_s-btn{
+    width: fit-content
 }
 
 /* Footer */
