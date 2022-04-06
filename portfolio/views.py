@@ -44,14 +44,13 @@ def get_ticker_list(data):
     for d in data['data']:
         ticker_from_api = d['symbol']
         tickerList.append(ticker_from_api)
-    
+
 
 def get_coin_price(ticker, coins):
     if ticker in tickerList:
         for x in coins:
             if x['symbol'] == ticker:
                 price = float((x['quote']['USD']['price']))
-                
         return price
 
 
@@ -128,13 +127,16 @@ def add_asset(request, portfolio_id, coin_id=None):
             except Asset.DoesNotExist:
                 print("Coin with that ID doesn't exist")
                 obj = form.save(commit=False)
-                obj.ticker = coin
-                obj.pnl = 0.00
-                obj.usd_earned = 0.00
-                obj.portfolio_name = portfolio
                 obj.average_price = form['average_price'].value()
                 quantity = float(form['quantity'].value())
                 AP = float(form['average_price'].value())
+                obj.portfolio_name = portfolio
+                obj.ticker = coin
+                obj.pnl = 0.00
+                obj.usd_earned = 0.00
+                ticker_price = get_coin_price(coin, returnedCoin)
+                print(ticker_price)
+                obj.price = ticker_price
                 USDspent = quantity * AP
                 obj.usd_spent = USDspent
                 obj.current_investment = USDspent
@@ -150,8 +152,11 @@ def add_asset(request, portfolio_id, coin_id=None):
 
 def update_asset(request, pk, b_or_s):
     asset = get_object_or_404(Asset, pk=pk)
+    returnedCoin = call_api()
     if request.method == 'POST':
         coin = request.POST.get("ticker")
+        ticker_price = get_coin_price(coin, returnedCoin)
+        print(ticker_price)
         form = UpdateAsset(request.POST, instance=asset)
         asset_qty = float(asset.quantity)
         curr_inv = float(asset.current_investment)
@@ -164,6 +169,7 @@ def update_asset(request, pk, b_or_s):
             asset.quantity = asset_qty + new_qty
             asset.current_investment = curr_inv + new_inv
             asset.usd_spent = asset.current_investment
+            # asset.price = ticker_price
             asset.ticker = coin
             asset.save()
             messages.success(request, f"{new_qty} {coin} successfully purchased!")
