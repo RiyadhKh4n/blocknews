@@ -236,7 +236,7 @@ body {
     margin-top: 30px;
 }
 
-.portfolio-h1{
+.portfolio-h1 {
     font-size: 1.4rem;
     font-family: 'Fjanlla One', sans-serif;
 }
@@ -252,7 +252,7 @@ body {
     font-size: 1.1rem;
     font-family: 'Lato', sans-serif;
     font-weight: 700;
-    
+
 }
 
 .total-portfolio-bal {
@@ -294,7 +294,7 @@ td {
     box-shadow: 1px 1px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
 }
 
-.portfolio-rows a{
+.portfolio-rows a {
     text-decoration: none;
 }
 
@@ -395,13 +395,13 @@ td {
     cursor: pointer;
 }
 
-.heading-section{
+.heading-section {
     width: 100%;
 }
 
-/* Assets Page */ 
+/* Assets Page */
 
-.assets-h1{
+.assets-h1 {
     font-size: 1.4rem;
     font-family: 'Fjanlla One', sans-serif;
     font-weight: 800;
@@ -410,23 +410,37 @@ td {
     color: #661aff;
 }
 
-.assets-header th{
+.assets-header th {
     font-size: 12px;
 }
 
-.asset-table-row td{
+.asset-table-row td {
     font-size: 12px;
 }
 
-.action-icon{
+.table-hr {
+    width: 60%;
+    border-bottom: 2px solid #661aff;
+    margin: 2px auto 2px;
+}
+
+.qty_data {
+    display: block;
+}
+
+.qty-ticker {
+    padding-left: 2px;
+}
+
+.action-icon {
     color: #661aff;
 }
 
-.add-new-container{
+.add-new-container {
     width: 100%;
 }
 
-.add-new-section{
+.add-new-section {
     margin: 20px auto 20px;
     padding: 5px;
     background-color: #661aff;
@@ -443,21 +457,21 @@ td {
     padding-right: 5px;
 }
 
-.add-new-section a i{
+.add-new-section a i {
     padding: 5px;
 }
 
-.sell-btn{
+.sell-btn {
     margin-top: 5px;
 }
 
 /* Forms */
 
-.add-coin-btn{
+.add-coin-btn {
     width: fit-content;
 }
 
-.b_s-btn{
+.b_s-btn {
     width: fit-content
 }
 
@@ -592,8 +606,9 @@ hr {
     .del-btn {
         margin: 0px
     }
-    .sell-btn{
-        margin:0px;
+
+    .sell-btn {
+        margin: 0px;
     }
 }
 
@@ -602,18 +617,18 @@ hr {
         margin-top: 70px;
     }
 
-    .assets-header th{
+    .assets-header th {
         font-size: 16px;
     }
-    
-    .asset-table-row td{
+
+    .asset-table-row td {
         font-size: 14px;
     }
 
-    .add-new-section{
+    .add-new-section {
         padding: 10px;
     }
-    
+
     .add-new-section a {
         font-size: 0.9rem;
     }
@@ -668,12 +683,12 @@ hr {
     .portfolio-details-2 {
         font-size: 1.2rem;
     }
-    
+
     .total-portfolio-bal {
         font-size: 1.1rem;
     }
 
-    .portfolio-header th{
+    .portfolio-header th {
         font-size: 18px;
     }
 
@@ -681,10 +696,10 @@ hr {
         font-size: 1rem;
     }
 
-    .assets-h1{
+    .assets-h1 {
         font-size: 1.6rem;
     }
-    
+
     .add-new-section a {
         font-size: 1rem;
     }
@@ -731,28 +746,28 @@ hr {
     .portfolio-details-2 {
         font-size: 1.3rem;
     }
-    
+
     .total-portfolio-bal {
         font-size: 1.2rem;
     }
 
-    .portfolio-header th{
+    .portfolio-header th {
         font-size: 20px;
     }
 
-    .portfolio-rows td{
+    .portfolio-rows td {
         font-size: 18px;
     }
 
-    .assets-h1{
+    .assets-h1 {
         font-size: 1.8rem;
     }
 
-    .assets-header th{
+    .assets-header th {
         font-size: 18px;
     }
-    
-    .asset-table-row td{
+
+    .asset-table-row td {
         font-size: 16px;
     }
 }
@@ -784,20 +799,20 @@ hr {
     .portfolio-details-2 {
         font-size: 1.4rem;
     }
-    
+
     .total-portfolio-bal {
         font-size: 1.3rem;
     }
 
-    .assets-h1{
+    .assets-h1 {
         font-size: 2rem;
     }
 
-    .assets-header th{
+    .assets-header th {
         font-size: 18px;
     }
-    
-    .asset-table-row td{
+
+    .asset-table-row td {
         font-size: 16px;
     }
 
