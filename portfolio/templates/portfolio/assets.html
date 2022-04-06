@@ -10,7 +10,7 @@
     <table class="portfolio-table">
         <tr class="table-header assets-header">
             <th>Name</th>
-            <th>Price</th>
+            <th class="d-none d-sm-table-cell">Price</th>
             <th>Holdings</th>
             <th class="d-none d-sm-none d-md-none d-lg-table-cell">Avg. Buy Price</th>
             <th class="d-none d-sm-none d-md-table-cell">Profit/Loss</th>
@@ -19,9 +19,12 @@
         {% for asset in assets %}
             <tr class="asset-table-row portfolio-rows">
                 <td>{{ asset.ticker }}</td>   
-                <td>{{ asset.price }}</td>   
-                <td>{{ asset.quantity }}</td>   
-                <td class="d-none d-sm-none d-md-none d-lg-table-cell">{{ asset.average_price }}</td>   
+                <td class="d-none d-sm-table-cell">{{ asset.price }}</td>   
+                <td>${{asset.usd_spent}} 
+                    <hr class="table-hr">
+                    <span class="qty_data">{{asset.quantity}}<span class="qty-ticker">{{ asset.ticker }}</span></span>
+                </td>   
+                <td class="d-none d-sm-none d-md-none d-lg-table-cell">${{ asset.average_price }}</td>   
                 <td class="d-none d-sm-none d-md-table-cell">{{ asset.pnl }}</td>
 
                 <!-- Modal Trigger -->
