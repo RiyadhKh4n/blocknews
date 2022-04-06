@@ -2,22 +2,25 @@
 
 {% block content %}
 
-<h1>Add A Coin</h1>  
+<div class="container login-div-container">
+    <h1 class="sign-in-text">Add A Coin <span class="create-close">&times;</span></h1>  
+    
+    <form method='POST' action="">
+        {% csrf_token %}
+        <select name="ticker" id="ticker">
+            <option value="" selected disabled>Chose Coin</option>
+            {% for ticker in tickerList %}
+                <option value="{{ ticker }}">{{ ticker }}</option>
+            {% endfor %}
+        </select>
+        {{ form.as_p }}
+        <div>
+            <p> 
+                <button class="btn login-btn add-coin-btn" type="submit">Add Coin</button>
+            </p>
+        </div>
+    </form>
 
-<form method='POST' action="">
-    {% csrf_token %}
-    <select name="ticker" id="ticker">
-        <option value="" selected disabled>Select a Coin</option>
-        {% for ticker in tickerList %}
-            <option value="{{ ticker }}">{{ ticker }}</option>
-        {% endfor %}
-    </select>
-    {{ form.as_p }}
-    <div>
-        <p> 
-            <button type="submit">Add Coin to portfolio</button>
-        </p>
-    </div>
-</form>
+</div>
 
 {% endblock %}
