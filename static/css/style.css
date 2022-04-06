@@ -237,9 +237,12 @@ body {
     margin-top: 30px;
 }
 
-.portfolio-details {
+.portfolio-h1{
     font-size: 1.4rem;
     font-family: 'Fjanlla One', sans-serif;
+}
+
+.portfolio-details {
     font-weight: 800;
     text-align: center;
     padding-top: 20px;
@@ -250,6 +253,7 @@ body {
     font-size: 1.1rem;
     font-family: 'Lato', sans-serif;
     font-weight: 700;
+    
 }
 
 .total-portfolio-bal {
@@ -586,6 +590,7 @@ hr {
     .login-div-container {
         margin-top: 70px;
     }
+
     .assets-header th{
         font-size: 16px;
     }
@@ -644,6 +649,30 @@ hr {
     .links-col {
         padding-left: 60px;
     }
+
+    .portfolio-h1 {
+        font-size: 1.6rem;
+    }
+
+    .portfolio-details-2 {
+        font-size: 1.2rem;
+    }
+    
+    .total-portfolio-bal {
+        font-size: 1.1rem;
+    }
+
+    .portfolio-header th{
+        font-size: 18px;
+    }
+
+    .view-btn {
+        font-size: 1rem;
+    }
+
+    .assets-h1{
+        font-size: 1.6rem;
+    }
     
     .add-new-section a {
         font-size: 1rem;
@@ -684,6 +713,30 @@ hr {
         padding-left: 90px;
     }
 
+    .portfolio-h1 {
+        font-size: 1.8rem;
+    }
+
+    .portfolio-details-2 {
+        font-size: 1.3rem;
+    }
+    
+    .total-portfolio-bal {
+        font-size: 1.2rem;
+    }
+
+    .portfolio-header th{
+        font-size: 20px;
+    }
+
+    .portfolio-rows td{
+        font-size: 18px;
+    }
+
+    .assets-h1{
+        font-size: 1.8rem;
+    }
+
     .assets-header th{
         font-size: 18px;
     }
@@ -711,6 +764,22 @@ hr {
     .webiste-info-box:nth-child(2),
     .webiste-info-box:nth-child(4) {
         margin-left: 70px;
+    }
+
+    .portfolio-h1 {
+        font-size: 2rem;
+    }
+
+    .portfolio-details-2 {
+        font-size: 1.4rem;
+    }
+    
+    .total-portfolio-bal {
+        font-size: 1.3rem;
+    }
+
+    .assets-h1{
+        font-size: 2rem;
     }
 
     .assets-header th{
