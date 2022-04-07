@@ -20,12 +20,12 @@
             <tr class="asset-table-row portfolio-rows">
                 <td>{{ asset.ticker }}</td>   
                 <td class="d-none d-sm-table-cell">{{ asset.price }}</td>   
-                <td>${{asset.usd_spent}} 
+                <td>${{asset.current_holdings}} 
                     <hr class="table-hr">
                     <span class="qty_data">{{asset.quantity}}<span class="qty-ticker">{{ asset.ticker }}</span></span>
                 </td>   
                 <td class="d-none d-sm-none d-md-none d-lg-table-cell">${{ asset.average_price }}</td>   
-                <td class="d-none d-sm-none d-md-table-cell">{{ asset.pnl }}</td>
+                <td class="d-none d-sm-none d-md-table-cell">${{ asset.pnl }}</td>
 
                 <!-- Modal Trigger -->
                 <td>
