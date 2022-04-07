@@ -475,6 +475,11 @@ td {
     width: fit-content
 }
 
+.form-control{
+    width: inherit;
+    display: inline;
+}
+
 /* Footer */
 
 .footer-class {
