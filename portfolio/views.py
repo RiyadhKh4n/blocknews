@@ -203,3 +203,5 @@ def update_asset(request, pk, b_or_s):
         'form': form,
     }
     return render(request, 'portfolio/buy_sell_asset.html', context)
+
+print("test commit")
