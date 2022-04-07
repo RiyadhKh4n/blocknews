@@ -214,9 +214,9 @@ body {
     cursor: pointer;
 }
 
-.create-portfolio-btn {
+/* .create-portfolio-btn {
     width: 150px;
-}
+} */
 
 .edit-portfolio-btn {
     width: 175px;
@@ -313,6 +313,7 @@ td {
     background-color: #661aff;
     border-radius: 20px;
     text-align: center;
+    cursor: pointer;
 }
 
 .create-portfolio-a {
