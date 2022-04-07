@@ -7,12 +7,15 @@
     
     <form method='POST' action="">
         {% csrf_token %}
-        <select name="ticker" id="ticker">
-            <option value="" selected disabled>Chose Coin</option>
-            {% for ticker in tickerList %}
-                <option value="{{ ticker }}">{{ ticker }}</option>
-            {% endfor %}
-        </select>
+
+        <label for="ticker" class="form-label">Select a Coin:</label>
+        <input name="ticker" id="ticker" class="form-control" list="tickers" placeholder="Type to search...">
+        <datalist id="tickers">
+        {% for ticker in tickerList %}
+            <option value="{{ ticker }}">{{ ticker }}</option>
+        {% endfor %}
+        </datalist>
+
         {{ form.as_p }}
         <div>
             <p> 
