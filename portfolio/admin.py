@@ -12,7 +12,7 @@ class PortfolioAdmin(admin.ModelAdmin):
 
 @admin.register(Asset)
 class AssetAdmin(admin.ModelAdmin):
-    list_display = ('portfolio_user', 'portfolio_name', 'pnl', 'quantity', 'added_to_portfolio')
+    list_display = ('ticker', 'portfolio_user', 'portfolio_name', 'pnl', 'quantity', 'added_to_portfolio')
     search_fields = ['portfolio_name']
     list_filter = ('portfolio_name', 'pnl', 'added_to_portfolio')
 
