@@ -43,7 +43,8 @@ def call_api():
 def get_ticker_list(data):
     for d in data['data']:
         ticker_from_api = d['symbol']
-        tickerList.append(ticker_from_api)
+        if ticker_from_api not in tickerList:
+            tickerList.append(ticker_from_api)
 
 
 def get_coin_price(ticker, coins):
@@ -117,7 +118,6 @@ def add_asset(request, portfolio_id, coin_id=None):
             try:
                 asset = Asset.objects.get(portfolio_name=portfolio_id, ticker=coin)
                 print(asset)
-                print("A Coin with the ID " + coin + " exists!")
                 pk = asset.id
                 b_or_s = 'buy'
                 update_asset(request, pk, b_or_s)
@@ -125,21 +125,20 @@ def add_asset(request, portfolio_id, coin_id=None):
                 return redirect(reverse('get_asset_list', args=[portfolio_id]))
 
             except Asset.DoesNotExist:
-                print("Coin with that ID doesn't exist")
                 obj = form.save(commit=False)
-                obj.average_price = form['average_price'].value()
                 quantity = float(form['quantity'].value())
                 AP = float(form['average_price'].value())
+                ticker_price = get_coin_price(coin, returnedCoin)
+                obj.price = ticker_price
+                print(ticker_price)
+                USDspent = quantity * ticker_price
+                obj.average_price = AP
                 obj.portfolio_name = portfolio
                 obj.ticker = coin
                 obj.pnl = 0.00
                 obj.usd_earned = 0.00
-                ticker_price = get_coin_price(coin, returnedCoin)
-                print(ticker_price)
-                obj.price = ticker_price
-                USDspent = quantity * AP
                 obj.usd_spent = USDspent
-                obj.current_investment = USDspent
+                obj.current_holdings = quantity * ticker_price
                 obj.save()
                 return redirect(reverse('get_asset_list', args=[portfolio_id]))
 
@@ -159,17 +158,16 @@ def update_asset(request, pk, b_or_s):
         print(ticker_price)
         form = UpdateAsset(request.POST, instance=asset)
         asset_qty = float(asset.quantity)
-        curr_inv = float(asset.current_investment)
+        curr_spent = float(asset.usd_spent)
         curr_usd_earned = float(asset.usd_earned)
         curr_PnL = float(asset.pnl)
         if b_or_s == 'buy':
             # do the calculations for BUYING
             new_qty = float(form['quantity'].value())
-            new_inv = float(form['average_price'].value()) * new_qty
+            new_inv = ticker_price * new_qty
             asset.quantity = asset_qty + new_qty
-            asset.current_investment = curr_inv + new_inv
-            asset.usd_spent = asset.current_investment
-            # asset.price = ticker_price
+            asset.usd_spent = curr_spent + new_inv
+            asset.current_holdings = (asset.quantity) * ticker_price
             asset.ticker = coin
             asset.save()
             messages.success(request, f"{new_qty} {coin} successfully purchased!")
@@ -186,7 +184,7 @@ def update_asset(request, pk, b_or_s):
                 asset.ticker = coin
                 asset.quantity = asset_qty - new_qty
                 asset.usd_earned = curr_usd_earned + usd_earned
-                # asset.PnL = curr_PnL + (asset.USDEarned - asset.CurrentInvestment)
+                asset.current_holdings = (asset.quantity) * ticker_price
                 if asset.quantity <= 0:
                     asset.delete()
                 else:
