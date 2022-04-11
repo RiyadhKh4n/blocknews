@@ -1,5 +1,7 @@
 from . import views
 from django.urls import path
+# from django.forms import ContactForm1, ContactForm2
+# from django.views import ContactWizard
 
 urlpatterns = [
     path('', views.get_portfolio_list, name='get_portfolio_list'),
@@ -8,5 +10,6 @@ urlpatterns = [
     path('create', views.create_portfolio, name='create_portfolio_url'),
     path('view/<portfolio_id>', views.get_asset_list, name='get_asset_list'),
     path('add/<portfolio_id>', views.add_asset, name='add_asset'),
+    # path('add/<portfolio_id>', FormWizardView.as_view([ContactForm1, ContactForm2])),
     path('update/<int:pk>/<str:b_or_s>', views.update_asset, name='update_asset'),
 ]
