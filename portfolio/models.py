@@ -29,7 +29,7 @@ class Asset(models.Model):
     pnl = models.DecimalField(max_digits=10, decimal_places=3, default='0.00')
 
     class Meta:
-        ordering = ['added_to_portfolio']
+        ordering = ['-current_holdings']
 
     def __repr__(self):
         return self.ticker
