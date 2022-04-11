@@ -3,5 +3,3 @@ from .models import Portfolio, Asset
 
 
 class TestModels(TestCase):
-
-    

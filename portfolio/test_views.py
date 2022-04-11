@@ -37,7 +37,7 @@ class TestViews(TestCase):
 
     def test_delete_portfolio(self):
         john = User.objects.get(username='john')
-        created_portfolio = {"name":"ftx", "slug": "ftx", "user": john}
+        created_portfolio = {"name": "ftx", "slug": "ftx", "user": john}
         url = self.client.get(f'/delete/{created_portfolio.id}')
         portfolio = self.client.post(url, created_portfolio)
         self.assertRedirects(portfolio, '/')
@@ -53,4 +53,3 @@ class TestViews(TestCase):
     # def test_add_asset(self):
 
     # def test_update_asset(self):
-    
