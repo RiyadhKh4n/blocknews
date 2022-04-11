@@ -1,0 +1,13 @@
+{% extends "home/base.html" %}
+
+{% block content %}
+
+<h2>Thanks for adding</h2>
+
+{% for form in form_data %}
+    {{ form }}
+
+{% endfor %}
+
+
+{% endblock %}
