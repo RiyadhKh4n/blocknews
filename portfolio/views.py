@@ -3,10 +3,14 @@ from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.contrib import messages
+# from formtools.wizard.views import SessionWizardView
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 from .models import Portfolio, Asset
 from .forms import PortfolioForm, AddAsset, UpdateAsset
+import logging
+logr = logging.getLogger(__name__)
+
 
 tickerList = []
 global coins
@@ -203,3 +207,20 @@ def update_asset(request, pk, b_or_s):
         'form': form,
     }
     return render(request, 'portfolio/buy_sell_asset.html', context)
+
+
+# class FormWizardView(SessionWizardView):
+#     template_name = "portfolio/add_asset_form.html"
+#     form_list = [ContactForm1, ContactForm2]
+
+#     def done(self, form_list, **kwargs):
+#         return render(self.request, 'done.html', {
+#             'form_data': [form.cleaned_data for form in form_list],
+#         })
+
+
+# def process_form_data(form_list):
+#     form_data = [form.cleaned_Data for form in form_list]
+
+#     logr.debug(form_data[0]['ticker'])
+#     logr.debug(form_data[1]['ticker', 'quantity', 'price'])
