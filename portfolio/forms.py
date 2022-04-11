@@ -20,10 +20,10 @@ class UpdateAsset(forms.ModelForm):
         fields = ['quantity', 'average_price', 'price']
 
 
-class ContactForm1(forms.Form):
-    ticker = models.CharField(max_length=6)
-    fields = ['ticker']
+# class ContactForm1(forms.Form):
+#     ticker = models.CharField(max_length=6)
+#     fields = ['ticker']
 
 
-class ContactForm2(form.Form):
-    fields = ['ticker', 'quantity', 'price']
+# class ContactForm2(form.Form):
+#     fields = ['ticker', 'quantity', 'price']
