@@ -1,0 +1,27 @@
+{% extends "home/base.html" %}
+
+{% block content %}
+
+<div class="container login-div-container">
+    <h1 class="sign-in-text">Chose a Coin <span class="create-close">&times;</span></h1>
+    <span>Step 1 / 2</span> 
+    
+    <form method='POST' action="{% url 'get_asset' portfolio.id %}">
+        {% csrf_token %}
+        <label for="ticker" class="form-label">Select a Coin:</label>
+        <input name="ticker" id="ticker" class="form-control" list="tickers" placeholder="Type to search...">
+        <datalist id="tickers">
+        {% for ticker in tickerList %}
+            <option value="{{ ticker }}">{{ ticker }}</option>
+        {% endfor %}
+        </datalist>
+        <!-- {{ form.as_p }} -->
+        <div>
+            <!-- <p>  -->
+                <button class="btn login-btn add-coin-btn" type="submit">Next</button>
+            <!-- </p> -->
+        </div>
+    </form>
+</div>
+
+{% endblock %}
