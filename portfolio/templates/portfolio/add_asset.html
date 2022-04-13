@@ -1,29 +1,21 @@
 {% extends "home/base.html" %}
-
 {% block content %}
 
 <div class="container login-div-container">
+
     <h1 class="sign-in-text">Add A Coin <span class="create-close">&times;</span></h1>  
-    
+    <span>Step 2 / 2</span> 
+
     <form method='POST' action="">
         {% csrf_token %}
-
-        <label for="ticker" class="form-label">Select a Coin:</label>
-        <input name="ticker" id="ticker" class="form-control" list="tickers" placeholder="Type to search...">
-        <datalist id="tickers">
-        {% for ticker in tickerList %}
-            <option value="{{ ticker }}">{{ ticker }}</option>
-        {% endfor %}
-        </datalist>
-
+        <label for="ticker" class="form-label">Coin: {{ ticker }}</label>
+        <input type="hidden" name="ticker" id="ticker"><br>
+        <label for="price" class="form-label">Coin Price:</label>
+        <input type="number" step="0.01" name="price" id="price" value="{{ price }}"><br>
         {{ form.as_p }}
-        <div>
-            <p> 
-                <button class="btn login-btn add-coin-btn" type="submit">Add Coin</button>
-            </p>
-        </div>
+        <p> 
+            <button class="btn login-btn add-coin-btn" type="submit">Add Coin</button>
+        </p>
     </form>
-
 </div>
-
 {% endblock %}
