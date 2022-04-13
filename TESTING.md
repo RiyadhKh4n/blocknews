@@ -11,9 +11,11 @@
 
 ## Django Testing (Unit Tests)
 
-## JavaScript Testing
+<!-- ## JavaScript Testing -->
 
-## Website Testing (Solving Issues):
+## User Story Tests
+
+## Manual Testing
 
 ## Responsiveness Testing
 
