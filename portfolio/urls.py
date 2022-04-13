@@ -9,5 +9,5 @@ urlpatterns = [
     path('view/<portfolio_id>', views.get_asset_list, name='get_asset_list'),
     path('get/<portfolio_id>', views.get_asset, name='get_asset'),
     path('add/<int:portfolio>/<coin>/<price>', views.add_asset, name='add_asset_form'),
-    path('update/<int:pk>/<str:b_or_s>', views.update_asset, name='update_asset'),
+    path('update/<int:pk>/<str:b_or_s>/<coin>/<price>', views.update_asset, name='update_asset'),
 ]
