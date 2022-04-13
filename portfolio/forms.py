@@ -11,7 +11,8 @@ class PortfolioForm(forms.ModelForm):
 class AddAsset(forms.ModelForm):
     class Meta:
         model = Asset
-        fields = ['quantity', 'price', 'average_price']
+        fields = ['quantity']
+        # fields = ['quantity', 'price', 'average_price']
 
 
 class UpdateAsset(forms.ModelForm):
@@ -19,11 +20,3 @@ class UpdateAsset(forms.ModelForm):
         model = Asset
         fields = ['quantity', 'average_price', 'price']
 
-
-# class ContactForm1(forms.Form):
-#     ticker = models.CharField(max_length=6)
-#     fields = ['ticker']
-
-
-# class ContactForm2(form.Form):
-#     fields = ['ticker', 'quantity', 'price']
