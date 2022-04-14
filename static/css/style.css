@@ -468,6 +468,7 @@ td {
 /* Forms */
 
 .add-coin-btn {
+    margin-top: 20px;
     width: fit-content;
 }
 
