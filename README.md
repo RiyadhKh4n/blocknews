@@ -169,7 +169,7 @@ Onced logged in, users are able to create, read, edit and delete portfolios whic
  
 Due to the size of the testing section for CoinFrog I have created [TESTING.md](TESTING.md). It contains all my unit testing and test for user stories and any bugs found.
  
-[Link To Testing.md](TESTING.md)
+[Link To TESTING.md](TESTING.md)
    
 # Deployment
  
