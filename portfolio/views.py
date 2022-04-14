@@ -140,7 +140,7 @@ def get_asset(request, portfolio_id):
             return redirect(add_asset, portfolio.id, coin, price)
 
         else:
-            messages.error(request, f"{coin} does not exist!")
+            messages.success(request, f"{coin} does not exist!")
 
     context = {
         'tickerList': tickerList,
