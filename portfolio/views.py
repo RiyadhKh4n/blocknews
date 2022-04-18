@@ -132,7 +132,7 @@ def get_asset(request, portfolio_id):
     returnedCoin = call_api()
 
     if request.method == "POST":
-        coin = request.POST.get("ticker")
+        coin = request.POST.get("ticker").upper()
         valid = validate_ticker(coin)
 
         if valid:
