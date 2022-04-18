@@ -419,8 +419,8 @@ td {
 }
 
 .table-hr {
-    width: 60%;
-    border-bottom: 2px solid #661aff;
+    width: 50%;
+    border-bottom: 2px solid black;
     margin: 2px auto 2px;
 }
 
