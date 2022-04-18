@@ -18,8 +18,8 @@
         </tr>
         {% for asset in assets %}
             <tr class="asset-table-row portfolio-rows">
-                <td>{{ asset.ticker }}</td>   
-                <td class="d-none d-sm-table-cell">{{ asset.price }}</td>   
+                <td class="ticker">{{ asset.ticker }}</td>   
+                <td class="d-none d-sm-table-cell coin-prices">{{ asset.price }}</td>   
                 <td>${{asset.current_holdings}} 
                     <hr class="table-hr">
                     <span class="qty_data">{{asset.quantity}}<span class="qty-ticker">{{ asset.ticker }}</span></span>
@@ -78,7 +78,7 @@
 
     <section class="add-new-container">
         <section class="add-new-section">
-            <a class="add-new-a" href="{% url 'get_asset' portfolio_id %}"> <!-- Changed add_asset to get_asset-->
+            <a class="add-new-a" href="{% url 'get_asset' portfolio_id %}">
                 <i class="fa-solid fa-circle-plus"></i> Add New
             </a>
         </section>
