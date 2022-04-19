@@ -16,17 +16,17 @@
             <th class="d-none d-sm-none d-md-table-cell">Profit/Loss</th>
             <th>Actions</th> 
         </tr>
-        {% for asset in assets %}
+        {% for asset,price in assets %}
             <tr class="asset-table-row portfolio-rows">
-                <td class="ticker">{{ asset.ticker }}</td>   
-                <td class="d-none d-sm-table-cell coin-prices">{{ asset.price }}</td>   
+                <td>{{ asset.ticker }}</td>   
+                <td class="d-none d-sm-table-cell">{{ price }}</td>
                 <td>${{asset.current_holdings}} 
                     <hr class="table-hr">
                     <span class="qty_data">{{asset.quantity}}<span class="qty-ticker">{{ asset.ticker }}</span></span>
                 </td>   
                 <td class="d-none d-sm-none d-md-none d-lg-table-cell">${{ asset.average_price }}</td>   
                 <td class="d-none d-sm-none d-md-table-cell">${{ asset.pnl }}</td>
-
+                
                 <!-- Modal Trigger -->
                 <td>
                     <button class="btn" data-bs-toggle="modal" data-bs-target="#modal-{{ asset.id }}">
@@ -54,7 +54,7 @@
                                                     <a href="{% url 'update_asset' asset.id 'buy' asset.ticker None %}">
                                                         <button class="btn btn-purple modal-btn">Buy</button>
                                                     </a>
-
+                                                    
                                                     <a href="{% url 'update_asset' asset.id 'sell' asset.ticker None %}">
                                                         <button class="btn btn-green modal-btn sell-btn">Sell</button>
                                                     </a>
@@ -72,7 +72,7 @@
             <!-- no assets exist -->
             <tr class="asset-table-row">
                 <td colspan="6">No Assets Found on this Portfolio</td>
-            <tr>
+                <tr>
         {% endfor %}
     </table>
 
