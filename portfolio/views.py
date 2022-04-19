@@ -119,9 +119,24 @@ def delete_portfolio(request, portfolio_id):
 
 
 def get_asset_list(request, portfolio_id):
+    returnedCoin = call_api()
     assets = Asset.objects.filter(portfolio_name=portfolio_id)
+    
+    portfolio_assets = assets.values_list('ticker', flat=True)
+
+    asset_prices = []
+    for i in portfolio_assets:
+        current_asset_price = get_coin_price(i, returnedCoin)
+        rounded_price = round(current_asset_price, 3)
+        asset_prices.append(rounded_price)
+
+    zipped_assets = zip(assets, asset_prices)
+    zipped_context = tuple(zipped_assets)
+
+    print("ZIPPED CONTEXT", zipped_context)
+
     context = {
-        'assets': assets,
+        'assets': zipped_context,
         'portfolio_id': portfolio_id,
     }
     return render(request, 'portfolio/assets.html', context)
