@@ -7,10 +7,9 @@ class Portfolio(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
-    usd_value = models.DecimalField(blank=True, max_digits=10, decimal_places=3, default='0.00')
 
     class Meta:
-        ordering = ['-usd_value']
+        ordering = ['name']
 
     def __str__(self):
         return self.name
