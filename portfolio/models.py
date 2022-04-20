@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Portfolio(models.Model):
-    name = models.CharField(max_length=10, unique=True)
+    name = models.CharField(max_length=9, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
