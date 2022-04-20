@@ -16,13 +16,13 @@
             <th class="d-none d-sm-none d-md-table-cell">Profit/Loss</th>
             <th>Actions</th> 
         </tr>
-        {% for asset,price in assets %}
+        {% for asset,price,holdings in assets %}
             <tr class="asset-table-row portfolio-rows">
                 <td>{{ asset.ticker }}</td>   
                 <td class="d-none d-sm-table-cell">${{ price }}</td>
-                <td>${{ asset.current_holdings }} 
+                <td>${{ holdings }} 
                     <hr class="table-hr">
-                    <span class="qty_data">{{asset.quantity}}<span class="qty-ticker">{{ asset.ticker }}</span></span>
+                    <span class="qty_data">{{ asset.quantity }}<span class="qty-ticker">{{ asset.ticker }}</span></span>
                 </td>   
                 <td class="d-none d-sm-none d-md-none d-lg-table-cell">${{ asset.average_price }}</td>   
                 <td class="d-none d-sm-none d-md-table-cell">${{ asset.pnl }}</td>
