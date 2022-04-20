@@ -19,8 +19,8 @@
         {% for asset,price in assets %}
             <tr class="asset-table-row portfolio-rows">
                 <td>{{ asset.ticker }}</td>   
-                <td class="d-none d-sm-table-cell">{{ price }}</td>
-                <td>${{asset.current_holdings}} 
+                <td class="d-none d-sm-table-cell">${{ price }}</td>
+                <td>${{ asset.current_holdings }} 
                     <hr class="table-hr">
                     <span class="qty_data">{{asset.quantity}}<span class="qty-ticker">{{ asset.ticker }}</span></span>
                 </td>   
