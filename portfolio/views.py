@@ -264,8 +264,8 @@ def update_asset(request, pk, b_or_s, coin, price):
         elif b_or_s == 'sell':
             # do the calculations for SELLING
             if float(form['quantity'].value()) > asset_qty:
-                messages.error(request, "Not enough available to sell.")
-                return redirect(update_asset, pk, 'sell')
+                messages.success(request, "Not enough available to sell.")
+                return redirect(update_asset, pk, 'sell', coin, price)
             else:
                 new_qty = float(form['quantity'].value())
                 usd_earned = price * new_qty
