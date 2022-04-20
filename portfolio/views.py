@@ -77,8 +77,32 @@ def validate_ticker(ticker):
 
 def get_portfolio_list(request):
     portfolios = Portfolio.objects.filter(user=request.user)
+
+    portfolio_balance_list = []
+
+    for i in portfolios:
+        portfolio_id = i.id
+
+        assets = Asset.objects.filter(portfolio_name=portfolio_id)
+        curr_holdings = assets.values_list('current_holdings', flat=True)
+
+        total_balance = 0
+        for index, value in enumerate(curr_holdings):
+            total_balance = total_balance + value
+
+        portfolio_balance_list.append(float(total_balance))
+            
+    zipped_assets = zip(portfolios, portfolio_balance_list)
+    zipped_context = tuple(zipped_assets)
+
+    total_portfolio_balance = 0.00
+
+    for index, value in enumerate(portfolio_balance_list):
+        total_portfolio_balance = total_portfolio_balance + value
+
     context = {
-        'portfolios': portfolios
+        'portfolios': zipped_context,
+        'TPB': total_portfolio_balance
     }
     return render(request, 'portfolio/portfolio.html', context)
 
@@ -130,10 +154,16 @@ def get_asset_list(request, portfolio_id):
         rounded_price = round(current_asset_price, 3)
         asset_prices.append(rounded_price)
 
-    zipped_assets = zip(assets, asset_prices)
-    zipped_context = tuple(zipped_assets)
+    quantity = assets.values_list('quantity', flat=True)
 
-    print("ZIPPED CONTEXT", zipped_context)
+    current_holdings = []
+    for index, value in enumerate(quantity):
+        new_holdings = float(quantity[index]) * asset_prices[index]
+        rounded_holdings = round(new_holdings, 3)
+        current_holdings.append(rounded_holdings)
+
+    zipped_assets = zip(assets, asset_prices, current_holdings)
+    zipped_context = tuple(zipped_assets)
 
     context = {
         'assets': zipped_context,
@@ -214,8 +244,7 @@ def update_asset(request, pk, b_or_s, coin, price):
             price = get_coin_price(coin, returnedCoin)
         else:
             price = price
-        # coin = coin if coin is not None else request.POST.get("ticker")  # ternary operator not working
-        # price = price if price is not None else get_coin_price(coin, returnedCoin)  # ternary operator not working
+
         form = UpdateAsset(request.POST, instance=asset)
         asset_qty = float(asset.quantity)
         curr_spent = float(asset.usd_spent)
@@ -225,7 +254,6 @@ def update_asset(request, pk, b_or_s, coin, price):
             # do the calculations for BUYING
             new_qty = float(form['quantity'].value())
             new_inv = float(price) * float(new_qty)
-            asset.price = price
             asset.quantity = asset_qty + new_qty
             asset.usd_spent = curr_spent + new_inv
             asset.current_holdings = float(asset.quantity) * float(price)
@@ -240,7 +268,6 @@ def update_asset(request, pk, b_or_s, coin, price):
                 return redirect(update_asset, pk, 'sell')
             else:
                 new_qty = float(form['quantity'].value())
-                price = float(form['average_price'].value())
                 usd_earned = price * new_qty
                 asset.ticker = coin
                 asset.quantity = asset_qty - new_qty
