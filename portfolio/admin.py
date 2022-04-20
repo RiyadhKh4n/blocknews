@@ -6,7 +6,7 @@ from portfolio.models import Portfolio, Asset
 class PortfolioAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
     list_filter = ('user', 'name', 'created_on')
-    list_display = ('name', 'user', 'created_on', 'usd_value')
+    list_display = ('name', 'user', 'created_on')
     search_fields = ['name', 'user']
 
 
