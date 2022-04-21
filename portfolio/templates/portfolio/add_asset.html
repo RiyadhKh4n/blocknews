@@ -3,7 +3,7 @@
 
 <div class="container login-div-container">
 
-    <h1 class="sign-in-text">Add A Coin <span class="create-close">&times;</span></h1>  
+    <h1 class="sign-in-text">Add A Coin </h1>  
 
     <form method='POST' action="">
         {% csrf_token %}
@@ -13,7 +13,7 @@
         <input type="hidden" name="average_price" id="average_price" value="{{ price }}">
         <label for="price" class="form-label">Coin Price:</label>
         <input type="number" step="0.01" name="price" id="price" value="{{ price }}"><br>
-        {{ form.as_p }}
+        {{ form.as_p }}        
         <p> 
             <button class="btn login-btn add-coin-btn" type="submit">Add Coin</button>
         </p>

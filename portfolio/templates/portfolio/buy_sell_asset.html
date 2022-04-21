@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="container login-div-container">
-    <h1 class="sign-in-text">{{ b_or_s|title }} {{ asset.ticker }} <span class="create-close">&times;</span></h1>  
+    <h1 class="sign-in-text">{{ b_or_s|title }} {{ asset.ticker }} </h1>  
     
     <form method='POST' action="">
         {% csrf_token %}

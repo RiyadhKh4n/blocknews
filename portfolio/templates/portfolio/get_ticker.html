@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="container login-div-container">
-    <h1 class="sign-in-text">Chose a Coin <span class="create-close">&times;</span></h1>
+    <h1 class="sign-in-text">Chose a Coin </h1>
     
     <form method='POST' action="{% url 'get_asset' portfolio.id %}">
         {% csrf_token %}
