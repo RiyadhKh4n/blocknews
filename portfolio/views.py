@@ -77,7 +77,6 @@ def validate_ticker(ticker):
 
 def get_portfolio_list(request):
     portfolios = Portfolio.objects.filter(user=request.user)
-
     portfolio_balance_list = []
 
     for i in portfolios:
@@ -99,10 +98,11 @@ def get_portfolio_list(request):
 
     for index, value in enumerate(portfolio_balance_list):
         total_portfolio_balance = total_portfolio_balance + value
+        rounded_portfolio_balance = round(total_portfolio_balance, 3)
 
     context = {
         'portfolios': zipped_context,
-        'TPB': total_portfolio_balance
+        'TPB': rounded_portfolio_balance
     }
     return render(request, 'portfolio/portfolio.html', context)
 
@@ -154,6 +154,7 @@ def get_asset_list(request, portfolio_id):
         rounded_price = round(current_asset_price, 3)
         asset_prices.append(rounded_price)
 
+    print("Asset Prices -", asset_prices)
     quantity = assets.values_list('quantity', flat=True)
 
     current_holdings = []
@@ -162,6 +163,13 @@ def get_asset_list(request, portfolio_id):
         rounded_holdings = round(new_holdings, 3)
         current_holdings.append(rounded_holdings)
 
+    for index, value in enumerate(assets):
+        asset_id = value.id
+        asset_to_change = Asset.objects.get(id=asset_id)
+        api_current_holdings = asset_prices[index]
+        asset_to_change.current_holdings = api_current_holdings
+        asset_to_change.save(update_fields=['current_holdings'])
+        
     zipped_assets = zip(assets, asset_prices, current_holdings)
     zipped_context = tuple(zipped_assets)
 
