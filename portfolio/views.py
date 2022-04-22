@@ -209,7 +209,6 @@ def get_asset(request, portfolio_id):
 
 def add_asset(request, portfolio, coin, price):
     portfolio = Portfolio.objects.get(pk=portfolio)
-    returnedCoin = call_api()
     form = AddAsset()
     if request.method == "POST":
         form = AddAsset(request.POST)
@@ -233,7 +232,6 @@ def add_asset(request, portfolio, coin, price):
                 obj.ticker = coin
                 obj.pnl = 0.00
                 obj.usd_earned = 0.00
-                # obj.current_holdings = USDspent 
                 obj.save()
                 return redirect(reverse('get_asset_list', args=[portfolio.id]))
 
@@ -270,7 +268,6 @@ def update_asset(request, pk, b_or_s, coin, price):
             new_inv = float(price) * float(new_qty)
             asset.quantity = asset_qty + new_qty
             asset.usd_spent = curr_spent + new_inv
-            # asset.current_holdings = float(asset.quantity) * float(price)
             asset.ticker = coin
             asset.save()
             messages.success(request, f"{new_qty} {coin} successfully purchased!")
@@ -286,7 +283,6 @@ def update_asset(request, pk, b_or_s, coin, price):
                 asset.ticker = coin
                 asset.quantity = asset_qty - new_qty
                 asset.usd_earned = curr_usd_earned + usd_earned
-                # asset.current_holdings = (asset.quantity) * price
                 if asset.quantity <= 0:
                     asset.delete()
                 else:
