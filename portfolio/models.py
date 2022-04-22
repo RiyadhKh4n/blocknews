@@ -19,16 +19,16 @@ class Asset(models.Model):
     portfolio_name = models.ForeignKey(Portfolio, on_delete=models.CASCADE)
     ticker = models.CharField(max_length=6)
     quantity = models.DecimalField(max_digits=10, decimal_places=3)
-    price = models.DecimalField(max_digits=10, decimal_places=3, default=0.00)
+    price = models.DecimalField(max_digits=10, decimal_places=3)
     average_price = models.DecimalField(max_digits=10, decimal_places=3)
     usd_spent = models.DecimalField(max_digits=10, decimal_places=3)
-    current_holdings = models.DecimalField(max_digits=10, decimal_places=3)
+    # current_holdings = models.DecimalField(max_digits=10, decimal_places=3)
     usd_earned = models.DecimalField(max_digits=10, decimal_places=3)
     added_to_portfolio = models.DateTimeField(auto_now_add=True)
     pnl = models.DecimalField(max_digits=10, decimal_places=3, default='0.00')
 
     class Meta:
-        ordering = ['-current_holdings']
+        ordering = ['-ticker']
 
     def __repr__(self):
         return self.ticker
