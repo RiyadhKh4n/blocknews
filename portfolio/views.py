@@ -67,42 +67,55 @@ def validate_ticker(ticker):
     """
     for x in tickerList:
         if ticker in tickerList:
-            print("Valid ticker")
             return True
 
         else:
-            print("Invalid ticker")
             return False
 
 
 def get_portfolio_list(request):
     portfolios = Portfolio.objects.filter(user=request.user)
     portfolio_balance_list = []
+    total_portfolio_balance = 0
+    returnedCoin = call_api()
 
+    ##########################################
     for i in portfolios:
+        total = 0
         portfolio_id = i.id
-
+        
         assets = Asset.objects.filter(portfolio_name=portfolio_id)
-        curr_holdings = assets.values_list('current_holdings', flat=True)
+        quantity = assets.values_list('quantity', flat=True)
 
-        total_balance = 0
-        for index, value in enumerate(curr_holdings):
-            total_balance = total_balance + value
+        portfolio_assets = assets.values_list('ticker', flat=True)
+        asset_prices = []
+        for i in portfolio_assets:
+            current_asset_price = get_coin_price(i, returnedCoin)
+            rounded_price = round(current_asset_price, 3)
+            asset_prices.append(rounded_price)
 
-        portfolio_balance_list.append(float(total_balance))
-            
+        current_holdings = []
+        for index, value in enumerate(quantity):
+            new_holdings = float(quantity[index]) * asset_prices[index]
+            rounded_holdings = round(new_holdings, 3)
+            current_holdings.append(rounded_holdings)
+
+        for i in current_holdings:
+            total = total + i
+        
+        rounded_total = round(total, 3)
+        portfolio_balance_list.append(rounded_total)
+
+    for i in portfolio_balance_list:
+        total_portfolio_balance = total_portfolio_balance + i
+
     zipped_assets = zip(portfolios, portfolio_balance_list)
     zipped_context = tuple(zipped_assets)
 
-    total_portfolio_balance = 0.00
-
-    for index, value in enumerate(portfolio_balance_list):
-        total_portfolio_balance = total_portfolio_balance + value
-        rounded_portfolio_balance = round(total_portfolio_balance, 3)
-
     context = {
         'portfolios': zipped_context,
-        'TPB': rounded_portfolio_balance
+        'TPB': total_portfolio_balance
+        # 'portfolios': portfolios
     }
     return render(request, 'portfolio/portfolio.html', context)
 
@@ -145,7 +158,7 @@ def delete_portfolio(request, portfolio_id):
 def get_asset_list(request, portfolio_id):
     returnedCoin = call_api()
     assets = Asset.objects.filter(portfolio_name=portfolio_id)
-    
+
     portfolio_assets = assets.values_list('ticker', flat=True)
 
     asset_prices = []
@@ -154,7 +167,6 @@ def get_asset_list(request, portfolio_id):
         rounded_price = round(current_asset_price, 3)
         asset_prices.append(rounded_price)
 
-    print("Asset Prices -", asset_prices)
     quantity = assets.values_list('quantity', flat=True)
 
     current_holdings = []
@@ -163,13 +175,6 @@ def get_asset_list(request, portfolio_id):
         rounded_holdings = round(new_holdings, 3)
         current_holdings.append(rounded_holdings)
 
-    for index, value in enumerate(assets):
-        asset_id = value.id
-        asset_to_change = Asset.objects.get(id=asset_id)
-        api_current_holdings = asset_prices[index]
-        asset_to_change.current_holdings = api_current_holdings
-        asset_to_change.save(update_fields=['current_holdings'])
-        
     zipped_assets = zip(assets, asset_prices, current_holdings)
     zipped_context = tuple(zipped_assets)
 
@@ -204,6 +209,7 @@ def get_asset(request, portfolio_id):
 
 def add_asset(request, portfolio, coin, price):
     portfolio = Portfolio.objects.get(pk=portfolio)
+    returnedCoin = call_api()
     form = AddAsset()
     if request.method == "POST":
         form = AddAsset(request.POST)
@@ -217,17 +223,17 @@ def add_asset(request, portfolio, coin, price):
 
             except Asset.DoesNotExist:
                 obj = form.save(commit=False)
+                obj.portfolio_name = portfolio
+                obj.price = price
                 quantity = float(form['quantity'].value())
                 AP = float(request.POST.get('average_price'))
-                obj.price = price
-                USDspent = float(quantity) * float(price)
                 obj.average_price = AP
-                obj.portfolio_name = portfolio
+                USDspent = float(quantity) * float(price)
+                obj.usd_spent = USDspent
                 obj.ticker = coin
                 obj.pnl = 0.00
                 obj.usd_earned = 0.00
-                obj.usd_spent = USDspent
-                obj.current_holdings = float(quantity) * float(price)
+                # obj.current_holdings = USDspent 
                 obj.save()
                 return redirect(reverse('get_asset_list', args=[portfolio.id]))
 
@@ -264,7 +270,7 @@ def update_asset(request, pk, b_or_s, coin, price):
             new_inv = float(price) * float(new_qty)
             asset.quantity = asset_qty + new_qty
             asset.usd_spent = curr_spent + new_inv
-            asset.current_holdings = float(asset.quantity) * float(price)
+            # asset.current_holdings = float(asset.quantity) * float(price)
             asset.ticker = coin
             asset.save()
             messages.success(request, f"{new_qty} {coin} successfully purchased!")
@@ -280,7 +286,7 @@ def update_asset(request, pk, b_or_s, coin, price):
                 asset.ticker = coin
                 asset.quantity = asset_qty - new_qty
                 asset.usd_earned = curr_usd_earned + usd_earned
-                asset.current_holdings = (asset.quantity) * price
+                # asset.current_holdings = (asset.quantity) * price
                 if asset.quantity <= 0:
                     asset.delete()
                 else:
