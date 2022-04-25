@@ -18,4 +18,3 @@ class UpdateAsset(forms.ModelForm):
     class Meta:
         model = Asset
         fields = ['quantity', 'price']
-        # fields = ['quantity']
