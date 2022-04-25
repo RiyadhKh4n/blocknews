@@ -20,7 +20,7 @@ class Asset(models.Model):
     ticker = models.CharField(max_length=6)
     quantity = models.DecimalField(max_digits=10, decimal_places=3)
     price = models.DecimalField(max_digits=10, decimal_places=3)
-    average_price = models.DecimalField(max_digits=10, decimal_places=3)
+    average_price = models.JSONField(blank=True, null=True)
     usd_spent = models.DecimalField(max_digits=10, decimal_places=3)
     usd_earned = models.DecimalField(max_digits=10, decimal_places=3)
     added_to_portfolio = models.DateTimeField(auto_now_add=True)
