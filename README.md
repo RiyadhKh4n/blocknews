@@ -31,7 +31,7 @@ The project is inspired by the [CoinMarketCap Portfolio Tracker](https://coinmar
 2. As a **Site User** I can **create an account** so that **I can create a portfolio**
 3. As a **Site User** I can **log in to my account** so that **I can view my portfolios**
 4. As a **Site User** I can **create a Portfolio** so that **I can track my crypto holdings**
-5. As a **Site User** I can **view my Portfolio** so that **I can view the tokens within**
+5. As a **Site User** I can **view all Portfolios** so that **I can see the total valuation**
 6. As a **Site User** I can **delete my Portfolio** so that **I can remove my portfolio**
 7. As a **Site User** I can **search for a token** so that **I can add it to my portfolio**
 8. As a **Site User** I can **Sell a token** so that **I can remove it from portfolio**
