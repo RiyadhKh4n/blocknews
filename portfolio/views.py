@@ -17,7 +17,7 @@ URL = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
 
 params = {
     'start': '1',
-    'limit': '100',
+    'limit': '2000',
     'convert': 'USD'
 }
 
@@ -79,11 +79,10 @@ def get_portfolio_list(request):
     total_portfolio_balance = 0
     returnedCoin = call_api()
 
-    ##########################################
     for i in portfolios:
         total = 0
         portfolio_id = i.id
-        
+
         assets = Asset.objects.filter(portfolio_name=portfolio_id)
         quantity = assets.values_list('quantity', flat=True)
 
@@ -102,7 +101,7 @@ def get_portfolio_list(request):
 
         for i in current_holdings:
             total = total + i
-        
+
         rounded_total = round(total, 3)
         portfolio_balance_list.append(rounded_total)
 
@@ -115,7 +114,6 @@ def get_portfolio_list(request):
     context = {
         'portfolios': zipped_context,
         'TPB': total_portfolio_balance
-        # 'portfolios': portfolios
     }
     return render(request, 'portfolio/portfolio.html', context)
 
