@@ -7,9 +7,6 @@ from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 from .models import Portfolio, Asset
 from .forms import PortfolioForm, AddAsset, UpdateAsset
-import logging
-logr = logging.getLogger(__name__)
-
 
 tickerList = []
 global coins
@@ -212,7 +209,8 @@ def add_asset(request, portfolio, coin, price):
         form = AddAsset(request.POST)
         if form.is_valid():
             try:
-                asset = Asset.objects.get(portfolio_name=portfolio, ticker=coin)
+                asset = Asset.objects.get(
+                    portfolio_name=portfolio, ticker=coin)
                 pk = asset.id
                 b_or_s = 'buy'
                 update_asset(request, pk, b_or_s, coin, price)
@@ -223,8 +221,7 @@ def add_asset(request, portfolio, coin, price):
                 obj.portfolio_name = portfolio
                 obj.price = price
                 quantity = float(form['quantity'].value())
-                AP = float(request.POST.get('average_price'))
-                obj.average_price = AP
+                obj.average_price = {'price1': price}
                 USDspent = float(quantity) * float(price)
                 obj.usd_spent = USDspent
                 obj.ticker = coin
@@ -260,15 +257,20 @@ def update_asset(request, pk, b_or_s, coin, price):
         curr_spent = float(asset.usd_spent)
         curr_usd_earned = float(asset.usd_earned)
         curr_PnL = float(asset.pnl)
+        AP = asset.average_price
+        print("AveragePrice", AP)
         if b_or_s == 'buy':
             # do the calculations for BUYING
             new_qty = float(form['quantity'].value())
             new_inv = float(price) * float(new_qty)
             asset.quantity = asset_qty + new_qty
             asset.usd_spent = curr_spent + new_inv
+            AP[f"price{len(AP)+1}"] = price  # increment json key +1 of length
+            asset.price = price
             asset.ticker = coin
             asset.save()
-            messages.success(request, f"{new_qty} {coin} successfully purchased!")
+            messages.success(
+                request, f"{new_qty} {coin} successfully purchased!")
 
         elif b_or_s == 'sell':
             # do the calculations for SELLING
@@ -285,7 +287,8 @@ def update_asset(request, pk, b_or_s, coin, price):
                     asset.delete()
                 else:
                     asset.save()
-                messages.success(request, f"{new_qty} {coin} successfully sold!")
+                messages.success(
+                    request, f"{new_qty} {coin} successfully sold!")
         return redirect(get_asset_list, asset.portfolio_name.pk)
 
     if b_or_s == 'sell':
