@@ -191,6 +191,12 @@ Onced logged in, users are able to create, read, edit and delete portfolios whic
 
 13. [ColorSpace](https://mycolor.space/):
     * Used to find the colour scheme of the site
+
+14. [W3C Markup Validation Service](https://validator.w3.org/)
+    * Used to validate HTML code
+
+15. [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
+    * Used to validate CSS
  
 # Testing
  
@@ -202,22 +208,88 @@ Due to the size of the testing section for CoinFrog I have created [TESTING.md](
  
 Deploying the project using Heroku:
 
- 
+1. Login to [Heroku](https://dashboard.heroku.com/apps) and Create a New App
+
+2. Give the App a name, it must be unique, and select a region closest to you
+
+3. Click on 'Create App', this will take you to a page where you can deploy your project
+
+4. Click on the 'Resources' tab and search for 'Heroku Postgres' as this is the add-on you will use for the deployed database
+
+5. Click on the 'Settings' tab at the top of the page. The following step must be completed before deployment. 
+
+6. Scroll down to 'Config Vars' and click 'Reveal Config Vars'. Here the database URL is stored, it is the connection to the database, so this must be copied and stored within env.py as a root level file.
+
+The env.py files is where the projects secret environment variables are stored. This file is then added to a gitnore file so it isn't stored publicly within the projects repository.
+
+7. Next, the secret key needs to be created within the projects env.py file on GitPod and then added to the Config Vars on Heroku. Once added, go to the settings.py file on GitPod.
+
+8. Within the [settings.py](settings.py) file you need to import several libraries:
+    ```python
+    import os
+    import dj_database_url
+    from django.contrib.messages import constants as messages
+    if os.path.isfile('env.py'):
+        import env
+    ```
+
+9. Then, we need to replace the current insecre secret key with ```os.environ.get('SECRET_KEY)'```, that we set witin the env.py file.
+
+10. Once the secret key is replaced, scroll down to DATABASES to connect to the Postgres database. Comment out the current code and add the following python dictionary: 
+```python
+DATABASES = { 'default': dj_database_url.parse(os.environ.get('DATABASE_URL')) }
+```
+
+11. The next step is to connect the project to whitenoise, which is where the static files will be stored. You can find a full explanation of how to install whitenoise [here](http://whitenoise.evans.io/en/stable/)
+
+12. Then on Heroku add to the Config Vars, DISABLE_COLLECTSTATIC = 1, as a temporary measure to enable deployment without any static files, this will be removed when it is time to deploy the full project.
+
+13. Next we need to tell Django where to store the madia and static files. Towards the bottom of settings.py file we can add:
+
+```python
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_URL = '/media/'
+```
+
+14. Then we need to tell Django where the templates will be stored. At the top of settings.py, under BASE_DIR (the base directory), add a templates directory and then scroll down to TEMPLATES and add the templates directory variable to 'DIRS': [].
+
+15. Now we have to add our Heroku Host Name into allowed hosts in settings.py file:
+
+```python
+ALLOWED_HOSTS = ['YOUR-APP-NAME-HERE', 'localhost']
+```
+
+16. Finally, to complete the first deployment set up of the skeleton app, create a Procfile so that Heroku knows how to run the project. Within this file add the following: web: gunicorn APP-NAME.wsgi Web tells Heroku to allow web traffic, whilst gunicorn is the server installed earlier, a web services gateway interface server (wsgi). This is a standard that allows Python services to integrate with web servers.
+
+17. Now, go to the 'Deploy' Tab on Heroku. Find the 'Deployment Method' section and choose GitHub. Connect to your GitHub account and find the repo you want to deploy. 
+
+18. Scroll down to the Automatic and Manual Deploys sections. Click 'Deploy Branch' in the Manual Deploy section and waited as Heroku installed all dependencies and deployed the code.
+
+21. Once the project is finnished deploying, click 'Open App' to see the newly deployed project.
+
+22. Before deploying the final draft of your project you must:
+
+- Remove staticcollect=1 from congifvars within Heroku
+- Ensure DEBUG is set to false in settings.py file or:
+  Set DEBUG to development with: development = os.environ.get('DEVELOPMENT', False) above it.
+
 ## Making a Local Clone
  
-1. Log in to GitHub and locate the [GitHub Repository](https://github.com/RiyadhKh4n/blocknews)
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/RiyadhKh4n/cryptics)
 2. Under the repository name, click "Clone or download".
 3. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
 4. Open Git Bash
 5. Change the current working directory to the location where you want the cloned directory to be made.
 6. Type `git clone`, and then paste the URL you copied in Step 3.
  
-    $ `git clone LINK`
+    $ `https://github.com/RiyadhKh4n/cryptics.git`
  
 7. Press Enter. Your local clone will be created.
  
 ```shell
-$ git clone INSERT LINK
+$ git clone https://github.com/RiyadhKh4n/cryptics.git
 > Cloning into `CI-Clone`...
 > remote: Counting objects: 10, done.
 > remote: Compressing objects: 100% (8/8), done.
@@ -227,7 +299,8 @@ $ git clone INSERT LINK
  
 Alternatively, if using Gitpod, you can click below to create your own workspace using this repository.
  
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/RiyadhKh4n/CoinFrog)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/RiyadhKh4n/cryptics)
+
  
 You will need to also install all required packages in order to run this application on Heroku, refer to [requirements.txt](requirements.txt)
 * Command to install this apps requirements is `pip3 install -r requirements.txt`
