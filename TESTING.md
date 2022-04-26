@@ -1,7 +1,7 @@
 # Testing
 
 ## Validator Testing 
-[Python Validator](http://pep8online.com/)
+[PEP8 Python Validation](http://pep8online.com/)
 
 ### Views.py:
 
