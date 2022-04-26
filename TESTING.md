@@ -39,9 +39,11 @@
 
 ![settings](docs/readme/pep8settings.png)
 
-[HTML Validator](https://validator.w3.org/) 
+## [HTML Validation](https://validator.w3.org/)
 
-[CSS Validator](https://jigsaw.w3.org/css-validator/)
+![html](docs/readme/w3chtml.png)
+
+## [CSS Validation](https://jigsaw.w3.org/css-validator/)
 
 The errors which can be seen on the screen shot above are coming from Front-Awesome, not my project so can be ignored.
 
@@ -240,4 +242,20 @@ The errors which can be seen on the screen shot above are coming from Front-Awes
 ![ac](docs/readme/ac768px.png)
 
 ## Browser Compatibility Tests 
+
+I will test Cryptics on [Firefox](https://www.mozilla.org/en-GB/firefox/new/), [Microsoft Edge](https://www.microsoft.com/en-us/edge) and [Brave Browser](https://brave.com/):
+
+### Firefox:
+
+![firefox](docs/readme/firefox.png)
+
+### Microsoft Edge:
+
+![edge](docs/readme/microsoftedge.png)
+
+### Brave Browser:
+
+![Brave](docs/readme/bravebrowser.png)
+
+
 
