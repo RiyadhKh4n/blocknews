@@ -5,11 +5,17 @@
 
 ### Views.py:
 
-![views]()
+#### Portfolio APP:
+
+![views](docs/readme/pep8viewspy.png)
+
+#### Main APP:
+
+![views](docs/readme/pep8main.png)
 
 ### Models.py:
 
-![models]()
+![models](docs/readme/pep8models.png)
 
 ### Forms.py:
 
@@ -17,14 +23,39 @@
 
 ### Urls.py
 
-![urls]()
-![urls]()
+#### Main APP:
+
+![urls](docs/readme/pep8urlsmain.png)
+
+#### Home APP:
+
+![urls](docs/readme/pep8urlshome.png)
+
+#### Portfolio APP:
+
+![urls](docs/readme/pep8portfoliourls.png)
+
+### Settings.py
+
+![settings](docs/readme/pep8settings.png)
 
 [HTML Validator](https://validator.w3.org/) 
 
 [CSS Validator](https://jigsaw.w3.org/css-validator/)
 
+The errors which can be seen on the screen shot above are coming from Front-Awesome, not my project so can be ignored.
+
+![CSS](docs/readme/w3ccss.png)
+
 ## Lighthouse Score
+
+### Mobile:
+
+![LighthouseMobile](docs/readme/lighthousemobile.png)
+
+### Desktop:
+
+![LighthouseDesktop](docs/readme/lighthousedesktop.png)
 
 ## Django Testing (Unit Tests)
 
