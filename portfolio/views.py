@@ -151,10 +151,12 @@ def delete_portfolio(request, portfolio_id):
 
 
 def get_asset_list(request, portfolio_id):
+    average_prices = []
     returnedCoin = call_api()
     assets = Asset.objects.filter(portfolio_name=portfolio_id)
 
     portfolio_assets = assets.values_list('ticker', flat=True)
+    portfolio_average_price = assets.values_list('average_price', flat=True)
 
     asset_prices = []
     for i in portfolio_assets:
@@ -170,7 +172,19 @@ def get_asset_list(request, portfolio_id):
         rounded_holdings = round(new_holdings, 3)
         current_holdings.append(rounded_holdings)
 
-    zipped_assets = zip(assets, asset_prices, current_holdings)
+    for index, value in enumerate(portfolio_average_price):
+        asset_average_price = portfolio_average_price[index]
+        list_of_average_price_per_asset = list(asset_average_price.values())
+        print("NEW OUTPUT -", list_of_average_price_per_asset)
+
+        total = 0
+        for index, value in enumerate(list_of_average_price_per_asset):
+            total = total + list_of_average_price_per_asset[index]
+            average = round(total / len(list_of_average_price_per_asset), 3)
+            
+        average_prices.append(average)
+        
+    zipped_assets = zip(assets, asset_prices, current_holdings, average_prices)
     zipped_context = tuple(zipped_assets)
 
     context = {
@@ -221,7 +235,7 @@ def add_asset(request, portfolio, coin, price):
                 obj.portfolio_name = portfolio
                 obj.price = price
                 quantity = float(form['quantity'].value())
-                obj.average_price = {'price1': price}
+                obj.average_price = {'price1': float(price)}
                 USDspent = float(quantity) * float(price)
                 obj.usd_spent = USDspent
                 obj.ticker = coin
@@ -262,10 +276,11 @@ def update_asset(request, pk, b_or_s, coin, price):
         if b_or_s == 'buy':
             # do the calculations for BUYING
             new_qty = float(form['quantity'].value())
+            buy_price = float(form['price'].value())
             new_inv = float(price) * float(new_qty)
             asset.quantity = asset_qty + new_qty
             asset.usd_spent = curr_spent + new_inv
-            AP[f"price{len(AP)+1}"] = price  # increment json key +1 of length
+            AP[f"price{len(AP)+1}"] = buy_price  # increment json key +1 of length
             asset.price = price
             asset.ticker = coin
             asset.save()
