@@ -152,6 +152,7 @@ def delete_portfolio(request, portfolio_id):
 
 def get_asset_list(request, portfolio_id):
     average_prices = []
+    pnl = []
     returnedCoin = call_api()
     assets = Asset.objects.filter(portfolio_name=portfolio_id)
 
@@ -175,16 +176,24 @@ def get_asset_list(request, portfolio_id):
     for index, value in enumerate(portfolio_average_price):
         asset_average_price = portfolio_average_price[index]
         list_of_average_price_per_asset = list(asset_average_price.values())
-        print("NEW OUTPUT -", list_of_average_price_per_asset)
 
         total = 0
         for index, value in enumerate(list_of_average_price_per_asset):
             total = total + list_of_average_price_per_asset[index]
             average = round(total / len(list_of_average_price_per_asset), 3)
-            
+
         average_prices.append(average)
-        
-    zipped_assets = zip(assets, asset_prices, current_holdings, average_prices)
+
+    for index, value in enumerate(average_prices):
+        averge_price_holdings = average_prices[index] * float(quantity[index])
+        profit = round(current_holdings[index] - averge_price_holdings, 3)
+        pnl.append(profit)
+
+    print("pnl", pnl)
+
+    zipped_assets = zip(assets, asset_prices, current_holdings,
+                        average_prices, pnl)
+
     zipped_context = tuple(zipped_assets)
 
     context = {
@@ -280,7 +289,7 @@ def update_asset(request, pk, b_or_s, coin, price):
             new_inv = float(price) * float(new_qty)
             asset.quantity = asset_qty + new_qty
             asset.usd_spent = curr_spent + new_inv
-            AP[f"price{len(AP)+1}"] = buy_price  # increment json key +1 of length
+            AP[f"price{len(AP)+1}"] = buy_price 
             asset.price = price
             asset.ticker = coin
             asset.save()
