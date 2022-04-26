@@ -45,7 +45,7 @@
 
 ## [CSS Validation](https://jigsaw.w3.org/css-validator/)
 
-The errors which can be seen on the screen shot above are coming from Front-Awesome, not my project so can be ignored.
+The errors which can be seen on the screen shot below are coming from Front-Awesome, not my project, so can be ignored.
 
 ![CSS](docs/readme/w3ccss.png)
 
@@ -120,6 +120,8 @@ The errors which can be seen on the screen shot above are coming from Front-Awes
     ![buy/sell](docs/readme/buyselluserstory.png)
 
 ## Manual Testing
+
+TO DO
 
 ## Responsiveness Testing
 
@@ -256,6 +258,15 @@ I will test Cryptics on [Firefox](https://www.mozilla.org/en-GB/firefox/new/), [
 ### Brave Browser:
 
 ![Brave](docs/readme/bravebrowser.png)
+
+## Bugs
+
+- Not so much a bug but the API I am using only allows 333 calls per day as I am using the free version. Each time the user Adds or Buys a coin, as well as each time the [portfolio.html](portfolio/templates/portfolio/portfolio.html) template is rendered, 10 credits (calls) are used which means the program can be called 33 times a day before going over the limit. The limit is a soft limit meaning it does let you go over the 333 per day however after 10,000 calls (per month) the API will stop allowing calls meaning the program would not work if the limit is reached.
+
+- A bug that is out of my control is if the CoinMarketCap data has been hacked or corrupted. This was not something I thought I had to worry about however on (14/12/21) the website got hacked causing all the coin data to be incorrect, meaning if the data my program produces will also be incorrect.
+
+- If a user adds a coin whose price is very small e.g. SHIB (£0.00001852), the program will add the coin as price £0. This is because I round the price displayed to 3 decimal places in order to reduce how many decimal places display on the front-end making the site look cleaner. However, this will cause all other fields which depend on price (current_holdings, average_price, pnl) to also equal £0 as anything multiplied by zero equals zero. As a result, the asset will not display the correct data on the table in [assets.html](portfolio/templates/portfolio/assets.html)
+
 
 
 
