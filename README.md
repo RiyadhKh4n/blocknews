@@ -90,21 +90,26 @@ Here describes the main features of the website and what the user can expect whe
 
 Cryptics has several features:
 
-Cryptics has a full user authentication system which allows users to Create an Account or Login to the platform in order to begin using the Portfolio Tracking features. Users must have an account in order to use the features of the site as all Portfolio / Coin data must be saved to that users account, resulting in them needing to Sign Up first. 
+- Cryptics has a full user authentication system which allows users to Create an Account or Login to the platform in order to begin using the Portfolio Tracking features. Users must have an account in order to use the features of the site as all Portfolio / Coin data must be saved to that users account, resulting in the user needing an account.
 
-Onced logged in, users are able to create, read, edit and delete portfolios which they can add unlimited crypto assets to, allowing them to keep track of their holdings and monitor profit and losses. Within each portfolio, users are able to Buy and Sell thousands of coins giving them a platform to track their coins and help make better investment decisons.  
-
+- Onced logged in, users are able to create, read, edit and delete portfolios which they can add unlimited crypto assets to, allowing them to keep track of their holdings and monitor profit and losses. Within each portfolio, users are able to Buy and Sell thousands of coins giving them a platform to track their coins and help make better investment decisons.  
  
 ## Future Features:
- 
+
+- A future feature Cryptics could have, is the ability to visually see the performance of each portfolio and all portfolios as a whole via a line graph which shows the change in USD value over time. This was a feature I wanted to include in this iteration of development however due to lack of time I was not able to intergrate this feature.
+
+- Another feature would be to allow users to submit a contact form in order to provide feedback on the site and to raise any issues they had when using Cryptics. Although I did want to implement this, I decided not to as I wanted to focus on the core functionality first. 
+
+- Cryptics could allow users to login via social media platforms like Facebook or Google, as well as a password reset functionality, however due to the added compleity of this, I decided not to intergrate it into the site. However it is definately a future feature I would like to implement.
  
 # Technologies
 ## Programming Languages:
 
 - [HTML](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics) - The HyperText Markup Language or HTML is the standard markup language for documents designed to be displayed in a web browser
+
 - [CSS](https://en.wikipedia.org/wiki/CSS) - Cascading Style Sheets is a style sheet language used for describing the presentation of a document
+
 - [Python](https://www.python.org/) - Python is an interpreted high-level general-purpose programming language. It is used when creating the backend functionality with Django
-- [JavaScript](https://en.wikipedia.org/wiki/JavaScript) - JavaScript is used to develop interactive web applications
  
 - I used GitHub [Project Board](https://github.com/RiyadhKh4n/cryptics/projects) to keep track of all the User Stories and Tasks necessary in order to build Cryptics
  
@@ -116,7 +121,7 @@ Onced logged in, users are able to create, read, edit and delete portfolios whic
 2. [Bootstrap](https://getbootstrap.com/)
     * Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end web development.
 
-3. [oauthlib](https://github.com/oauthlib/oauthlib)
+3. [Oauthlib](https://github.com/oauthlib/oauthlib)
     * OAuthLib is a framework which implements the logic of OAuth1 or OAuth2 without assuming a specific HTTP request object or web framework.
 
 ## Libraries 
@@ -306,10 +311,12 @@ You will need to also install all required packages in order to run this applica
 * Command to install this apps requirements is `pip3 install -r requirements.txt`
  
 # Credits
- 
+
 ## Code
 
 The code which calls the CoinMarketCap API was taken from my previous project [CoinFrog](https://github.com/RiyadhKh4n/CoinFrog)
+
+The styling for the homepage was inspired by [CoinMarketCap's Portfolio Tracker](https://coinmarketcap.com/portfolio-tracker/)
 
 The code for the footer was inspired from [this](https://www.youtube.com/watch?v=FRRlFLfdvBE) YouTube video
 
@@ -317,7 +324,7 @@ The code for the table styling was inspired from [this](https://www.youtube.com/
 
  
 ### Acknowledgements
-* Tim - My Mentor
+* Tim Nelson - My Mentor
 * Tutor Support
-* Fellow students from Slack
+* Slack community
  
