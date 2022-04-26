@@ -189,11 +189,8 @@ def get_asset_list(request, portfolio_id):
         profit = round(current_holdings[index] - averge_price_holdings, 3)
         pnl.append(profit)
 
-    print("pnl", pnl)
-
     zipped_assets = zip(assets, asset_prices, current_holdings,
                         average_prices, pnl)
-
     zipped_context = tuple(zipped_assets)
 
     context = {
