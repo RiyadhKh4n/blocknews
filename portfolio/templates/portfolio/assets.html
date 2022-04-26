@@ -16,7 +16,7 @@
             <th class="d-none d-sm-none d-md-table-cell">Profit/Loss</th>
             <th>Actions</th> 
         </tr>
-        {% for asset,price,holdings,average in assets %}
+        {% for asset,price,holdings,average,pnl in assets %}
             <tr class="asset-table-row portfolio-rows">
                 <td>{{ asset.ticker }}</td>   
                 <td class="d-none d-sm-table-cell">${{ price }}</td>
@@ -25,7 +25,7 @@
                     <span class="qty_data">{{ asset.quantity }}<span class="qty-ticker">{{ asset.ticker }}</span></span>
                 </td>   
                 <td class="d-none d-sm-none d-md-none d-lg-table-cell">${{ average }}</td>   
-                <td class="d-none d-sm-none d-md-table-cell">${{ asset.pnl }}</td>
+                <td class="d-none d-sm-none d-md-table-cell">${{ pnl }}</td>
                 
                 <!-- Modal Trigger -->
                 <td>
