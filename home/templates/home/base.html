@@ -84,14 +84,14 @@
             <div class="col links-col">
                 <h3>Links <span class="underline"><span></span></span></h3>
                 <ul class="footer-ul">
-                    <li><a href="{% url 'home-page' %}"></a>Home</li>
+                    <li><a href="{% url 'home-page' %}">Home</a></li>
                     {% if user.is_authenticated %}
-                    <li><a href="{% url 'create_portfolio_url' %}"></a>Create Portfolio</li>
-                    <li><a href="{% url 'get_portfolio_list' %}"></a>View Portfolios</li>
-                    <li><a href="{% url 'account_logout' %}"></a>Log Out</li>
+                    <li><a href="{% url 'create_portfolio_url' %}">Create Portfolio</a></li>
+                    <li><a href="{% url 'get_portfolio_list' %}">View Portfolios</a></li>
+                    <li><a href="{% url 'account_logout' %}">Log Out</a></li>
                     {% else %}
-                    <li><a href="{% url 'account_login' %}"></a>Log In</li>
-                    <li><a href="{% url 'account_signup' %}"></a>Create an Account</li>
+                    <li><a href="{% url 'account_login' %}">Log In</a></li>
+                    <li><a href="{% url 'account_signup' %}">Create an Account</a></li>
                     {% endif %}
                 </ul>
             </div>
