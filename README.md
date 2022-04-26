@@ -116,14 +116,41 @@ Onced logged in, users are able to create, read, edit and delete portfolios whic
 2. [Bootstrap](https://getbootstrap.com/)
     * Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end web development.
 
+3. [oauthlib](https://github.com/oauthlib/oauthlib)
+    * OAuthLib is a framework which implements the logic of OAuth1 or OAuth2 without assuming a specific HTTP request object or web framework.
+
 ## Libraries 
 
 1. [Os Library](https://docs.python.org/3/library/os.html)
     * Used to clear the console.
 
 2. [Requests](https://pypi.org/project/requests/)
-    * Allowed me to sent HTTP requests without having to manually add query to strings to the URLs
+    * Allowed me to send HTTP requests without having to manually add query to strings to the URLs.
+
+3. [dj-database-url](https://pypi.org/project/dj-database-url/)
+    * This simple Django utility allows you to utilize the 12factor inspired DATABASE_URL environment variable to configure your Django application.
  
+4. [asgiref](https://github.com/django/asgiref)
+    * ASGI is a standard for Python asynchronous web apps and servers to communicate with each other, and positioned as an asynchronous successor to WSGI.
+
+5. [django-allauth](https://django-allauth.readthedocs.io/en/latest/)
+    * Integrated set of Django applications addressing authentication, registration, account management as well as 3rd party (social) account authentication.
+
+6. [gunicorn](https://gunicorn.org/)
+    * The Gunicorn "Green Unicorn" is a Python Web Server Gateway Interface HTTP server.
+
+7. [psycopg2](https://pypi.org/project/psycopg2/)
+    * Psycopg is the most popular PostgreSQL database adapter for the Python programming language. 
+
+8. [PyJWT](https://pyjwt.readthedocs.io/en/latest/)
+    * PyJWT is a Python library which allows you to encode and decode JSON Web Tokens (JWT).
+
+9. [sqlparse](https://pypi.org/project/sqlparse/)
+    * Sqlparse is a non-validating SQL parser for Python. It provides support for parsing, splitting and formatting SQL statements.
+
+10. [whitenoise](http://whitenoise.evans.io/en/stable/)
+    * With a couple of lines of config WhiteNoise allows your web app to serve its own static files, making it a self-contained unit that can be deployed anywhere without relying on nginx, Amazon S3 or any other external service.
+
 ## Programs Used:
  
 1. [GitPod](https://www.gitpod.io/):
