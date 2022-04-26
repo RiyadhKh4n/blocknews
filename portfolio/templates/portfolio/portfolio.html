@@ -17,7 +17,6 @@
         </tr>
 
         {% for portfolio, value in portfolios %}
-        
             <tr class="portfolio-rows">
                 <td>{{ portfolio.name }}</td>   
                 <td>${{ value }}</td>   
@@ -31,7 +30,7 @@
             {% empty %}
             <tr>
                 <td>Create A Portfolio</td>
-                <td>0.00</td>
+                <td colspan="2">0.00</td>
             </tr>
         {% endfor %}
     </table>
