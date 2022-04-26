@@ -286,7 +286,7 @@ def update_asset(request, pk, b_or_s, coin, price):
             new_inv = float(price) * float(new_qty)
             asset.quantity = asset_qty + new_qty
             asset.usd_spent = curr_spent + new_inv
-            AP[f"price{len(AP)+1}"] = buy_price 
+            AP[f"price{len(AP)+1}"] = buy_price
             asset.price = price
             asset.ticker = coin
             asset.save()
