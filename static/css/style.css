@@ -787,6 +787,10 @@ hr {
         margin: 20px auto 0;
     }
 
+    .homepage-p {
+        font-size: 18px;
+    }    
+
     .webiste-info-box {
         flex-direction: row;
         flex-basis: 45%;
