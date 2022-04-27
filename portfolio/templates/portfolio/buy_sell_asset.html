@@ -9,6 +9,8 @@
         {% csrf_token %}
         <input type="hidden" name="ticker" id="ticker" value="{{ asset.ticker }}">
         {{ form.as_p }}
+        <label for="id_price">Price:</label>
+        <input type="number" name="price" step="any" id="id_price" class="my-2" value="{{ price }}" required>
         <div>
             <p> 
                 <button class="btn login-btn b_s-btn" type="submit">Add Transaction</button>
