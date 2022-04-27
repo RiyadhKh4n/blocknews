@@ -316,7 +316,6 @@ Alternatively, if using Gitpod, you can click below to create your own workspace
  
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/RiyadhKh4n/cryptics)
 
- 
 You will need to also install all required packages in order to run this application on Heroku, refer to [requirements.txt](requirements.txt)
 * Command to install this apps requirements is `pip3 install -r requirements.txt`
  
@@ -330,7 +329,6 @@ The code for the footer was inspired from [this](https://www.youtube.com/watch?v
 
 The code for the table styling was inspired from [this](https://www.youtube.com/watch?v=2yoXvzonxpA) YouTube video
 
- 
 ### Acknowledgements
 * Tim Nelson - My Mentor
 * Tutor Support
