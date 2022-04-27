@@ -32,7 +32,8 @@ class TestViews(TestCase):
 
     # def test_edit_portfolio(self):
     #     user = User.objects.get('john')
-    #     portfolio = Portfolio.objects.create(name='Django', slug='django', user=user)
+    #     portfolio = Portfolio.objects.create(
+    #                 name='Django', slug='django', user=user)
     #     response = self.client.get(f'/edit/{portfolio.id}')
     #     self.assertEqual(response.status_code, 200)
     #     self.assertTemplateUsed(response, 'portfolio/edit_portfolio.html')
