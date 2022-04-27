@@ -64,9 +64,9 @@ The project is inspired by the [CoinMarketCap Portfolio Tracker](https://coinmar
 
     When creating the database for the website I had to consider the all the data I needed to store in order to have a functioning portfolio tracker. I came to the conclusion that I would need three different relational databases which would interact with one another. The first is the default Django User database, which would store the usernames and passwords of all users which would allow them to login to the site and create portfolios and add tokens. As I didn't need any extra functionality I did not add any custom fields to the database which meant I did not have to add it to my models. 
 
-    The next database was the Portfolio database which had a primary key of PortfolioID, two ForeignKey relationships (Coins and Users) which would allow the portfolio to be connected to a user as well as contain all of the tokens added. The database also had three extra fields being Name (which was the name of the Portfolio), Created On (the date it was created) and finally USDValue (the usd value of their portfolio). This database is the building blocks for the others, as without it, users would be unable to add any assets to their Portfolio so it was vital that this contained all the necessary data. The Portfolio database can be found [here](portfolio/models.py) 
+    The next database was the Portfolio database which had a primary key of PortfolioID, two ForeignKey relationships (Coins and Users) which would allow the portfolio to be connected to a user as well as contain all of the tokens added. The database also had three extra fields being Name (which was the name of the Portfolio), Created On (the date it was created) and finally USDValue (the usd value of their portfolio). This database is the building blocks for the others, as without it, users would be unable to add any assets to their Portfolio so it was vital that this contained all the necessary data. The Portfolio database can be found [here](https://github.com/RiyadhKh4n/cryptics/blob/main/portfolio/models.py#L5) 
 
-    The final database I created was the Assets database, this would be responsible for holding all the data about a single asset within a single portfolio. This meant, whenever a user wanted to add a new coin to their database, a new instance of the Asset model would be created which would hold all relevant data about that particular coin. The relationship between the Portfolio -> Assets database is a zero-to-many as one portfolio could have zero or many assets within. The model contains a PrimaryKey of AssetID as well as two ForeignKey relationships (PortfolioID and CoinID) which would allow the individual coin to be connect to a particular portfolio. It also contains several other fields which hold data necessary in order to calculate profit and loss for the particular asset. Quantity (the amount of coins), AveragePrice (the average price of each coin bought), USDSpent (total amount of USD spent to purchase coins), USDEarned (profit gained from selling x amount of coins), CurrentInvestment (total amount of money user spent on coins) and finally data_added (data the asset was added to the portfolio). The Assets database can be found [here](portfolio/models.py) 
+    The final database I created was the Assets database, this would be responsible for holding all the data about a single asset within a single portfolio. This meant, whenever a user wanted to add a new coin to their database, a new instance of the Asset model would be created which would hold all relevant data about that particular coin. The relationship between the Portfolio -> Assets database is a zero-to-many as one portfolio could have zero or many assets within. The model contains a PrimaryKey of AssetID as well as two ForeignKey relationships (PortfolioID and CoinID) which would allow the individual coin to be connect to a particular portfolio. It also contains several other fields which hold data necessary in order to calculate profit and loss for the particular asset. Quantity (the amount of coins), AveragePrice (the average price of each coin bought), USDSpent (total amount of USD spent to purchase coins), USDEarned (profit gained from selling x amount of coins), CurrentInvestment (total amount of money user spent on coins) and finally data_added (data the asset was added to the portfolio). The Assets database can be found [here](https://github.com/RiyadhKh4n/cryptics/blob/main/portfolio/models.py#L18) 
 
 * ### Colour Scheme
 
@@ -207,10 +207,10 @@ I used two GitHub [Project Boards](https://github.com/RiyadhKh4n/cryptics/projec
 13. [ColorSpace](https://mycolor.space/):
     * Used to find the colour scheme of the site
 
-14. [W3C Markup Validation Service](https://validator.w3.org/)
+14. [W3C Markup Validation Service](https://validator.w3.org/):
     * Used to validate HTML code
 
-15. [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
+15. [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/):
     * Used to validate CSS
  
 # Testing
@@ -325,8 +325,6 @@ You will need to also install all required packages in order to run this applica
 ## Code
 
 The code which calls the CoinMarketCap API was taken from my previous project [CoinFrog](https://github.com/RiyadhKh4n/CoinFrog)
-
-The styling for the homepage was inspired by [CoinMarketCap's Portfolio Tracker](https://coinmarketcap.com/portfolio-tracker/)
 
 The code for the footer was inspired from [this](https://www.youtube.com/watch?v=FRRlFLfdvBE) YouTube video
 
