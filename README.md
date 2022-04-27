@@ -81,6 +81,10 @@ The project is inspired by the [CoinMarketCap Portfolio Tracker](https://coinmar
 * ### Icons
 
     All icons used in the website were taken from [fontawesome](https://fontawesome.com/start)
+
+    - #### Favicon
+
+        The favicon for the site was created with [favicon.cc](https://www.favicon.cc/) 
  
 # Features
  
@@ -101,6 +105,8 @@ Cryptics has several features:
 - Another feature would be to allow users to submit a contact form in order to provide feedback on the site and to raise any issues they had when using Cryptics. Although I did want to implement this, I decided not to as I wanted to focus on the core functionality first. 
 
 - Cryptics could allow users to login via social media platforms like Facebook or Google, as well as a password reset functionality, however due to the added compleity of this, I decided not to intergrate it into the site. However it is definately a future feature I would like to implement.
+
+- In future iterations of the project, I would like to implement JavaScript in order to add more interactivity and functionality to the site. This would help make Cryptics more engaging and improve the professionalism of the website.
  
 # Technologies
 ## Programming Languages:
@@ -109,9 +115,13 @@ Cryptics has several features:
 
 - [CSS](https://en.wikipedia.org/wiki/CSS) - Cascading Style Sheets is a style sheet language used for describing the presentation of a document
 
-- [Python](https://www.python.org/) - Python is an interpreted high-level general-purpose programming language. It is used when creating the backend functionality with Django
+- [Python](https://www.python.org/) - Python is an interpreted high-level general-purpose programming language. It is used when creating the backend functionality in Django
  
-- I used GitHub [Project Board](https://github.com/RiyadhKh4n/cryptics/projects) to keep track of all the User Stories and Tasks necessary in order to build Cryptics
+I used two GitHub [Project Boards](https://github.com/RiyadhKh4n/cryptics/projects) to keep track of all the User Stories and Tasks necessary in order to build Cryptics
+
+- The [User Story Project Board](https://github.com/RiyadhKh4n/cryptics/projects/1) was used to keep track of my User Stories and ensure I implemented all the functionality I set out to implement. I used the MoSCoW method to prioritize which project requirements will provide the best user experience.
+
+- The [Development Project Board](https://github.com/RiyadhKh4n/cryptics/projects/2) was used to keep track of the different parts of development. It is more code-focused and describes the parts of the project I had to complete in order to meet my User Stories as well as any bugs that I fixed. 
  
 ## Frameworks
 
@@ -183,7 +193,7 @@ Cryptics has several features:
     * Used to validate my Python code
  
 9. [favicon.cc](https://www.favicon.cc/):
-    * Used to generate the favicon address from the hosted site
+    * Used to create the favicon
 
 10. [HerokuSQL](https://www.heroku.com/postgres):
     * Database used for deployed project
