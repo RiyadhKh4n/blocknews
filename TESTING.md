@@ -61,6 +61,8 @@ The errors which can be seen on the screen shot below are coming from Front-Awes
 
 ## Django Testing (Unit Tests)
 
+?????
+
 ## User Story Tests
 
 1. As a **Site User** I will be **directed to the Home Page** so that **I can understand the website**
@@ -121,7 +123,23 @@ The errors which can be seen on the screen shot below are coming from Front-Awes
 
 ## Manual Testing
 
-TO DO
+Manual testing is the process of manually testing software for defects. It requires a tester to play the role of an end user where by they use most of the application's features to ensure correct behaviour.
+
+- As I am using django-allauth, it handles the login / create an account functionality ensuring users only enter the correct infomration before they can progress. It ensures duplicate users cannot be created, passwords are not too similar / short as well as all information is validated before users can submit.
+
+    ![allauth](docs/readme/manualtestlogin.png)
+
+- When users try ADD a coin to a portfolio, the application will ensure the ticker they enter is valid. If it does not exist within the CoinMarketCap API then a Bootstrap message will display telling them that the ticker they entered does not exist. Furthermore, when submitting the inital form, all tickers must be entered in uppercase. If the user does not do this, it would cause the API call to fail, so I made sure that all valid tickers entered are transformed to uppercase before the next form can be submit.
+
+    ![addcoin](docs/readme/addcointest.png)
+
+- When trying to SELL a coin, user's should not be able to sell more than they hold. As a result I have put in code which checks if the quantity they are trying to sell is less or equal to the quantity they hold. If this check fails, then a Bootstrap message will appear letting the user know, and the form will not submit.
+
+    ![sell](docs/readme/sellmanualtest.png)
+
+- If a user tries to ADD a coin which they already hold in their portfolio, instead of creating a new instance of that coin, the updated quantity and price bought at should be appended to the existing assets fields. This is because you should not have mulitple instances of the same coin within a single portfolio.
+
+    ![duplicatetest](docs/readme/duplicatetest.png)
 
 ## Responsiveness Testing
 
@@ -262,6 +280,8 @@ I will test Cryptics on [Firefox](https://www.mozilla.org/en-GB/firefox/new/), [
 ## Bugs
 
 - Not so much a bug but the API I am using only allows 333 calls per day as I am using the free version. Each time the user Adds or Buys a coin, as well as each time the [portfolio.html](portfolio/templates/portfolio/portfolio.html) template is rendered, 10 credits (calls) are used which means the program can be called 33 times a day before going over the limit. The limit is a soft limit meaning it does let you go over the 333 per day however after 10,000 calls (per month) the API will stop allowing calls meaning the program would not work if the limit is reached.
+
+    ![apikey](docs/readme/apikeytest.png)
 
 - A bug that is out of my control is if the CoinMarketCap data has been hacked or corrupted. This was not something I thought I had to worry about however on (14/12/21) the website got hacked causing all the coin data to be incorrect, meaning if the data my program produces will also be incorrect.
 
