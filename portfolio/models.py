@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 
 
 class Portfolio(models.Model):
+    """
+    Class that defines the Portfolio Model
+    """
     name = models.CharField(max_length=9, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -16,6 +19,9 @@ class Portfolio(models.Model):
 
 
 class Asset(models.Model):
+    """
+    Class that defines the Asset Model
+    """
     portfolio_name = models.ForeignKey(Portfolio, on_delete=models.CASCADE)
     ticker = models.CharField(max_length=6)
     quantity = models.DecimalField(max_digits=10, decimal_places=3)
