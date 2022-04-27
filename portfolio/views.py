@@ -28,6 +28,9 @@ session.headers.update(headers)
 
 
 def call_api():
+    """
+    Function which will call the API with appropriate params
+    """
     try:
         response = session.get(URL, params=params)
         data = json.loads(response.text)
@@ -71,6 +74,9 @@ def validate_ticker(ticker):
 
 
 def get_portfolio_list(request):
+    """
+    View to get all user portfolios
+    """
     portfolios = Portfolio.objects.filter(user=request.user)
     portfolio_balance_list = []
     total_portfolio_balance = 0
@@ -116,6 +122,9 @@ def get_portfolio_list(request):
 
 
 def create_portfolio(request):
+    """
+    View that allows users to create a portfolio
+    """
     form = PortfolioForm(request.POST or None)
 
     if form.is_valid():
@@ -131,6 +140,9 @@ def create_portfolio(request):
 
 
 def edit_portfolio(request, portfolio_id):
+    """
+    View that allows the user to edit a portfolio's name
+    """
     portfolio = get_object_or_404(Portfolio, id=portfolio_id)
     if request.method == 'POST':
         form = PortfolioForm(request.POST, instance=portfolio)
@@ -145,12 +157,18 @@ def edit_portfolio(request, portfolio_id):
 
 
 def delete_portfolio(request, portfolio_id):
+    """
+    View that allows a user to delete a portfolio
+    """
     portfolio = get_object_or_404(Portfolio, id=portfolio_id)
     portfolio.delete()
     return redirect('get_portfolio_list')
 
 
 def get_asset_list(request, portfolio_id):
+    """
+    View that retrieves all assets within a single portfolio and displays them
+    """
     average_prices = []
     pnl = []
     returnedCoin = call_api()
@@ -201,6 +219,9 @@ def get_asset_list(request, portfolio_id):
 
 
 def get_asset(request, portfolio_id):
+    """
+    View that gets the ticker and ticker price of a coin to ADD
+    """
     portfolio = Portfolio.objects.get(pk=portfolio_id)
     returnedCoin = call_api()
 
@@ -223,6 +244,9 @@ def get_asset(request, portfolio_id):
 
 
 def add_asset(request, portfolio, coin, price):
+    """
+    View that allows a user to add a new coin to their portfolio
+    """
     portfolio = Portfolio.objects.get(pk=portfolio)
     form = AddAsset()
     if request.method == "POST":
@@ -241,7 +265,8 @@ def add_asset(request, portfolio, coin, price):
                 obj.portfolio_name = portfolio
                 obj.price = price
                 quantity = float(form['quantity'].value())
-                obj.average_price = {'price1': float(price)}
+                obj.average_price = {
+                    'price1': float(request.POST.get('price'))}
                 USDspent = float(quantity) * float(price)
                 obj.usd_spent = USDspent
                 obj.ticker = coin
@@ -260,6 +285,9 @@ def add_asset(request, portfolio, coin, price):
 
 
 def update_asset(request, pk, b_or_s, coin, price):
+    """
+    View that allows a user to Buy or Sell an existing coin
+    """
     asset = get_object_or_404(Asset, pk=pk)
     returnedCoin = call_api()
     if request.method == 'POST':
@@ -282,11 +310,10 @@ def update_asset(request, pk, b_or_s, coin, price):
         if b_or_s == 'buy':
             # do the calculations for BUYING
             new_qty = float(form['quantity'].value())
-            buy_price = float(form['price'].value())
             new_inv = float(price) * float(new_qty)
             asset.quantity = asset_qty + new_qty
             asset.usd_spent = curr_spent + new_inv
-            AP[f"price{len(AP)+1}"] = buy_price
+            AP[f"price{len(AP)+1}"] = float(request.POST.get('price'))
             asset.price = price
             asset.ticker = coin
             asset.save()
@@ -321,5 +348,6 @@ def update_asset(request, pk, b_or_s, coin, price):
         'asset': asset,
         'b_or_s': b_or_s,
         'form': form,
+        'price': get_coin_price(coin, returnedCoin)
     }
     return render(request, 'portfolio/buy_sell_asset.html', context)
