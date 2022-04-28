@@ -121,6 +121,7 @@ body {
 .btn-purple {
     background-color: #661aff;
     margin-left: 25px;
+    color: white;
 }
 
 .btn-purple:hover {
@@ -141,7 +142,6 @@ body {
 .btn-styling-home {
     margin-top: 20px;
     padding-top: 12px;
-    color: white;
     border-radius: 10px;
     height: 50px;
     font-weight: bold;
@@ -298,11 +298,18 @@ td {
 }
 
 .view-btn {
+    margin: auto;
+    padding: 10px;
     border: 2px solid #00B58B;
-    color: black;
     font-weight: 600;
     font-size: 0.8rem;
     border-radius: 15px;
+    width: fit-content;
+    align-items: center;
+}
+
+.view-btn-a {
+    color: black;
 }
 
 .create-portfolio-section {
@@ -379,6 +386,7 @@ td {
 
 .del-btn {
     margin-top: 5px;
+    color: black;
 }
 
 .close {
@@ -463,6 +471,7 @@ td {
 
 .sell-btn {
     margin-top: 5px;
+    color: black;
 }
 
 /* Forms */
@@ -483,17 +492,17 @@ td {
 
 /* 404 and 500 page */
 
-.h3-404-500{
+.h3-404-500 {
     font-family: 'Lato', sans-serif;
     font-size: 1.2em;
     font-weight: 600;
 }
 
-.p-404-500{
+.p-404-500 {
     font-family: 'Lato', sans-serif;
     font-size: 1em;
     font-weight: 500;
-    color:#661aff;
+    color: #661aff;
 }
 
 /* Footer */
@@ -556,7 +565,7 @@ td {
     color: #fff;
 }
 
-.footer-ul li a:hover{
+.footer-ul li a:hover {
     border-bottom: 1px solid #fff;
 }
 
@@ -628,11 +637,7 @@ hr {
 /* Media Queries */
 @media only screen and (min-width: 375px) {
     .del-btn {
-        margin: 0px
-    }
-
-    .sell-btn {
-        margin: 0px;
+        margin-top: 5px
     }
 }
 
@@ -808,7 +813,7 @@ hr {
 
     .homepage-p {
         font-size: 18px;
-    }    
+    }
 
     .webiste-info-box {
         flex-direction: row;
