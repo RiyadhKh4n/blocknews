@@ -29,4 +29,3 @@ class TestViews(TestCase):
             url, {"name": "ftx", "slug": "ftx", "user": john})
         count = Portfolio.objects.count()
         self.assertEqual(count, 1)
-
