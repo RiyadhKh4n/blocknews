@@ -13,6 +13,14 @@
 
 ![views](docs/readme/pep8main.png)
 
+#### Home APP:
+
+![views](docs/readme/homeviewspep8.png)
+
+### Admin.py
+
+![portfolio/admin](docs/readme/adminpep8.png)
+
 ### Models.py:
 
 ![models](docs/readme/pep8models.png)
@@ -34,6 +42,20 @@
 #### Portfolio APP:
 
 ![urls](docs/readme/pep8portfoliourls.png)
+
+### Django Test Files
+
+#### test_forms.py
+
+![test_forms](docs/readme/testviewspep8.png)
+
+#### test_urls.py
+
+![test_urls](docs/readme/testurlspep8.png)
+
+#### test_views.py
+
+![test_views](docs/readme/testviewspypep8.png)
 
 ### Settings.py
 
