@@ -403,7 +403,7 @@ Manual testing is the process of manually testing software for defects. It requi
 
 ### Create Portfolio:
 
-### 320px, 375px % 425px:
+### 320px, 375px, 425px:
 
 ![cp](docs/readme/cp320px.png)
 
@@ -480,6 +480,14 @@ I will test Cryptics on [Firefox](https://www.mozilla.org/en-GB/firefox/new/), [
 ### Brave Browser:
 
 ![Brave](docs/readme/bravebrowser.png)
+
+## GitHub Issues
+
+When developing the project, I used GitHub Issues as a way to track my work on GitHub, and make notes of any bugs or features that I needed to fix/implement.
+
+- [Here](https://github.com/RiyadhKh4n/cryptics/issues?q=is%3Aopen+is%3Aissue) you can find a list of open issues, which are made up of various User Stories or Dvelopment tasks that needed completing.
+
+- [Here](https://github.com/RiyadhKh4n/cryptics/issues?q=is%3Aissue+is%3Aclosed) you can find a list of all closed issues, which show any bugs I resolved.
 
 ## Bugs
 
