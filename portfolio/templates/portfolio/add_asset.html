@@ -5,7 +5,7 @@
 
     <h1 class="sign-in-text">Add A Coin </h1>  
 
-    <form method='POST' action="">
+    <form method='POST' action="/">
         {% csrf_token %}
         <label for="ticker" class="form-label">Coin: {{ ticker }}</label>
         <input type="hidden" name="ticker" id="ticker"><br>
