@@ -473,12 +473,27 @@ td {
 }
 
 .b_s-btn {
-    width: fit-content
+    width: fit-content;
 }
 
 .form-control {
     width: inherit;
     display: inline;
+}
+
+/* 404 and 500 page */
+
+.h3-404-500{
+    font-family: 'Lato', sans-serif;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.p-404-500{
+    font-family: 'Lato', sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    color:#661aff;
 }
 
 /* Footer */
