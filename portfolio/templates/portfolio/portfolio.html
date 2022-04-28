@@ -22,9 +22,13 @@
                 <td>${{ value }}</td>   
     
                 <td>
-                    <a href="{% url 'get_asset_list' portfolio.id %}"> 
-                        <button id="view-assets" class="btn view-btn">View Assets</button>
-                    </a>
+                    <section class="view-btn-section">
+                        <section class="view-btn">
+                            <a class="view-btn-a" href="{% url 'get_asset_list' portfolio.id %}">
+                                View Assets
+                            </a>
+                        </section>
+                    </section>
                 </td>
             </tr>
             {% empty %}
@@ -73,13 +77,21 @@
                             <td>{{ portfolio.name }}</td>   
                             <td>${{ value }}</td>   
                             <td>
-                                <a href="{% url 'edit_portfolio' portfolio.id %}">
-                                    <button class="btn btn-purple modal-btn">Edit</button>
-                                </a>
+                                <section class="modal-btn-section">
+                                    <section class="modal-btns">
+                                        <a class="btn btn-purple modal-btn" href="{% url 'edit_portfolio' portfolio.id %}">
+                                            Edit
+                                        </a>
+                                    </section>
+                                </section>
 
-                                <a href="{% url 'delete_portfolio' portfolio.id %}"> 
-                                    <button class="btn btn-green modal-btn del-btn">Delete</button>
-                                </a>
+                                <section class="modal-btn-section">
+                                    <section class="modal-btns">
+                                        <a class="btn btn-green modal-btn del-btn" href="{% url 'delete_portfolio' portfolio.id %}">
+                                            Delete
+                                        </a>
+                                    </section>
+                                </section>
                             </td>
                         </tr>
 

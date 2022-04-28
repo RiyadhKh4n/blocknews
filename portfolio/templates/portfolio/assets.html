@@ -51,13 +51,21 @@
                                                 <td>{{ asset.ticker }}</td>
                                                 <td>{{ asset.quantity }}</td>
                                                 <td>
-                                                    <a href="{% url 'update_asset' asset.id 'buy' asset.ticker None %}">
-                                                        <button class="btn btn-purple modal-btn">Buy</button>
-                                                    </a>
-                                                    
-                                                    <a href="{% url 'update_asset' asset.id 'sell' asset.ticker None %}">
-                                                        <button class="btn btn-green modal-btn sell-btn">Sell</button>
-                                                    </a>
+                                                    <section class="modal-btn-section">
+                                                        <section class="modal-btns">
+                                                            <a class="btn btn-purple modal-btn" href="{% url 'update_asset' asset.id 'buy' asset.ticker None %}">
+                                                                Buy
+                                                            </a>
+                                                        </section>
+                                                    </section>
+
+                                                    <section class="modal-btn-section">
+                                                        <section class="modal-btns">
+                                                            <a class="btn btn-green modal-btn sell-btn" href="{% url 'update_asset' asset.id 'sell' asset.ticker None %}">
+                                                                Sell
+                                                            </a>
+                                                        </section>
+                                                    </section>
                                                 </td>
                                             </tr>
                                     </table>
