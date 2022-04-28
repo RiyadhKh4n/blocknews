@@ -1,6 +1,4 @@
 # Cryptics
- 
-[Cryptics Deployed Site](https://cryptics-portfolio-tracker.herokuapp.com/)
 
 The purpose of Cryptics is to allow users to track their cryptocurrency holdings by utilising the CoinMarketCap API. Users are able to create multiple portfolios where they can add their assets and track the profitability and performance of their holdings.  
 
@@ -8,9 +6,10 @@ Cryptics is a Full Stack Application built with the Django Framework which inclu
 
 The project is inspired by the [CoinMarketCap Portfolio Tracker](https://coinmarketcap.com/portfolio-tracker/) which is a useful tool I myself use to track my crypto assets. Cryptics aims to provide similar functionality and ease of use as the market leader. 
  
+[Cryptics - Deployed Site](https://cryptics-portfolio-tracker.herokuapp.com/)
 ---
 
-![AmIResponsive]()
+![AmIResponsive](docs/images/amiresponsive.png)
 
 ---
 
