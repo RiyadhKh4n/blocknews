@@ -30,29 +30,3 @@ class TestViews(TestCase):
         count = Portfolio.objects.count()
         self.assertEqual(count, 1)
 
-    # def test_edit_portfolio(self):
-    #     user = User.objects.get('john')
-    #     portfolio = Portfolio.objects.create(
-    #                 name='Django', slug='django', user=user)
-    #     response = self.client.get(f'/edit/{portfolio.id}')
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertTemplateUsed(response, 'portfolio/edit_portfolio.html')
-
-    def test_delete_portfolio(self):
-        john = User.objects.get(username='john')
-        created_portfolio = {"name": "ftx", "slug": "ftx", "user": john}
-        url = self.client.get(f'/delete/{created_portfolio.id}')
-        portfolio = self.client.post(url, created_portfolio)
-        self.assertRedirects(portfolio, '/')
-        exisiting_portfolios = Portfolio.objects.filter(id=portfolio.id)
-        self.assertEqual(len(exisiting_portfolios), 0)
-
-    # def test_get_asset_list(self):
-    #     portfolio = Portfolio.objects.create(name='Django')
-    #     response = self.client.get(f'/view/{portfolio.id}')
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertTemplateUsed(response, 'portfolio/assets.html')
-
-    # def test_add_asset(self):
-
-    # def test_update_asset(self):
