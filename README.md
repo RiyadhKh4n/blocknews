@@ -42,11 +42,11 @@ Cryptics is a Full Stack Application built with the Django Framework which inclu
     I will also intergrate the MoSoCoW method which is a four-step approach to prioritizing which project requirements will provide the best return on investment (ROI). MoSCoW stands for Must Have, Should Have, Could Have and Wont Have. Using this method, I am able to label and order my User Stories into four categories, allowing me to know which ones to focus on and to ensure I meet my project vision and aims. 
 
 * ## Structure
-    Cryptics will be developed using Django, as a result I will split the program functionality into separate apps. A Django application is a Python package that is specifically inteded for use in a Django project. For my project I will create three apps; Home, Portfolio and Coin
+    Cryptics will be developed using Django, as a result I will split the program functionality into separate apps. A Django application is a Python package that is specifically inteded for use in a Django project. For my project I will create two apps; Home and Portfolio
 
     Home: This app will contain the code the user will see when they launch the application. It will contain all of the necessary urls and views in order to render the Homepage of Cryptics. This app will also be home to the [base.html](home/templates/home/base.html) and [index.html](home/templates/home/index.html) page which contains the code for the landing page of the project.
 
-    Portfolio: This app will contain all the code needed in order to get the Portfolio functionality working. It will contain the urls and views in order to get the CRUD functionality working allowing users to ADD/BUY/SELL coins to their portfolios. It will also contain all of the code necessary in order to get the API working so the site can display live price data. It will contain the templates needed to display the Portfolio and Assets section of the site. 
+    Portfolio: This app will contain all the code needed in order to get the Portfolio functionality working. It will contain the urls and views in order to get the CRUD functionality working allowing users to ADD/BUY/SELL coins to their portfolios. It will also contain all of the code necessary in order to get the API working so the site can display live price data. It will contain the [templates](portfolio/templates) needed to display the Portfolio and Assets section of the site. 
  
 ## Design
 
