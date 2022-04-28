@@ -44,6 +44,9 @@ def call_api():
 
 
 def get_ticker_list(data):
+    """
+    Function which generates a list of valid tickers
+    """
     for d in data['data']:
         ticker_from_api = d['symbol']
         if ticker_from_api not in tickerList:
@@ -308,7 +311,6 @@ def update_asset(request, pk, b_or_s, coin, price):
         AP = asset.average_price
         print("AveragePrice", AP)
         if b_or_s == 'buy':
-            # do the calculations for BUYING
             new_qty = float(form['quantity'].value())
             new_inv = float(price) * float(new_qty)
             asset.quantity = asset_qty + new_qty
@@ -321,7 +323,6 @@ def update_asset(request, pk, b_or_s, coin, price):
                 request, f"{new_qty} {coin} successfully purchased!")
 
         elif b_or_s == 'sell':
-            # do the calculations for SELLING
             if float(form['quantity'].value()) > asset_qty:
                 messages.success(request, "Not enough available to sell.")
                 return redirect(update_asset, pk, 'sell', coin, price)
@@ -340,7 +341,6 @@ def update_asset(request, pk, b_or_s, coin, price):
         return redirect(get_asset_list, asset.portfolio_name.pk)
 
     if b_or_s == 'sell':
-        # grab the current quantity available to sell
         form = UpdateAsset(instance=asset)
     else:
         form = UpdateAsset()
