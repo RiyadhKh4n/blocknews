@@ -37,7 +37,9 @@ Cryptics is a Full Stack Application built with the Django Framework which inclu
 
 
 * ## Development Method
-    When developing Cryptics I will take an Agile Approach. Meaning I will take an iterative approach to project management and software development helping me to deliver value faster and speed up development time. I will focus on working software over comprehensive documentation and responding to change over following a plan when creating the project.  
+    When developing Cryptics I will take an Agile Approach. Meaning I will take an iterative approach to project management and software development helping me to deliver value faster and speed up development time. I will focus on working software over comprehensive documentation and responding to change over following a plan when creating the project. 
+
+    I will also intergrate the MoSoCoW method which is a four-step approach to prioritizing which project requirements will provide the best return on investment (ROI). MoSCoW stands for Must Have, Should Have, Could Have and Wont Have. Using this method, I am able to label and order my User Stories into four categories, allowing me to know which ones to focus on and to ensure I meet my project vision and aims. 
 
 * ## Structure
     Cryptics will be developed using Django, as a result I will split the program functionality into separate apps. A Django application is a Python package that is specifically inteded for use in a Django project. For my project I will create three apps; Home, Portfolio and Coin
