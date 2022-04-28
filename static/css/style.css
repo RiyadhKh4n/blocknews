@@ -500,8 +500,9 @@ td {
 
 .p-404-500 {
     font-family: 'Lato', sans-serif;
+    text-align: justify;
     font-size: 1em;
-    font-weight: 500;
+    font-weight: 600;
     color: #661aff;
 }
 
