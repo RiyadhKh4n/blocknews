@@ -61,7 +61,185 @@ The errors which can be seen on the screen shot below are coming from Front-Awes
 
 ## Django Testing (Unit Tests)
 
-?????
+I have used Django TestCase for automated testing:
+
+### Testing Forms:
+
+- Test the PortfolioForm() used when a user creates a new portfolio:
+
+```python
+class TestPortfolioForm(TestCase):
+
+    def test_portfolio_name_is_required(self):
+        form = PortfolioForm({'name': ''})
+        self.assertFalse(form.is_valid())
+        self.assertIn('name', form.errors.keys())
+        self.assertEqual(form.errors['name'][0], 'This field is required.')
+
+    def test_field_are_explicit_in_form_metaclass(self):
+        form = PortfolioForm()
+        self.assertEqual(form.Meta.fields, ['name'])
+```
+
+- Test the AddAsset() form used for when a user ADDs a new coin to their portfolio:
+
+```python
+class TestAddAssetForm(TestCase):
+
+    def test_portfolio_name_is_required(self):
+        form = AddAsset({'quantity': ''})
+        self.assertFalse(form.is_valid())
+        self.assertIn('quantity', form.errors.keys())
+        self.assertEqual(form.errors['quantity'][0], 'This field is required.')
+
+    def test_field_are_explicit_in_form_metaclass(self):
+        form = AddAsset()
+        self.assertEqual(form.Meta.fields, ['quantity'])
+```
+
+- Test the UpdateAsset() form used when a user BUY/SELL a coin:
+
+```python
+class TestUpdateAssetForm(TestCase):
+
+    def test_portfolio_name_is_required(self):
+        form = UpdateAsset({'quantity': ''})
+        self.assertFalse(form.is_valid())
+        self.assertIn('quantity', form.errors.keys())
+        self.assertEqual(form.errors['quantity'][0], 'This field is required.')
+
+    def test_field_are_explicit_in_form_metaclass(self):
+        form = UpdateAsset()
+        self.assertEqual(form.Meta.fields, ['quantity'])
+```
+
+#### Results:
+
+![result](docs/readme/formtestres.png)
+
+### Testing Urls:
+
+- Test Get Portfolio List url which is called when the user views their portfolios:
+
+```python
+class TestPortfolioUrls(TestCase):
+    def test_getPortfolioList_url_is_resolved(self):
+        url = reverse('get_portfolio_list')
+        self.assertEquals(resolve(url).func, get_portfolio_list)
+```
+
+- Test Edit Portfolio url which is called when the user wants to edit the portfolio name:
+
+```python
+def test_editPortfolio_url_is_resolved(self):
+        url = reverse('edit_portfolio', args=[1])
+        self.assertEqual(resolve(url).func, edit_portfolio)
+```
+
+- Test Delete Portfolio url which is called when a portfolio is deleted:
+
+```python
+def test_deletePortfolio_url_is_resolved(self):
+        url = reverse('delete_portfolio', args=[1])
+        self.assertEqual(resolve(url).func, delete_portfolio)
+```
+
+- Test Create Portfolio url which is called when a portfolio is created:
+
+```python
+def test_createPortfolio_url_is_resolved(self):
+        url = reverse('create_portfolio_url')
+        self.assertEquals(resolve(url).func, create_portfolio)
+```
+
+- Test View url which is called when the user clicks on a portfolio to view its assets:
+
+```python
+def test_viewPortfolio_url_is_resloved(self):
+        url = reverse('get_asset_list', args=[1])
+        self.assertEquals(resolve(url).func, get_asset_list)
+```
+
+- Test Get url which is called when the user ADDs a coin:
+
+```python
+ def test_get_url_is_resolved(self):
+        url = reverse('get_asset', args=[1])
+        self.assertEquals(resolve(url).func, get_asset)
+```
+
+- Test Add url which is called when a user ADDs a coin:
+
+```python
+def test_add_url_is_resolved(self):
+        url = reverse('add_asset_form', args=[1, 'ADA', '10.00'])
+        self.assertAlmostEquals(resolve(url).func, add_asset)
+```
+
+- Test Update which is called when a user BUY/SELL a coin:
+
+```python
+def test_update_url_is_resolved(self):
+        url = reverse('update_asset', args=[1, 'sell', 'ADA', '0.89'])
+        self.assertAlmostEquals(resolve(url).func, update_asset)
+```
+
+#### Results:
+
+![url](docs/readme/urltest.png)
+
+### Testing Views:
+
+- Test 404 Handler View:
+
+```python
+class TestHandler404(TestCase):
+    def test_404_page(self):
+        response = self.client.get('/handler404')
+        self.assertEqual(response.status_code, 404)
+        self.assertTemplateUsed(response, 'errors/404.html')
+```
+
+#### Results:
+
+![main.views](docs/readme/mainviewtest.png)
+
+Views within the Portfolio App have been partially tested:
+
+- Test get_portfolio_list:
+
+```python
+def test_get_portfolio_list(self):
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'home/index.html')
+```
+
+- Test create_portfolio renders correct template:
+
+```python
+def test_create_portfolio(self):
+        url = reverse('create_portfolio_url')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'portfolio/create_portfolio.html')
+```
+
+- Test create_portfolio submits the form correctly:
+
+```python
+def test_create_portfolio_form(self):
+        url = reverse('create_portfolio_url')
+        john = User.objects.get(username='john')
+        response = self.client.post(
+            url, {"name": "ftx", "slug": "ftx", "user": john})
+        count = Portfolio.objects.count()
+        self.assertEqual(count, 1)
+```
+
+#### Results:
+
+![portfolio.view](docs/readme/testportfolioview.png)
 
 ## User Story Tests
 
@@ -140,6 +318,10 @@ Manual testing is the process of manually testing software for defects. It requi
 - If a user tries to ADD a coin which they already hold in their portfolio, instead of creating a new instance of that coin, the updated quantity and price bought at should be appended to the existing assets fields. This is because you should not have mulitple instances of the same coin within a single portfolio.
 
     ![duplicatetest](docs/readme/duplicatetest.png)
+
+- A user is unable to name a portfolio anything greater than nine characters, this is because on mobile, due to the portfolio information being stored on a ```<table>```, if the name is greater than nine chars it will cause an overflow error. As a result, in the model, I defined max_length = 9.
+
+    ![9](docs/readme/manualtestcreate.png)
 
 ## Responsiveness Testing
 
