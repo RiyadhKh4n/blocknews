@@ -1,12 +1,11 @@
 # Cryptics
 
-The purpose of Cryptics is to allow users to track their cryptocurrency holdings by utilising the CoinMarketCap API. Users are able to create multiple portfolios where they can add their assets and track the profitability and performance of their holdings.  
+Cryptics is a website which allows users to track and monitor their cryptocurrency holdings. Users are able to create multiple portfolios where they can buy and sell coins and track the profitability and performance of their holdings.  
 
-Cryptics is a Full Stack Application built with the Django Framework which includes full CRUD funcitionality allowing users to Sign Up / Log In to their account and add, edit or delete portfolios and track their crypto holdings all in one application.
+Cryptics is a Full Stack Application built with the Django Framework which includes full CRUD functionality allowing users to Sign Up / Log In to their account and Add, Edit or Delete portfolios and coins and track their cryptocurrency holdings all in one application.
 
-The project is inspired by the [CoinMarketCap Portfolio Tracker](https://coinmarketcap.com/portfolio-tracker/) which is a useful tool I myself use to track my crypto assets. Cryptics aims to provide similar functionality and ease of use as the market leader. 
- 
 [Cryptics - Deployed Site](https://cryptics-portfolio-tracker.herokuapp.com/)
+
 ---
 
 ![AmIResponsive](docs/images/amiresponsive.png)
@@ -96,7 +95,35 @@ Cryptics has several features:
 - Cryptics has a full user authentication system which allows users to Create an Account or Login to the platform in order to begin using the Portfolio Tracking features. Users must have an account in order to use the features of the site as all Portfolio / Coin data must be saved to that users account, resulting in the user needing an account.
 
 - Onced logged in, users are able to create, read, edit and delete portfolios which they can add unlimited crypto assets to, allowing them to keep track of their holdings and monitor profit and losses. Within each portfolio, users are able to Buy and Sell thousands of coins giving them a platform to track their coins and help make better investment decisons.  
- 
+
+### Homepage:
+
+![hp](docs/readme/hp768px.png)
+
+### Log In / Create Account / Sign Out
+
+![lilo](docs/readme/lilo768px.png)
+
+### View Portfolios:
+
+![vp](docs/readme/vp768px.png)
+
+### Create a Portfolio:
+
+![cp](docs/readme/cp768px.png)
+
+### Edit and Delete Portfolios:
+
+![mp](docs/readme/mp768px.png)
+
+### View Assets:
+
+![va](docs/readme/va768px.png)
+
+### ADD coins:
+
+![ac](docs/readme/ac768px.png)
+
 ## Future Features:
 
 - A future feature Cryptics could have, is the ability to visually see the performance of each portfolio and all portfolios as a whole via a line graph which shows the change in USD value over time. This was a feature I wanted to include in this iteration of development however due to lack of time I was not able to intergrate this feature.
@@ -214,7 +241,7 @@ I used two GitHub [Project Boards](https://github.com/RiyadhKh4n/cryptics/projec
  
 # Testing
  
-Due to the size of the testing section for CoinFrog I have created [TESTING.md](TESTING.md). It contains all my unit testing and test for user stories and any bugs found.
+Due to the size of the testing section for Cryptics I have created [TESTING.md](TESTING.md). It contains all my validator testing, lighthouse scores, Django Testing, User Story Testing, Manual Tests, Responsiveness Tests, Browser Compatibility Tests as well as any bugs.
  
 [Link To TESTING.md](TESTING.md)
    
