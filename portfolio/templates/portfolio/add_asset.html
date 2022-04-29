@@ -5,9 +5,9 @@
 
     <h1 class="sign-in-text">Add A Coin </h1>  
 
-    <form method='POST' action="/">
+    <form method='POST'>
         {% csrf_token %}
-        <label for="ticker" class="form-label">Coin: {{ ticker }}</label>
+        <label class="form-label">Coin: {{ ticker }}</label>
         <input type="hidden" name="ticker" id="ticker"><br>
         <label for="price" class="form-label">Coin Price:</label>
         <input type="number" step="any" name="price" id="price" value="{{ price }}"><br>

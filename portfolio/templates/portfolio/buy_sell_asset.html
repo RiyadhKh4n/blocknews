@@ -5,7 +5,7 @@
 <div class="container login-div-container">
     <h1 class="sign-in-text">{{ b_or_s|title }} {{ asset.ticker }} </h1>  
     
-    <form method='POST' action="">
+    <form method='POST'>
         {% csrf_token %}
         <input type="hidden" name="ticker" id="ticker" value="{{ asset.ticker }}">
         {{ form.as_p }}
