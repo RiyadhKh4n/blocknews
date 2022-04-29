@@ -340,7 +340,7 @@ $ git clone https://github.com/RiyadhKh4n/cryptics.git
  
 Alternatively, if using Gitpod, you can click below to create your own workspace using this repository.
  
-![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/RiyadhKh4n/cryptics)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/RiyadhKh4n/cryptics)
 
 You will need to also install all required packages in order to run this application on Heroku, refer to [requirements.txt](requirements.txt)
 * Command to install this apps requirements is `pip3 install -r requirements.txt`
