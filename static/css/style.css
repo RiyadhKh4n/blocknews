@@ -312,6 +312,10 @@ td {
     color: black;
 }
 
+.view-btn-a:hover{
+    color:#661aff;
+}
+
 .create-portfolio-section {
     margin: 30px auto 15px;
     padding: 10px;
